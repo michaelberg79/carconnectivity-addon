@@ -12,14 +12,16 @@ ADD entrypoint.sh /
 
 RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
     python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install --upgrade pip --no-cache
-RUN /opt/venv/bin/pip install --no-cache carconnectivity-connector-seatcupra==${SEAT_VERSION} \
+    /opt/venv/bin/pip install --upgrade pip --no-cache && \
+    /opt/venv/bin/pip install --no-cache carconnectivity-connector-seatcupra==${SEAT_VERSION} \
         carconnectivity-connector-skoda==${SKODA_VERSION} \
         carconnectivity-connector-volkswagen==${VW_VERSION} \
         carconnectivity-connector-tronity==${TRIONITY_VERSION} \
         carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
     mkdir -p /tmp && \
-    chmod +x /entrypoint.sh
+    chmod +x /entrypoint.sh && \
+    apk del build-base libffi-dev && \
+    rm -rf /var/cache/apk/*
 
 ARG BUILD_ARCH
 ARG BUILD_DESCRIPTION
