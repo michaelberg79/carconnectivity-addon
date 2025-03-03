@@ -28,4 +28,4 @@ schema:
   mqtt_username: str
   mqtt_password: str
   mqtt_broker: str
-  log_level: list(info|warning|error|debug) 
+  log_level: list(info|warning|error|debug)
