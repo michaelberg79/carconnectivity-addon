@@ -1,0 +1,25 @@
+configuration:
+  connector_type:
+    name: "Type de connecteur"
+    description: "Sélectionnez le type de connecteur pour votre véhicule."
+  connector_username:
+    name: "Nom d'utilisateur"
+    description: "Entrez l'adresse e-mail utilisée pour vous connecter au service du constructeur automobile."
+  connector_password:
+    name: "Mot de passe"
+    description: "Entrez le mot de passe de votre compte. Il est recommandé d'utiliser Home Assistant Secrets pour plus de sécurité."
+  connector_spin:
+    name: "Code PIN"
+    description: "Entrez le code PIN à 4 chiffres utilisé pour l'accès à distance du véhicule."
+  mqtt_username:
+    name: "Nom d'utilisateur MQTT"
+    description: "Entrez le nom d'utilisateur pour la connexion au broker MQTT."
+  mqtt_password:
+    name: "Mot de passe MQTT"
+    description: "Entrez le mot de passe pour la connexion au broker MQTT."
+  mqtt_broker:
+    name: "Adresse du broker MQTT"
+    description: "Entrez l'adresse IP ou le nom de domaine du serveur MQTT."
+  log_level:
+    name: "Niveau de journalisation"
+    description: "Sélectionnez le niveau de log souhaité (info, warning, error, debug)."

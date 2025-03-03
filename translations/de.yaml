@@ -1,0 +1,25 @@
+configuration:
+  connector_type:
+    name: "Verbindungstyp"
+    description: "Wählen Sie den Verbindungstyp für Ihr Fahrzeug aus."
+  connector_username:
+    name: "Benutzername"
+    description: "Geben Sie die E-Mail-Adresse ein, die Sie für den Login beim Fahrzeughersteller verwenden."
+  connector_password:
+    name: "Passwort"
+    description: "Geben Sie Ihr Kontopasswort ein. Es wird empfohlen, Home Assistant Secrets für mehr Sicherheit zu verwenden."
+  connector_spin:
+    name: "PIN-Code"
+    description: "Geben Sie den 4-stelligen PIN-Code für den Fernzugriff auf das Fahrzeug ein."
+  mqtt_username:
+    name: "MQTT-Benutzername"
+    description: "Geben Sie den Benutzernamen für die Verbindung zum MQTT-Broker ein."
+  mqtt_password:
+    name: "MQTT-Passwort"
+    description: "Geben Sie das Passwort für die Verbindung zum MQTT-Broker ein."
+  mqtt_broker:
+    name: "MQTT-Broker-Adresse"
+    description: "Geben Sie die IP-Adresse oder den Domänennamen des MQTT-Servers ein."
+  log_level:
+    name: "Protokollebene"
+    description: "Wählen Sie die gewünschte Protokollebene (info, warning, error, debug)."
