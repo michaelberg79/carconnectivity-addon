@@ -1,0 +1,75 @@
+name: Update build.yaml on new submodule release
+
+on:
+  push:
+    branches:
+      - dependabot/submodules/** # Déclenché par Dependabot lors d'une mise à jour d'un sous-module
+  workflow_dispatch: # Permet de lancer manuellement
+
+jobs:
+  update-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          submodules: true # Clone aussi les sous-modules
+
+      - name: Get latest versions of submodules
+        run: |
+          get_latest_version() {
+            repo_url=$1
+            git ls-remote --tags $repo_url | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1
+          }
+
+          echo "LATEST_SEAT_VERSION=$(get_latest_version https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)" >> $GITHUB_ENV
+          echo "LATEST_SKODA_VERSION=$(get_latest_version https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git)" >> $GITHUB_ENV
+          echo "LATEST_VW_VERSION=$(get_latest_version https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git)" >> $GITHUB_ENV
+          echo "LATEST_TRONITY_VERSION=$(get_latest_version https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git)" >> $GITHUB_ENV
+          echo "LATEST_MQTT_VERSION=$(get_latest_version https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git)" >> $GITHUB_ENV
+          echo "LATEST_MQTT_HA_VERSION=$(get_latest_version https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)" >> $GITHUB_ENV
+
+      - name: Update build.yaml
+        run: |
+          echo "Mise à jour de build.yaml avec les nouvelles versions"
+          sed -i "s/SEAT_VERSION: .*/SEAT_VERSION: \"${LATEST_SEAT_VERSION}\"/" build.yaml
+          sed -i "s/SKODA_VERSION: .*/SKODA_VERSION: \"${LATEST_SKODA_VERSION}\"/" build.yaml
+          sed -i "s/VW_VERSION: .*/VW_VERSION: \"${LATEST_VW_VERSION}\"/" build.yaml
+          sed -i "s/TRONITY_VERSION: .*/TRONITY_VERSION: \"${LATEST_TRONITY_VERSION}\"/" build.yaml
+          sed -i "s/MQTT_VERSION: .*/MQTT_VERSION: \"${LATEST_MQTT_VERSION}\"/" build.yaml
+          sed -i "s/MQTT_HA_VERSION: .*/MQTT_HA_VERSION: \"${LATEST_MQTT_HA_VERSION}\"/" build.yaml
+
+      - name: Generate changelog
+        run: |
+          echo "### Changelog" > changelog.md
+          for repo in seatcupra skoda volkswagen tronity mqtt mqtt_homeassistant; do
+            VAR_NAME="LATEST_$(echo $repo | tr '[:lower:]' '[:upper:]')_VERSION"
+            LATEST_VERSION=${!VAR_NAME}
+            if [ -n "$LATEST_VERSION" ]; then
+              echo "- **$repo** → [$LATEST_VERSION](https://github.com/tillsteinbach/CarConnectivity-connector-$repo/releases/tag/$LATEST_VERSION)" >> changelog.md
+            fi
+          done
+          cat changelog.md
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git commit -am "Mise à jour des versions dans build.yaml"
+          git push origin HEAD:update-versions-${LATEST_SEAT_VERSION}-${LATEST_SKODA_VERSION}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update-versions-${LATEST_SEAT_VERSION}-${LATEST_SKODA_VERSION}
+          title: "Mise à jour des versions des connecteurs"
+          body: |
+            Automatiquement généré par GitHub Actions.
+
+            **🚀 Versions mises à jour :**
+            $(cat changelog.md)
+          base: main
