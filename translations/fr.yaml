@@ -13,7 +13,7 @@ configuration:
     description: "Entrez le code PIN à 4 chiffres utilisé pour l'accès à distance du véhicule."
   connector_interval: 
     name: "Intervalle de rafraîchissement"
-    description: "Entrez la valeur de l'intervalle en minutes entre deux récupérations des informations du véhicule. Attention, les appels API sont soumis à un quota. Une fois le quota dépassé, l'API n'est plus fonctionnelle pendant une période donnée."
+    description: "Entrez la valeur de l'intervalle en secondes entre deux récupérations des informations du véhicule. Attention, les appels API sont soumis à un quota. Une fois le quota dépassé, l'API n'est plus fonctionnelle pendant une période donnée."
   mqtt_username:
     name: "Nom d'utilisateur MQTT"
     description: "Entrez le nom d'utilisateur pour la connexion au broker MQTT."
