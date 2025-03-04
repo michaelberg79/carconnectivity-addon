@@ -11,6 +11,9 @@ configuration:
   connector_spin:
     name: "PIN Code"
     description: "Enter the 4-digit PIN code used for remote vehicle access."
+  connector_interval: 
+    name: "Refresh Interval"
+    description: "Enter the interval value in minutes between two retrievals of vehicle information. Be careful, API calls are subject to a quota. Once the quota is exceeded, the API will no longer be functional for a given period."
   mqtt_username:
     name: "MQTT Username"
     description: "Enter the username for connecting to the MQTT broker."

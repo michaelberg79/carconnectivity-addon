@@ -11,6 +11,9 @@ configuration:
   connector_spin:
     name: "PIN-Code"
     description: "Geben Sie den 4-stelligen PIN-Code für den Fernzugriff auf das Fahrzeug ein."
+  connector_interval: 
+    name: "Aktualisierungsintervall"
+    description: "Geben Sie den Intervallwert in Minuten zwischen zwei Abrufen der Fahrzeuginformationen ein. Achtung, API-Aufrufe unterliegen einem Kontingent. Sobald das Kontingent überschritten ist, funktioniert die API für einen bestimmten Zeitraum nicht mehr."
   mqtt_username:
     name: "MQTT-Benutzername"
     description: "Geben Sie den Benutzernamen für die Verbindung zum MQTT-Broker ein."

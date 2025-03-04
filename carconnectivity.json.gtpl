@@ -7,6 +7,7 @@
                 "config": {
                     "username": "{{ .connector_username }}",
                     "password": "{{ .connector_password }}",
+                    "interval": {{ .connector_interval }},
                     "spin": "{{ .connector_spin }}"
                 }
             }
