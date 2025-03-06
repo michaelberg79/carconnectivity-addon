@@ -12,7 +12,7 @@ labels:
   org.opencontainers.image.source: "https://github.com/Pulpyyyy/carconnectivity-addon"
   org.opencontainers.image.licenses: "Apache License 2.0"
 args:
-  TEMPIO_VERSION: "2021.09.0"
+  TEMPIO_VERSION: "2024.11.2"
   SEAT_VERSION: "0.1.1"
   SKODA_VERSION: "0.4.1"
   VW_VERSION: "0.4.1"
