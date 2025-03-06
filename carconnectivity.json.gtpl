@@ -9,6 +9,7 @@
             {
                 "type": "seatcupra",
                 "config": {
+                    "brand": "{{ .connector_brand_seatcupra }}",
                     "username": "{{ .connector_username_seatcupra }}",
                     "password": "{{ .connector_password_seatcupra }}",
                     "interval": {{ .connector_interval_seatcupra }},

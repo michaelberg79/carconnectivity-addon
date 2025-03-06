@@ -1,4 +1,7 @@
 configuration:
+  connector_brand_seatcupra :
+    nome: "Marchio del produttore"
+    description: "Attiva le opzioni specifiche del marchio."
   connector_username_seatcupra:
     name: "Nome utente SeatCupra"
     description: "Inserisci l'indirizzo email utilizzato per accedere al servizio SeatCupra. Lascia il campo vuoto se non desideri utilizzare questo connettore."
