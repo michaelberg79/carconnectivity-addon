@@ -1,3 +1,10 @@
+## 0.1.1
+
+### ➕ Added
+- Seat/Cupra additionnal setting
+
+---
+
 ## 0.1.0
 
 ### 🚀 New Features
