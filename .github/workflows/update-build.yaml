@@ -25,23 +25,23 @@ jobs:
       - name: Get latest versions of submodules
         run: |
           # SEAT
-          LATEST_SEAT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1)
+          LATEST_SEAT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
           echo "LATEST_SEAT_VERSION=$LATEST_SEAT_VERSION" >> $GITHUB_ENV
           
           # SKODA
-          LATEST_SKODA_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1)
+          LATEST_SKODA_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
           echo "LATEST_SKODA_VERSION=$LATEST_SKODA_VERSION" >> $GITHUB_ENV
 
           # VOLKSWAGEN
-          LATEST_VW_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1)
+          LATEST_VW_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
           echo "LATEST_VW_VERSION=$LATEST_VW_VERSION" >> $GITHUB_ENV
 
           # TRONITY
-          LATEST_TRONITY_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1)
+          LATEST_TRONITY_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
           echo "LATEST_TRONITY_VERSION=$LATEST_TRONITY_VERSION" >> $GITHUB_ENV
 
           # MQTT
-          LATEST_MQTT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1)
+          LATEST_MQTT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
           echo "LATEST_MQTT_VERSION=$LATEST_MQTT_VERSION" >> $GITHUB_ENV
 
           # MQTT Home Assistant
@@ -89,7 +89,7 @@ jobs:
           sed -i "s/VW_VERSION: .*/VW_VERSION: \"${LATEST_VW_VERSION}\"/" build.yaml
           sed -i "s/TRONITY_VERSION: .*/TRONITY_VERSION: \"${LATEST_TRONITY_VERSION}\"/" build.yaml
           sed -i "s/MQTT_VERSION: .*/MQTT_VERSION: \"${LATEST_MQTT_VERSION}\"/" build.yaml
-          sed -i "s/MQTT_HOMEASSISTANT_VERSION: .*/MQTT_HOMEASSISTANT_VERSION: \"${LATEST_MQTT_HOMEASSISTANT_VERSION}\"/" build.yaml
+          sed -i "s/MQTTHA_VERSION: .*/MQTTHA_VERSION: \"${LATEST_MQTT_HOMEASSISTANT_VERSION}\"/" build.yaml
 
       - name: Commit and push changes
         run: |
