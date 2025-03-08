@@ -45,41 +45,27 @@ jobs:
           echo "LATEST_MQTT_VERSION=$LATEST_MQTT_VERSION" >> $GITHUB_ENV
 
           # MQTT Home Assistant
-          LATEST_MQTT_HOMEASSISTANT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1)
+          LATEST_MQTT_HOMEASSISTANT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git | awk '{print $2}' | grep -Eo 'v[0-9]+.[0-9]+.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
           echo "LATEST_MQTT_HOMEASSISTANT_VERSION=$LATEST_MQTT_HOMEASSISTANT_VERSION" >> $GITHUB_ENV
 
-      - name: Generate changelog
+      - name: Display old and new versions
         run: |
-          echo "### Changelog des mises à jour" > changelog.md
-          
-          echo "- **SEAT_VERSION** → \`${LATEST_SEAT_VERSION}\`" >> changelog.md
-          echo "- **SKODA_VERSION** → \`${LATEST_SKODA_VERSION}\`" >> changelog.md
-          echo "- **VOLKSWAGEN_VERSION** → \`${LATEST_VW_VERSION}\`" >> changelog.md
-          echo "- **TRONITY_VERSION** → \`${LATEST_TRONITY_VERSION}\`" >> changelog.md
-          echo "- **MQTT_VERSION** → \`${LATEST_MQTT_VERSION}\`" >> changelog.md
-          echo "- **MQTT_HOMEASSISTANT_VERSION** → \`${LATEST_MQTT_HOMEASSISTANT_VERSION}\`" >> changelog.md
-          echo "" >> changelog.md
+          echo "### Versions actuelles et nouvelles :"
+          # Lire les anciennes versions depuis build.yaml
+          OLD_SEAT_VERSION=$(grep 'SEAT_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
+          OLD_SKODA_VERSION=$(grep 'SKODA_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
+          OLD_VW_VERSION=$(grep 'VW_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
+          OLD_TRONITY_VERSION=$(grep 'TRONITY_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
+          OLD_MQTT_VERSION=$(grep 'MQTT_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
+          OLD_MQTT_HOMEASSISTANT_VERSION=$(grep 'MQTTHA_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
 
-          echo "#### 📌 Modifications depuis la dernière version :" >> changelog.md
-
-          # Génération des logs pour chaque sous-module
-          echo "**SeatCupra** :" >> changelog.md
-          git log --pretty=format:"- %h %s" $(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git | awk '{print $1}' | tail -n 2 | head -n 1)..HEAD >> changelog.md || echo "Pas de nouvelles modifications" >> changelog.md
-
-          echo "**Skoda** :" >> changelog.md
-          git log --pretty=format:"- %h %s" $(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git | awk '{print $1}' | tail -n 2 | head -n 1)..HEAD >> changelog.md || echo "Pas de nouvelles modifications" >> changelog.md
-
-          echo "**Volkswagen** :" >> changelog.md
-          git log --pretty=format:"- %h %s" $(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git | awk '{print $1}' | tail -n 2 | head -n 1)..HEAD >> changelog.md || echo "Pas de nouvelles modifications" >> changelog.md
-
-          echo "**Tronity** :" >> changelog.md
-          git log --pretty=format:"- %h %s" $(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git | awk '{print $1}' | tail -n 2 | head -n 1)..HEAD >> changelog.md || echo "Pas de nouvelles modifications" >> changelog.md
-
-          echo "**MQTT** :" >> changelog.md
-          git log --pretty=format:"- %h %s" $(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git | awk '{print $1}' | tail -n 2 | head -n 1)..HEAD >> changelog.md || echo "Pas de nouvelles modifications" >> changelog.md
-
-          echo "**MQTT HomeAssistant** :" >> changelog.md
-          git log --pretty=format:"- %h %s" $(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git | awk '{print $1}' | tail -n 2 | head -n 1)..HEAD >> changelog.md || echo "Pas de nouvelles modifications" >> changelog.md
+          # Afficher les anciennes et nouvelles versions
+          echo "Ancienne SEAT_VERSION: ${OLD_SEAT_VERSION}, Nouvelle SEAT_VERSION: ${LATEST_SEAT_VERSION}"
+          echo "Ancienne SKODA_VERSION: ${OLD_SKODA_VERSION}, Nouvelle SKODA_VERSION: ${LATEST_SKODA_VERSION}"
+          echo "Ancienne VW_VERSION: ${OLD_VW_VERSION}, Nouvelle VW_VERSION: ${LATEST_VW_VERSION}"
+          echo "Ancienne TRONITY_VERSION: ${OLD_TRONITY_VERSION}, Nouvelle TRONITY_VERSION: ${LATEST_TRONITY_VERSION}"
+          echo "Ancienne MQTT_VERSION: ${OLD_MQTT_VERSION}, Nouvelle MQTT_VERSION: ${LATEST_MQTT_VERSION}"
+          echo "Ancienne MQTT_HOMEASSISTANT_VERSION: ${OLD_MQTT_HOMEASSISTANT_VERSION}, Nouvelle MQTT_HOMEASSISTANT_VERSION: ${LATEST_MQTT_HOMEASSISTANT_VERSION}"
 
       - name: Update build.yaml
         run: |
