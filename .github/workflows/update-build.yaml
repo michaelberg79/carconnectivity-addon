@@ -59,14 +59,31 @@ jobs:
           OLD_MQTT_VERSION=$(grep 'MQTT_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
           OLD_MQTT_HOMEASSISTANT_VERSION=$(grep 'MQTTHA_VERSION' build.yaml | awk '{print $2}' | tr -d '"')
 
-          # Afficher les anciennes et nouvelles versions
-          echo "Ancienne SEAT_VERSION: ${OLD_SEAT_VERSION}, Nouvelle SEAT_VERSION: ${LATEST_SEAT_VERSION}"
-          echo "Ancienne SKODA_VERSION: ${OLD_SKODA_VERSION}, Nouvelle SKODA_VERSION: ${LATEST_SKODA_VERSION}"
-          echo "Ancienne VW_VERSION: ${OLD_VW_VERSION}, Nouvelle VW_VERSION: ${LATEST_VW_VERSION}"
-          echo "Ancienne TRONITY_VERSION: ${OLD_TRONITY_VERSION}, Nouvelle TRONITY_VERSION: ${LATEST_TRONITY_VERSION}"
-          echo "Ancienne MQTT_VERSION: ${OLD_MQTT_VERSION}, Nouvelle MQTT_VERSION: ${LATEST_MQTT_VERSION}"
-          echo "Ancienne MQTT_HOMEASSISTANT_VERSION: ${OLD_MQTT_HOMEASSISTANT_VERSION}, Nouvelle MQTT_HOMEASSISTANT_VERSION: ${LATEST_MQTT_HOMEASSISTANT_VERSION}"
-
+          # Afficher les versions seulement si elles diffèrent
+          if [ "${OLD_SEAT_VERSION}" != "${LATEST_SEAT_VERSION}" ]; then
+            echo "Ancienne SEAT_VERSION: ${OLD_SEAT_VERSION}, Nouvelle SEAT_VERSION: ${LATEST_SEAT_VERSION}"
+          fi
+          
+          if [ "${OLD_SKODA_VERSION}" != "${LATEST_SKODA_VERSION}" ]; then
+            echo "Ancienne SKODA_VERSION: ${OLD_SKODA_VERSION}, Nouvelle SKODA_VERSION: ${LATEST_SKODA_VERSION}"
+          fi
+          
+          if [ "${OLD_VW_VERSION}" != "${LATEST_VW_VERSION}" ]; then
+            echo "Ancienne VW_VERSION: ${OLD_VW_VERSION}, Nouvelle VW_VERSION: ${LATEST_VW_VERSION}"
+          fi
+          
+          if [ "${OLD_TRONITY_VERSION}" != "${LATEST_TRONITY_VERSION}" ]; then
+            echo "Ancienne TRONITY_VERSION: ${OLD_TRONITY_VERSION}, Nouvelle TRONITY_VERSION: ${LATEST_TRONITY_VERSION}"
+          fi
+          
+          if [ "${OLD_MQTT_VERSION}" != "${LATEST_MQTT_VERSION}" ]; then
+            echo "Ancienne MQTT_VERSION: ${OLD_MQTT_VERSION}, Nouvelle MQTT_VERSION: ${LATEST_MQTT_VERSION}"
+          fi
+          
+          if [ "${OLD_MQTT_HOMEASSISTANT_VERSION}" != "${LATEST_MQTT_HOMEASSISTANT_VERSION}" ]; then
+            echo "Ancienne MQTT_HOMEASSISTANT_VERSION: ${OLD_MQTT_HOMEASSISTANT_VERSION}, Nouvelle MQTT_HOMEASSISTANT_VERSION: ${LATEST_MQTT_HOMEASSISTANT_VERSION}"
+          fi
+          
       - name: Update build.yaml
         run: |
           echo "Mise à jour de build.yaml avec les nouvelles versions"
