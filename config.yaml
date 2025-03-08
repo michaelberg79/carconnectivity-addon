@@ -12,7 +12,7 @@ arch:
 ingress: false
 init: false
 options:
-  connector_brand_seatcupra: ""
+  connector_brand_seatcupra: "seat"
   connector_username_seatcupra: ""
   connector_password_seatcupra: "password"
   connector_spin_seatcupra: "1234"
@@ -32,7 +32,7 @@ options:
   mqtt_username: "mqtt"
   mqtt_password: "passwordmqtt"
   mqtt_broker: "192.168.1.52"
-  log_level: list(info|warning|error|debug)
+  log_level: "info"
 schema:
   connector_brand_seatcupra: list(seat|cupra)
   connector_username_seatcupra: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
