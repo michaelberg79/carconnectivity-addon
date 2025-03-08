@@ -1,5 +1,5 @@
 name: "CarConnectivity Addon"
-version: "0.1.1"
+version: "0.1.2"
 slug: "carconnectivity-addon"
 description: "Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT"
 panel_icon: "mdi:car-wireless"

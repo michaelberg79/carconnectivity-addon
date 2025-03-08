@@ -1,3 +1,12 @@
+## 0.1.2
+
+### 🛠️ Fixes & Updates
+
+- Updated connectors and plugins:  
+  - `CarConnectivity-connector-seatcupra` → [v0.1.2](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra/releases)
+
+---
+
 ## 0.1.1
 
 ### ➕ Added
@@ -15,7 +24,9 @@
 ### 🛠️ Improvements
 - Optimize Docker build 🐳  
 - Avoid certain warnings at startup ⚠️  
-- Update `tempio` to `2024.11.2`  
+
+### 🛠️ Fixes & Updates
+- Update `tempio` → [2024.11.2](https://github.com/home-assistant/tempio/releases)
 
 ---
 
@@ -24,10 +35,10 @@
 ### 🛠️ Fixes & Updates
 - Fix Home Assistant versioning  
 - Updated connectors and plugins:  
-  - `CarConnectivity-connector-seatcupra` → `v0.1.1`  
-  - `CarConnectivity-plugin-mqtt` → `v0.4.2`  
-  - `CarConnectivity-connector-skoda` → `v0.4.1`  
-  - `CarConnectivity-connector-volkswagen` → `v0.4.1`  
+  - `CarConnectivity-connector-seatcupra` → [v0.1.1](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra/releases)
+  - `CarConnectivity-plugin-mqtt` → [v0.4.2](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt/releases) 
+  - `CarConnectivity-connector-skoda` → [v0.4.1](https://github.com/tillsteinbach/CarConnectivity-connector-skoda/releases)  
+  - `CarConnectivity-connector-volkswagen` → [v0.4.1](https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen/releases)
 
 ---
 

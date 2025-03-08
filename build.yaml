@@ -13,7 +13,7 @@ labels:
   org.opencontainers.image.licenses: "Apache License 2.0"
 args:
   TEMPIO_VERSION: "2024.11.2"
-  SEAT_VERSION: "0.1.1"
+  SEAT_VERSION: "0.1.2"
   SKODA_VERSION: "0.4.1"
   VW_VERSION: "0.4.1"
   TRIONITY_VERSION: "0.3"
