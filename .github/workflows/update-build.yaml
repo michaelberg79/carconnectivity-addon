@@ -110,21 +110,11 @@ jobs:
           body: |
             Automatiquement généré par GitHub Actions.
 
-            - **SEAT_VERSION** : 
-              - Nouvelle version : ${{ OLD_SEAT_VERSION }} → ${{ LATEST_SEAT_VERSION }}
+            - **SEAT_VERSION** → `${LATEST_SEAT_VERSION}`
+            - **SKODA_VERSION** → `${LATEST_SKODA_VERSION}`
+            - **VW_VERSION** → `${LATEST_VW_VERSION}`
+            - **TRONITY_VERSION** → `${LATEST_TRONITY_VERSION}`
+            - **MQTT_VERSION** → `${LATEST_MQTT_VERSION}`
+            - **MQTT_HOMEASSISTANT_VERSION** → `${LATEST_MQTT_HOMEASSISTANT_VERSION}`
 
-            - **SKODA_VERSION** : 
-              - Nouvelle version : ${{ OLD_SKODA_VERSION }} → ${{ LATEST_SKODA_VERSION }}
-
-            - **VW_VERSION** : 
-              - Nouvelle version : ${{ OLD_VW_VERSION }} → ${{ LATEST_VW_VERSION }}
-
-            - **TRONITY_VERSION** : 
-              - Nouvelle version : ${{ OLD_TRONITY_VERSION }} → ${{ LATEST_TRONITY_VERSION }}
-
-            - **MQTT_VERSION** : 
-              - Nouvelle version : ${{ OLD_MQTT_VERSION }} → ${{ LATEST_MQTT_VERSION }}
-
-            - **MQTT_HOMEASSISTANT_VERSION** : 
-              - Nouvelle version : ${{ OLD_MQTT_HOMEASSISTANT_VERSION }} → ${{ LATEST_MQTT_HOMEASSISTANT_VERSION }}
           base: main
