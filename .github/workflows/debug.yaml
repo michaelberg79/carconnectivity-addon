@@ -1,0 +1,47 @@
+on:
+    push:
+      branches:
+        - dependabot/submodules/** # Déclenché par Dependabot lors d'une mise à jour d'un sous-module
+    workflow_dispatch: # Permet de lancer manuellement l’action si nécessaire
+  
+  permissions:
+    contents: write
+    pull-requests: write
+    
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+  
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            fetch-depth: 0
+            submodules: true # Clone aussi les sous-modules
+  
+        - name: Get latest versions of submodules
+          run: |
+            # SEAT
+            LATEST_SEAT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git | awk '{print $2}' | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
+            echo "LATEST_SEAT_VERSION=$LATEST_SEAT_VERSION"
+  
+            # SKODA
+            LATEST_SKODA_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git | awk '{print $2}' | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
+            echo "LATEST_SKODA_VERSION=$LATEST_SKODA_VERSION"
+  
+            # VOLKSWAGEN
+            LATEST_VW_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git | awk '{print $2}' | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
+            echo "LATEST_VW_VERSION=$LATEST_VW_VERSION" >> $GITHUB_ENV
+  
+            # TRONITY
+            LATEST_TRONITY_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git | awk '{print $2}' | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
+            echo "LATEST_TRONITY_VERSION=$LATEST_TRONITY_VERSION" >> $GITHUB_ENV
+  
+            # MQTT
+            LATEST_MQTT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git | awk '{print $2}' | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
+            echo "LATEST_MQTT_VERSION=$LATEST_MQTT_VERSION" >> $GITHUB_ENV
+  
+            # MQTT Home Assistant
+            LATEST_MQTT_HOMEASSISTANT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git | awk '{print $2}' | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -n 1 | sed 's/^v//')
+            echo "LATEST_MQTT_HOMEASSISTANT_VERSION=$LATEST_MQTT_HOMEASSISTANT_VERSION" >> $GITHUB_ENV
