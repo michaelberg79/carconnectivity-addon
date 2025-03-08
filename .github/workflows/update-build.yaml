@@ -105,7 +105,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: update-versions-${{ LATEST_SEAT_VERSION }}-${{ LATEST_SKODA_VERSION }}-${{ LATEST_VW_VERSION }}-${{ LATEST_TRONITY_VERSION }}-${{ LATEST_MQTT_VERSION }}-${{ LATEST_MQTT_HOMEASSISTANT_VERSION }}
+          branch: update-versions-${{ github.run_id }} # Utiliser un ID unique pour éviter les conflits
           title: "Mise à jour des versions"
           body: |
             Automatiquement généré par GitHub Actions.
