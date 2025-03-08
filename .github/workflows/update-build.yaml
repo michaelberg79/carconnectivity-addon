@@ -5,15 +5,13 @@ on:
     branches:
       - dependabot/submodules/** # Déclenché par Dependabot lors d'une mise à jour d'un sous-module
   workflow_dispatch: # Permet de lancer manuellement l’action si nécessaire
-  
-runs-on: ubuntu-latest
 
 permissions:
   contents: write
   pull-requests: write
-
+  
 jobs:
-  update-build:
+  build:
     runs-on: ubuntu-latest
 
     steps:
