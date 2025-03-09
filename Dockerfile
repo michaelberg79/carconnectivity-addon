@@ -4,7 +4,7 @@ FROM $BUILD_FROM
 ARG SEAT_VERSION
 ARG SKODA_VERSION
 ARG VW_VERSION
-ARG TRIONITY_VERSION
+ARG TRONITY_VERSION
 ARG MQTT_VERSION
 ARG MQTTHA_VERSION
 
@@ -18,7 +18,7 @@ RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
     /opt/venv/bin/pip install --no-cache carconnectivity-connector-seatcupra==${SEAT_VERSION} \
         carconnectivity-connector-skoda==${SKODA_VERSION} \
         carconnectivity-connector-volkswagen==${VW_VERSION} \
-        carconnectivity-connector-tronity==${TRIONITY_VERSION} \
+        carconnectivity-connector-tronity==${TRONITY_VERSION} \
         carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
     echo "SEAT_VERSION=${SEAT_VERSION}" > versions.txt && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
