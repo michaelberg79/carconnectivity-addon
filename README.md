@@ -19,7 +19,7 @@
 
 ## Introduction
 The **CarConnectivity-Addon** module allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services. This guide explains how to properly configure the module.
-I am simply packaging the excellent work done by Till (see https://github.com/tillsteinbach/CarConnectivity)
+I am simply packaging the [excellent work done by Till.](https://github.com/tillsteinbach/CarConnectivity)
 
 ## Add repository
 
@@ -53,11 +53,14 @@ The **Seat/Cupra** connector includes an additional option:
 - **Manufacturer Brand**: Allows you to use brand-specific features.
   - Select the corresponding brand (**Seat** or **Cupra**) to ensure proper data retrieval.
 
-### 3. MQTT Configuration (Optional)
-If you want to use **MQTT** to send vehicle data to another home automation system, configure these settings:
+### 3. MQTT Configuration (Mandatory)
+You need to use **MQTT** to send vehicle data to home assistant, configure these settings:
 - **Username**: MQTT broker login
 - **Password**: MQTT broker password
 - **Broker Address**: IP or domain name of the MQTT server
+
+⚠️ Si vous n'utilisez pas encore MQTT sur Home assistant, vous pouvez ajouter par exemple [l'addon Mosquito ET l'intégration MQTT](https://www.home-assistant.io/integrations/mqtt) 
+
 
 ### 4. Logging Level
 Define the amount of information recorded in logs:
