@@ -19,7 +19,7 @@ Choose the manufacturer corresponding to your vehicle from the supported brands:
 - **Seat/Cupra**
 - **Skoda**
 - **Volkswagen**
-- **Trionity**
+- **Tronity**
 
 If you own multiple vehicles from different brands, you can configure multiple sections.
 
