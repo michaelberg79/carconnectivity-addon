@@ -36,7 +36,7 @@ options:
   connector_interval_trionity: 600
   mqtt_username: "mqtt"
   mqtt_password: "passwordmqtt"
-  mqtt_broker: "192.168.1.52"
+  mqtt_broker: "core-mosquitto.local.hass.io"
   log_level: "info"
   connector_username_webui: "admin"
   connector_password_webui: "secret"

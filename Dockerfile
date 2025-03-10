@@ -21,14 +21,14 @@ RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
         carconnectivity-connector-skoda==${SKODA_VERSION} \
         carconnectivity==${CC_VERSION} \
         carconnectivity-connector-volkswagen==${VW_VERSION} \
-        carconnectivity-connector-tronity==${TRIONITY_VERSION} \
+        carconnectivity-connector-tronity==${TRONITY_VERSION} \
         carconnectivity-plugin-webui==${WEBUI_VERSION} \
         carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
     echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" > versions.txt && \
     echo "SEAT_VERSION=${SEAT_VERSION}" > versions.txt && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
     echo "VW_VERSION=${VW_VERSION}" >> versions.txt && \
-    echo "TRIONITY_VERSION=${TRIONITY_VERSION}" >> versions.txt && \
+    echo "TRONITY_VERSION=${TRONITY_VERSION}" >> versions.txt && \
     echo "WEBUI_VERSION=${WEBUI_VERSION}" >> versions.txt && \
     echo "MQTT_VERSION=${MQTT_VERSION}" >> versions.txt && \
     echo "MQTTHA_VERSION=${MQTTHA_VERSION}" >> versions.txt && \

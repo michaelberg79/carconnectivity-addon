@@ -67,19 +67,23 @@
                 "config": {
                     "username": "{{ .mqtt_username }}",
                     "password": "{{ .mqtt_password }}",
-                    "broker": "{{ .mqtt_broker }}"
+                    "broker": "{{ .mqtt_broker }}",
+                    "log_level": "{{ .log_level }}"
                 }
             },
             {
                 "type": "webui",
                 "config": {
                     "username": "{{ .connector_username_webui }}", 
-                    "password": "{{ .connector_password_webui }}"
+                    "password": "{{ .connector_password_webui }}",
+                    "log_level": "{{ .log_level }}"
                 }
             },
             {
                 "type": "mqtt_homeassistant",
-                "config": {}
+                "config": {
+                    "log_level": "{{ .log_level }}"
+                }
             }
         ]
     }
