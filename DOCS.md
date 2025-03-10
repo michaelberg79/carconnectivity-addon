@@ -44,7 +44,7 @@ You need to use **MQTT** to send vehicle data to home assistant, configure these
 - **Password**: MQTT broker password
 - **Broker Address**: IP or domain name of the MQTT server
 
-⚠️ Si vous n'utilisez pas encore MQTT sur Home assistant, vous pouvez ajouter par exemple [l'addon Mosquito ET l'intégration MQTT](https://www.home-assistant.io/integrations/mqtt) 
+⚠️ If you're not already using MQTT on Home assistant, you can add, for example, [Mosquito addon AND MQTT integration](https://www.home-assistant.io/integrations/mqtt) 
 
 
 ### 4. Logging Level
