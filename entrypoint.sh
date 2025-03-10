@@ -13,5 +13,5 @@ if grep -q "debug" /data/options.json; then
         echo "<<<<<<<<<<" 
     done
 fi
-/opt/venv/bin/carconnectivity-mqtt carconnectivity.json
+/opt/venv/bin/carconnectivity carconnectivity.json
 echo ">>>>>>>>> STARTED"
