@@ -1,8 +1,9 @@
 name: "CarConnectivity Addon"
-version: "0.1.2"
+version: "0.1.3"
 slug: "carconnectivity-addon"
 description: "Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT"
 panel_icon: "mdi:car-wireless"
+webui: "[PROTO:ssl]://[HOST]:[PORT:4000]"
 arch:
   - aarch64
   - amd64
@@ -11,6 +12,10 @@ arch:
   - i386
 ingress: false
 init: false
+ports:
+  4000/tcp: 4000
+ports_description:
+  4000/tcp: Carconnectivity web interface
 options:
   connector_brand_seatcupra: "seat"
   connector_username_seatcupra: ""
@@ -31,8 +36,11 @@ options:
   connector_interval_trionity: 600
   mqtt_username: "mqtt"
   mqtt_password: "passwordmqtt"
-  mqtt_broker: "192.168.1.52"
+  mqtt_broker: "core-mosquitto.local.hass.io"
   log_level: "info"
+  connector_username_webui: "admin"
+  connector_password_webui: "secret"
+  api_log_level: "info"
 schema:
   connector_brand_seatcupra: list(seat|cupra)
   connector_username_seatcupra: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
@@ -55,3 +63,6 @@ schema:
   mqtt_password: password
   mqtt_broker: str
   log_level: list(info|warning|error|debug)
+  connector_username_webui: str
+  connector_password_webui: password?
+  api_log_level: list(info|warning|error|debug)

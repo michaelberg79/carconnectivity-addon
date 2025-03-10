@@ -61,8 +61,20 @@ You need to use **MQTT** to send vehicle data to home assistant, configure these
 
 ⚠️ If you're not already using MQTT on Home assistant, you can add, for example, [Mosquito addon AND MQTT integration](https://www.home-assistant.io/integrations/mqtt) 
 
+### 4. WEBUI
+You can visit http//x.x.x.x:4000 The WEBUI from Carconnectivity:
+- **Username**: login
+- **Password**: password
+- **WEBUI Port**: 4000
 
-### 4. Logging Level
+### 5. Logging Level
+Define the amount of information recorded in logs:
+- **Info**: Displays general operational information.
+- **Warning**: Displays only warnings.
+- **Error**: Displays only error messages.
+- **Debug**: Displays additional details useful for troubleshooting.
+
+### 6. API Logging Level
 Define the amount of information recorded in logs:
 - **Info**: Displays general operational information.
 - **Warning**: Displays only warnings.

@@ -13,7 +13,8 @@
                     "username": "{{ .connector_username_seatcupra }}",
                     "password": "{{ .connector_password_seatcupra }}",
                     "interval": {{ .connector_interval_seatcupra }},
-                    "spin": "{{ .connector_spin_seatcupra }}"
+                    "spin": "{{ .connector_spin_seatcupra }}",
+                    "api_log_level": "{{ .api_log_level }}"
                 }
             }
             {{- end }}
@@ -26,7 +27,8 @@
                     "username": "{{ .connector_username_skoda }}",
                     "password": "{{ .connector_password_skoda }}",
                     "interval": {{ .connector_interval_skoda }},
-                    "spin": "{{ .connector_spin_skoda }}"
+                    "spin": "{{ .connector_spin_skoda }}",
+                    "api_log_level": "{{ .api_log_level }}"
                 }
             }
             {{- end }}
@@ -39,7 +41,8 @@
                     "username": "{{ .connector_username_vw }}",
                     "password": "{{ .connector_password_vw }}",
                     "interval": {{ .connector_interval_vw }},
-                    "spin": "{{ .connector_spin_vw }}"
+                    "spin": "{{ .connector_spin_vw }}",
+                    "api_log_level": "{{ .api_log_level }}"
                 }
             }
             {{- end }}
@@ -52,7 +55,8 @@
                     "username": "{{ .connector_username_trionity }}",
                     "password": "{{ .connector_password_trionity }}",
                     "interval": {{ .connector_interval_trionity }},
-                    "spin": "{{ .connector_spin_trionity }}"
+                    "spin": "{{ .connector_spin_trionity }}",
+                    "api_log_level": "{{ .api_log_level }}"
                 }
             }
             {{- end }}
@@ -63,12 +67,23 @@
                 "config": {
                     "username": "{{ .mqtt_username }}",
                     "password": "{{ .mqtt_password }}",
-                    "broker": "{{ .mqtt_broker }}"
+                    "broker": "{{ .mqtt_broker }}",
+                    "log_level": "{{ .log_level }}"
+                }
+            },
+            {
+                "type": "webui",
+                "config": {
+                    "username": "{{ .connector_username_webui }}", 
+                    "password": "{{ .connector_password_webui }}",
+                    "log_level": "{{ .log_level }}"
                 }
             },
             {
                 "type": "mqtt_homeassistant",
-                "config": {}
+                "config": {
+                    "log_level": "{{ .log_level }}"
+                }
             }
         ]
     }
