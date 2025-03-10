@@ -66,3 +66,14 @@ configuration:
   log_level:
     name: "Protokollierungsstufe"
     description: "Wählen Sie die gewünschte Protokollierungsstufe aus (info, warning, error, debug)."
+
+  connector_username_webui:
+    name: "Administratorname WebUI"
+    description: "Administratorname für den Zugriff auf Carconnectivity WebUI"
+  connector_password_webui:
+    name: "WebUI-Passwort"
+    description: "Passwort für den Zugriff auf Carconnectivity WebUI"
+  
+  api_log_level:
+    name: "Protokollierungsstufe für api"
+    description: "Wählen Sie die gewünschte Protokollierungsstufe (info, warning, error, debug)."

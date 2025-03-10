@@ -1,3 +1,15 @@
+## 0.1.3
+
+### 🚀 New Features
+- **Added WEBUI support (from jressel01) **  
+
+### 🛠️ Fixes & Updates
+
+- Updated connectors and plugins:  
+  - `CarConnectivity-plugin-mqtt_homeassistant` → [v0.2](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant/releases)
+
+---
+
 ## 0.1.2
 
 ### 🛠️ Fixes & Updates

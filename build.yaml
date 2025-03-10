@@ -11,6 +11,7 @@ labels:
   org.opencontainers.image.description: "Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT"
   org.opencontainers.image.source: "https://github.com/Pulpyyyy/carconnectivity-addon"
   org.opencontainers.image.licenses: "Apache License 2.0"
+
 args:
   TEMPIO_VERSION: "2024.11.2"
   SEAT_VERSION: "0.1.2"
@@ -18,4 +19,6 @@ args:
   VW_VERSION: "0.4.1"
   TRONITY_VERSION: "0.3"
   MQTT_VERSION: "0.4.2"
-  MQTTHA_VERSION: "0.1"
+  MQTTHA_VERSION: "0.2"
+  WEBUI_VERSION: "0.2"
+  CC_VERSION: "0.4"

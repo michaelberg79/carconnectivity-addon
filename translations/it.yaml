@@ -66,3 +66,14 @@ configuration:
   log_level:
     name: "Livello di log"
     description: "Seleziona il livello di log desiderato (info, warning, error, debug)."
+
+  connector_username_webui:
+    nome: "Nome amministratore WebUI"
+    descrizione: "Nome dell'amministratore per l'accesso alla Carconnectivity WebUI"
+  connector_password_webui:
+    nome: "Password WebUI"
+    descrizione: "Password per l'accesso a Carconnectivity WebUI"
+  
+  api_log_level:
+    nome: "Livello di log per l'api"
+    descrizione: "Selezionare il livello di log desiderato (info, warning, error, debug)"
