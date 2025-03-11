@@ -24,6 +24,7 @@ jobs:
           submodules: true # Also clones submodules
 
       - name: Get latest versions of submodules
+        if: github.ref == 'refs/heads/main'
         run: |
           export LC_ALL=C  # Ensure a correct locale for version sorting
       
