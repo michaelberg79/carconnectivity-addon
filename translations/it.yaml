@@ -1,6 +1,6 @@
 configuration:
   connector_brand_seatcupra :
-    nome: "Marchio del produttore"
+    name: "Marchio del produttore"
     description: "Attiva le opzioni specifiche del marchio."
   connector_username_seatcupra:
     name: "Nome utente SeatCupra"
@@ -68,12 +68,12 @@ configuration:
     description: "Seleziona il livello di log desiderato (info, warning, error, debug)."
 
   connector_username_webui:
-    nome: "Nome amministratore WebUI"
-    descrizione: "Nome dell'amministratore per l'accesso alla Carconnectivity WebUI"
+    name: "Nome amministratore WebUI"
+    description: "Nome dell'amministratore per l'accesso alla Carconnectivity WebUI"
   connector_password_webui:
-    nome: "Password WebUI"
-    descrizione: "Password per l'accesso a Carconnectivity WebUI"
+    name: "Password WebUI"
+    description: "Password per l'accesso a Carconnectivity WebUI"
   
   api_log_level:
-    nome: "Livello di log per l'api"
-    descrizione: "Selezionare il livello di log desiderato (info, warning, error, debug)"
+    name: "Livello di log per l'api"
+    description: "Selezionare il livello di log desiderato (info, warning, error, debug)"
