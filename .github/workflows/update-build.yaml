@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dependabot/submodules/** # Triggered by Dependabot when a submodule is updated
+      - main
   workflow_dispatch: # Allows manually triggering the action if needed
 
 permissions:
