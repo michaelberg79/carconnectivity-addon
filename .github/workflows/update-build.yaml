@@ -117,7 +117,17 @@ jobs:
           sed -i "s/CC_VERSION: .*/CC_VERSION: \"${LATEST_CC_VERSION}\"/" build.yaml
           sed -i "s/WEBUI_VERSION: .*/WEBUI_VERSION: \"${LATEST_WEBUI_VERSION}\"/" build.yaml
 
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --exit-code build.yaml; then
+            echo "no changes" > result.txt
+          else
+            echo "changes" > result.txt
+          fi
+
       - name: Commit and push changes
+        if: steps.check_changes.outputs.result == 'changes'
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
