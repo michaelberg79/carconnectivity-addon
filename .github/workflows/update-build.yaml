@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - dependabot/submodules/** # Triggered by Dependabot when a submodule is updated
-      - main
   workflow_dispatch: # Allows manually triggering the action if needed
 
 permissions:
@@ -23,7 +22,7 @@ jobs:
           fetch-depth: 0
           submodules: true # Also clones submodules
 
-      - name: Get latest versions of submodules
+      - name: Get latest versions of submodules main
         if: github.ref == 'refs/heads/main'
         run: |
           export LC_ALL=C  # Ensure a correct locale for version sorting
@@ -60,6 +59,43 @@ jobs:
           LATEST_WEBUI_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-webui.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | grep -E '^[0-9.]+$' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
           echo "LATEST_WEBUI_VERSION=$LATEST_WEBUI_VERSION" >> $GITHUB_ENV
 
+      - name: Get latest versions of submodules beta
+        if: github.ref == 'refs/heads/beta'
+        run: |
+          export LC_ALL=C  # Ensure a correct locale for version sorting
+      
+          # SEAT
+          LATEST_SEAT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_SEAT_VERSION=$LATEST_SEAT_VERSION" >> $GITHUB_ENV
+      
+          # SKODA
+          LATEST_SKODA_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_SKODA_VERSION=$LATEST_SKODA_VERSION" >> $GITHUB_ENV
+      
+          # VOLKSWAGEN
+          LATEST_VW_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_VW_VERSION=$LATEST_VW_VERSION" >> $GITHUB_ENV
+      
+          # TRONITY
+          LATEST_TRONITY_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_TRONITY_VERSION=$LATEST_TRONITY_VERSION" >> $GITHUB_ENV
+      
+          # MQTT
+          LATEST_MQTT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_MQTT_VERSION=$LATEST_MQTT_VERSION" >> $GITHUB_ENV
+      
+          # MQTT Home Assistant
+          LATEST_MQTT_HOMEASSISTANT_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_MQTT_HOMEASSISTANT_VERSION=$LATEST_MQTT_HOMEASSISTANT_VERSION" >> $GITHUB_ENV
+
+          # CarConnectivity
+          LATEST_CC_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_CC_VERSION=$LATEST_CC_VERSION" >> $GITHUB_ENV
+
+          # CarConnectivity-plugin-webui
+          LATEST_WEBUI_VERSION=$(git ls-remote --tags https://github.com/tillsteinbach/CarConnectivity-plugin-webui.git | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -n -t. -k1,1 -k2,2 -k3,3 | tail -n 1 )
+          echo "LATEST_WEBUI_VERSION=$LATEST_WEBUI_VERSION" >> $GITHUB_ENV
+          
       - name: Display old and new versions
         run: |
           echo "### Current and new versions:"
