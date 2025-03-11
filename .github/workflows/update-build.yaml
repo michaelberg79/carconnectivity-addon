@@ -121,9 +121,9 @@ jobs:
         id: check_changes
         run: |
           if git diff --exit-code build.yaml; then
-            echo "no changes" > result.txt
+            echo "::set-output name=result::no changes"
           else
-            echo "changes" > result.txt
+            echo "::set-output name=result::changes"
           fi
 
       - name: Commit and push changes
@@ -135,6 +135,7 @@ jobs:
           git push origin HEAD:update-versions-${LATEST_SEAT_VERSION}-${LATEST_SKODA_VERSION}
 
       - name: Create Pull Request
+        if: steps.check_changes.outputs.result == 'changes'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
