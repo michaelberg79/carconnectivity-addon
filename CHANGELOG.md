@@ -1,7 +1,7 @@
 ## 0.1.6
 
 ### 🛠️ Fixes & Updates
-  - `CarConnectivity-connector-volkswagen` → [v0.4.2](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant/releases)
+  - `CarConnectivity-connector-volkswagen` → [v0.4.2](https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen/releases)
 
 ---
 ## 0.1.5
