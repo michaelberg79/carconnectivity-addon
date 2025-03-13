@@ -40,12 +40,8 @@ jobs:
           echo "ARCHS=$ARCHS" >> $GITHUB_ENV
           
           # Extract the build arguments and save them in the GitHub environment
-          BUILD_ARGS_JSON=$(yq e -o=json '.args' build.yaml)
-          if [[ "$BUILD_ARGS_JSON" == "null" || -z "$BUILD_ARGS_JSON" ]]; then
-            echo "No build arguments found in build.yaml"
-            exit 1
-          fi
-          echo "BUILD_ARGS=$BUILD_ARGS_JSON" >> $GITHUB_ENV
+          echo "BUILD_ARGS=$(yq e -o=json '.args' build.yaml | jq -c .)" >> $GITHUB_ENV
+   
           
           # Extract the base images for each architecture and convert them to a JSON object
           BASE_IMAGES=$(yq e '.build_from' build.yaml | jq -c 'to_entries | map({(.key): .value}) | from_entries')
