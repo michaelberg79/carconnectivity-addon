@@ -50,7 +50,6 @@ jobs:
           --addon \
           --${{ matrix.arch }} \
           --docker-hub $env.REGISTRY \
-          --image ${{ env.REPOSITORY }}-${{ matrix.addon }} \
           --self-cache \
           --version $GITHUB_REF_SLUG \
           -r  ${{ env.GIT }} \
