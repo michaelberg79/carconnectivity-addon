@@ -5,31 +5,59 @@ on:
     branches:
       - main
   workflow_dispatch:
+  
+env:
+  REGISTRY: pulpyyyy/carconnectivity-addon
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    name: Test build
-    runs-on: ubuntu-latest
+  build_rtl_433:
+    name: Build rtl_433 addon
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        arch: [armhf, armv7, aarch64, amd64, i386]
+        addon: [carconnectivity-addon]
+
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
+    - name: Inject slug/short variables
+      uses: rlespinasse/github-slug-action@v4
 
-      - name: Install yq (for YAML to JSON conversion)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y yq
+    - name: Checkout the repository
+      uses: actions/checkout@v2
 
-      - name: Convert YAML to JSON
-        run: |
-          mkdir -p /tmp/build_config
-          cat config.yaml | yq . > /tmp/build_config/config.json
-          cat build.yaml | yq . > /tmp/build_config/build.json
-           
-      - name: Test build
-        uses: home-assistant/builder@master
-        with:
-          args: |
-            --test \
-            --all \
-            --addon \
-            --docker-hub pulpyyyy/carconnectivity-addon
+    - name: Login to Packages Container registry
+      uses: docker/login-action@v1
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build ${{ matrix.addon }} ${{ matrix.arch }} image
+      uses: home-assistant/builder@master
+      with:
+        args: |
+          --test \
+          --${{ matrix.arch }} \
+          --docker-hub $REGISTRY \
+          --image ${{ github.repository}}-${{ matrix.addon }}-{arch} \
+          --self-cache \
+          --version $GITHUB_REF_SLUG \
+          --no-latest \
+          --target ${{ matrix.addon }}
+
+    - name: Build and push ${{ matrix.addon }} ${{ matrix.arch }} image
+      uses: home-assistant/builder@master
+      if: github.event.pull_request.head.repo.full_name == github.repository
+      with:
+        args: |
+          --${{ matrix.arch }} \
+          --docker-hub $REGISTRY \
+          --image ${{ REGISTRY }}-${{ matrix.addon }}-{arch} \
+          --self-cache \
+          --version $GITHUB_REF_SLUG \
+          --no-latest \
+          --target ${{ matrix.addon }}
