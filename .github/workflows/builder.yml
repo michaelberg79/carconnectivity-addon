@@ -8,78 +8,16 @@ on:
 
 jobs:
   build:
+    name: Test build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up QEMU for multi-arch builds
-        uses: docker/setup-qemu-action@v2
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Test build
+        uses: home-assistant/builder@master
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Install yq
-        run: |
-          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
-          sudo chmod +x /usr/local/bin/yq
-
-      - name: Read configurations from build.yaml
-        id: config
-        run: |
-          # Extract the architectures from build.yaml
-          ARCHS=$(yq e '.build_from | keys | .[]' build.yaml | paste -sd "," -)
-          echo "ARCHS: $ARCHS"
-          echo "ARCHS=$ARCHS" >> $GITHUB_ENV
-          
-          # Extract the build arguments and save them in the GitHub environment
-          BUILD_ARGS_JSON=$(yq e -o=json '.args' build.yaml)
-          echo "BUILD_ARGS='$BUILD_ARGS_JSON'"
-          if [[ "$BUILD_ARGS_JSON" == "null" || -z "$BUILD_ARGS_JSON" ]]; then
-            echo "No build arguments found in build.yaml"
-            exit 1
-          fi
-          echo "BUILD_ARGS='$BUILD_ARGS_JSON'" >> $GITHUB_ENV
-          
-          # Extract the base images for each architecture and convert them to a JSON object
-          BASE_IMAGES=$(yq e '.build_from' build.yaml | jq -c 'to_entries | map({(.key): .value}) | from_entries')
-          echo "BASE_IMAGES=$BASE_IMAGES" >> $GITHUB_ENV
-          
-          # Extract the version from config.yaml and save it in the GitHub environment
-          VERSION=$(yq e '.version' config.yaml)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
-      - name: Build and push Docker images
-        run: |
-          DOCKERUSER="pulpyyyy"
-          DOCKER_REPO="${{ env.DOCKERUSER }}/carconnectivity-addon"
-          echo "Building Docker images for architectures: $ARCHS"
-
-          # Loop over each architecture and build the corresponding Docker image
-          for ARCH in $(echo "$ARCHS" | tr ',' '\n'); do
-            # Use jq to retrieve the base image for the current architecture
-            BASE_IMAGE=$(echo "$BASE_IMAGES" | jq -r --arg ARCH "$ARCH" '.[$ARCH]')
-            
-            # Check if the base image is available for the current architecture
-            if [ -z "$BASE_IMAGE" ] || [ "$BASE_IMAGE" == "null" ]; then
-              echo "Error: Base image for $ARCH is missing in build.yaml"
-              exit 1
-            fi
-
-            echo "Building for architecture: $ARCH with base image: $BASE_IMAGE"
-
-            # Build and push the Docker image for the current architecture
-            docker buildx build \
-              --platform linux/$ARCH \
-              --build-arg BUILD_FROM="$BASE_IMAGE" \
-              --tag $DOCKER_REPO:$VERSION-$ARCH \
-              --tag $DOCKER_REPO:latest-$ARCH \
-              --push .
-          done
+          args: |
+            --test \
+            --all \
+            --target / \
+            --docker-hub pulpyyyy/carconnectivity-addon
