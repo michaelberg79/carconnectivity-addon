@@ -53,5 +53,5 @@ jobs:
           --image ${{ env.REPOSITORY }}-${{ matrix.addon }}-{arch} \
           --self-cache \
           --version $GITHUB_REF_SLUG \
-          -r  $env.GIT \
+          -r  ${{ env.GIT }} \
           -b main
