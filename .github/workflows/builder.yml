@@ -1,9 +1,12 @@
 name: Build and Push Docker Images
 
 on:
-  release:
-    types: [published]
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-push:
@@ -32,31 +35,30 @@ jobs:
           sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
           sudo chmod +x /usr/local/bin/yq
 
-      - name: Read build.yaml configurations
-        id: config
+      - name: Read configurations from build.yaml
         run: |
-          ARCHS=$(yq eval -o=json '.build.arch' build.yaml)
-          BUILD_VARS=$(yq eval -o=json '.build.args' build.yaml)
-          VERSION=$(yq eval '.version' build.yaml)
-          echo "::set-output name=architectures::$ARCHS"
-          echo "::set-output name=build_vars::$BUILD_VARS"
-          echo "::set-output name=version::$VERSION"
+          echo "ARCHS=$(yq eval -o=json '.build.arch' build.yaml)" >> $GITHUB_ENV
+          echo "BUILD_ARGS=$(yq eval -o=json '.build.args' build.yaml | jq -r 'to_entries | map("--build-arg " + .key + "=" + .value) | join(" ")')" >> $GITHUB_ENV
+          echo "BASE_IMAGES=$(yq eval -o=json '.build.build_from' build.yaml | jq -c '.')" >> $GITHUB_ENV
+          echo "VERSION=$(yq eval '.version' config.yaml)" >> $GITHUB_ENV
 
       - name: Build and push Docker images
         run: |
           DOCKER_REPO="${{ secrets.DOCKERHUB_USERNAME }}/carconnectivity-addon"
-          ARCHS=${{ steps.config.outputs.architectures }}
-          BUILD_VARS=${{ steps.config.outputs.build_args }}
-          VERSION=${{ steps.config.outputs.version }}
+          ARCHS=$(echo "${{ env.ARCHS }}" | jq -r '.[]')
+          BUILD_ARGS="${{ env.BUILD_ARGS }}"
+          BASE_IMAGES=$(echo '${{ env.BUILD_FROM }}' | jq -r 'to_entries[] | "\(.key):\(.value)"')
 
-          for ARCH in $(echo $ARCHS | jq -r '.[]'); do
-            BASE_IMAGE=$(echo $BUILD_VARS | jq -r --arg ARCH $ARCH '.[$ARCH]')
+          for ARCH in $ARCHS; do
+            BASE_IMAGE=$(echo "$BUILD_ARGS" | grep "^$ARCH:" | cut -d':' -f2)
             
             echo "Building for architecture: $ARCH with base image $BASE_IMAGE"
-            
+
             docker buildx build \
               --platform linux/$ARCH \
               --build-arg BUILD_FROM=$BASE_IMAGE \
+              $BUILD_ARGS \
               --tag $DOCKER_REPO:$VERSION-$ARCH \
-              --tag $DOCKER_REPO:latest \
+              --tag $DOCKER_REPO:latest-$ARCH \
               --push .
+          done
