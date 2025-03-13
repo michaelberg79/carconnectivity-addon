@@ -51,6 +51,4 @@ jobs:
           --${{ matrix.arch }} \
           --docker-hub $env.REGISTRY \
           --self-cache \
-          --version $GITHUB_REF_SLUG \
-          -r  ${{ env.GIT }} \
-          -b main
+          --version $GITHUB_REF_SLUG
