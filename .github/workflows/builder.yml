@@ -21,8 +21,8 @@ jobs:
 
       - name: Convert YAML to JSON
         run: |
-           cat config.yaml | yq . > /tmp/build_config/config.json
-           cat build.yaml | yq . > /tmp/build_config/build.json
+           cat config.yaml | yq . > config.json
+           cat build.yaml | yq . > build.json
            
       - name: Test build
         uses: home-assistant/builder@master
