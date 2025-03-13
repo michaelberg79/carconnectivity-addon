@@ -34,10 +34,11 @@ jobs:
       - name: Read configurations from build.yaml
         id: config
         run: |
-          echo "ARCHS=$(yq e '.build.arch | tojson' build.yaml)" >> $GITHUB_ENV
-          echo "BUILD_ARGS=$(yq e '.args | tojson' build.yaml)" >> $GITHUB_ENV
-          echo "BASE_IMAGES=$(yq e '.build_from | tojson' build.yaml)" >> $GITHUB_ENV
+          echo "ARCHS=$(yq e -o=json '.build.arch' build.yaml | jq -c .)" >> $GITHUB_ENV
+          echo "BUILD_ARGS=$(yq e -o=json '.args' build.yaml | jq -c .)" >> $GITHUB_ENV
+          echo "BASE_IMAGES=$(yq e -o=json '.build.build_from' build.yaml | jq -c .)" >> $GITHUB_ENV
           echo "VERSION=$(yq e '.version' config.yaml)" >> $GITHUB_ENV
+
 
       - name: Build and push Docker images
         run: |
