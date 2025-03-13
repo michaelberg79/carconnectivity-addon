@@ -38,7 +38,7 @@ jobs:
           echo "ARCHS: $ARCHS"
           echo "ARCHS=$ARCHS" >> $GITHUB_ENV          
           echo "BUILD_ARGS=$(yq e -o=json '.args' build.yaml | jq -c .)" >> $GITHUB_ENV
-          echo "BASE_IMAGES=$(yq e -o=json '.build.build_from' build.yaml | jq -c .)" >> $GITHUB_ENV
+          echo "BASE_IMAGES=$(yq e '.build_from' build.yaml | jq -c .)" >> $GITHUB_ENV
           echo "VERSION=$(yq e '.version' config.yaml)" >> $GITHUB_ENV
 
 
