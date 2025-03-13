@@ -4,22 +4,18 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up QEMU
+      - name: Set up QEMU for multi-arch builds
         uses: docker/setup-qemu-action@v2
-        with:
-          platforms: all
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -36,29 +32,32 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
 
       - name: Read configurations from build.yaml
+        id: config
         run: |
-          echo "ARCHS=$(yq eval -o=json '.build.arch' build.yaml)" >> $GITHUB_ENV
-          echo "BUILD_ARGS=$(yq eval -o=json '.build.args' build.yaml | jq -r 'to_entries | map("--build-arg " + .key + "=" + .value) | join(" ")')" >> $GITHUB_ENV
-          echo "BASE_IMAGES=$(yq eval -o=json '.build.build_from' build.yaml | jq -c '.')" >> $GITHUB_ENV
-          echo "VERSION=$(yq eval '.version' config.yaml)" >> $GITHUB_ENV
+          echo "ARCHS=$(yq e '.build.arch | tojson' build.yaml)" >> $GITHUB_ENV
+          echo "BUILD_ARGS=$(yq e '.args | tojson' build.yaml)" >> $GITHUB_ENV
+          echo "BASE_IMAGES=$(yq e '.build_from | tojson' build.yaml)" >> $GITHUB_ENV
+          echo "VERSION=$(yq e '.version' config.yaml)" >> $GITHUB_ENV
 
       - name: Build and push Docker images
         run: |
-          DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKER_REPO="${{ env.DOCKER_USER }}/carconnectivity-addon"
-          ARCHS=$(echo "${{ env.ARCHS }}" | jq -r '.[]')
-          BUILD_ARGS="${{ env.BUILD_ARGS }}"
-          BASE_IMAGES=$(echo '${{ env.BUILD_FROM }}' | jq -r 'to_entries[] | "\(.key):\(.value)"')
+          DOCKERUSER="pulpyyyy"
+          DOCKER_REPO="${{ env.DOCKERUSER }}/carconnectivity-addon"
+          echo "Building Docker images for architectures: $ARCHS"
 
-          for ARCH in $ARCHS; do
-            BASE_IMAGE=$(echo "$BUILD_ARGS" | grep "^$ARCH:" | cut -d':' -f2)
-            
-            echo "Building for architecture: $ARCH with base image $BASE_IMAGE"
+          for ARCH in $(echo "$ARCHS" | jq -r '.[]'); do
+            BASE_IMAGE=$(echo "$BASE_IMAGES" | jq -r --arg ARCH "$ARCH" '.[$ARCH]')
+
+            if [ -z "$BASE_IMAGE" ] || [ "$BASE_IMAGE" == "null" ]; then
+              echo "Error: Base image for $ARCH is missing in build.yaml"
+              exit 1
+            fi
+
+            echo "Building for architecture: $ARCH with base image: $BASE_IMAGE"
 
             docker buildx build \
               --platform linux/$ARCH \
-              --build-arg BUILD_FROM=$BASE_IMAGE \
-              $BUILD_ARGS \
+              --build-arg BUILD_FROM="$BASE_IMAGE" \
               --tag $DOCKER_REPO:$VERSION-$ARCH \
               --tag $DOCKER_REPO:latest-$ARCH \
               --push .
