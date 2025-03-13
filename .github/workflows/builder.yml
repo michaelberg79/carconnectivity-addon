@@ -21,19 +21,7 @@ jobs:
 
       - name: Convert YAML to JSON
         run: |
-          yq eval -o=json /config.yaml > /tmp/build_config/config.json
-
-      - name: Check if config.json exists
-        run: |
-          if [ -f /tmp/build_config/config.json ]; then
-            echo "config.json exists"
-          else
-            echo "config.json does not exist"
-          fi
-
-      - name: Use jq to process config.json
-        run: |
-          cat /tmp/build_config/config.json | jq '.'
+          yq eval -o=json config.yaml > config.json
 
       - name: Test build
         uses: home-assistant/builder@master
