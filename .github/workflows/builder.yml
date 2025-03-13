@@ -47,7 +47,8 @@ jobs:
           --self-cache \
           --version $GITHUB_REF_SLUG \
           --no-latest \
-          --target ${{ matrix.addon }}
+          --target ${{ matrix.addon }} \
+          --docker-hub local
 
     - name: Build and push ${{ matrix.addon }} ${{ matrix.arch }} image
       uses: home-assistant/builder@master
@@ -60,4 +61,5 @@ jobs:
           --self-cache \
           --version $GITHUB_REF_SLUG \
           --no-latest \
-          --target ${{ matrix.addon }}
+          --target ${{ matrix.addon }} \
+          --docker-hub local
