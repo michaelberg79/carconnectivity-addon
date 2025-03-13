@@ -44,7 +44,8 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          DOCKER_REPO="${{ secrets.DOCKERHUB_USERNAME }}/carconnectivity-addon"
+          DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_REPO="${{ env.DOCKER_USER }}/carconnectivity-addon"
           ARCHS=$(echo "${{ env.ARCHS }}" | jq -r '.[]')
           BUILD_ARGS="${{ env.BUILD_ARGS }}"
           BASE_IMAGES=$(echo '${{ env.BUILD_FROM }}' | jq -r 'to_entries[] | "\(.key):\(.value)"')
