@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
   
 env:
-  REGISTRY: pulpyyyy/carconnectivity-addon
+  REPOSITORY: pulpyyyy/carconnectivity-addon
+  REGISTRY: hub.docker.com
 
 concurrency:
   group: ${{ github.ref }}
@@ -56,7 +57,7 @@ jobs:
         args: |
           --${{ matrix.arch }} \
           --docker-hub $REGISTRY \
-          --image ${{ env.REGISTRY }}-${{ matrix.addon }}-{arch} \
+          --image ${{ env.REPOSITORY }}-${{ matrix.addon }}-{arch} \
           --self-cache \
           --version $GITHUB_REF_SLUG \
           --no-latest \
