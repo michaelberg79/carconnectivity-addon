@@ -9,6 +9,7 @@ on:
 env:
   REPOSITORY: pulpyyyy/carconnectivity-addon
   REGISTRY: hub.docker.com
+  GIT: https://github.com/Pulpyyyy/carconnectivity-addon
 
 concurrency:
   group: ${{ github.ref }}
@@ -52,6 +53,5 @@ jobs:
           --image ${{ env.REPOSITORY }}-${{ matrix.addon }}-{arch} \
           --self-cache \
           --version $GITHUB_REF_SLUG \
-          -t /data \
-          -r https://github.com/Pulpyyyy/carconnectivity-addon \
+          -r  $env.GIT \
           -b main
