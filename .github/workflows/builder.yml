@@ -48,5 +48,5 @@ jobs:
           --version $GITHUB_REF_SLUG \
           --no-latest \
           -t /data \
-      		-r https://github.com/Pulpyyyy/carconnectivity-addon \
-      		-b main
+          -r https://github.com/Pulpyyyy/carconnectivity-addon \
+          -b main
