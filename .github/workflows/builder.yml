@@ -56,7 +56,7 @@ jobs:
         args: |
           --${{ matrix.arch }} \
           --docker-hub $REGISTRY \
-          --image ${{ REGISTRY }}-${{ matrix.addon }}-{arch} \
+          --image ${{ env.REGISTRY }}-${{ matrix.addon }}-{arch} \
           --self-cache \
           --version $GITHUB_REF_SLUG \
           --no-latest \
