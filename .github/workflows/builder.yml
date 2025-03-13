@@ -31,5 +31,5 @@ jobs:
           args: |
             --test \
             --all \
-            --target / \
+            --target addon-folder \
             --docker-hub pulpyyyy/carconnectivity-addon
