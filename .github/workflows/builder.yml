@@ -49,7 +49,6 @@ jobs:
           # Extract the version from config.yaml and save it in the GitHub environment
           echo "VERSION=$(yq e '.version' config.yaml)" >> $GITHUB_ENV
 
-
       - name: Build and push Docker images
         run: |
           DOCKERUSER="pulpyyyy"
