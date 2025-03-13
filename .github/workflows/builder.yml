@@ -34,13 +34,20 @@ jobs:
       - name: Read configurations from build.yaml
         id: config
         run: |
+          # Extract the architectures from build.yaml
           ARCHS=$(yq e '.build_from | keys | .[]' build.yaml | paste -sd "," -)
           echo "ARCHS: $ARCHS"
-          echo "ARCHS=$ARCHS" >> $GITHUB_ENV          
+          echo "ARCHS=$ARCHS" >> $GITHUB_ENV
+          
+          # Extract the build arguments and save them in the GitHub environment
           echo "BUILD_ARGS=$(yq e -o=json '.args' build.yaml | jq -c .)" >> $GITHUB_ENV
-          echo "BASE_IMAGES=$(yq eval '.build_from[]' build.yaml | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_ENV
+          
+          # Extract the base images for each architecture and convert them to JSON array
+          BASE_IMAGES=$(yq e '.build_from' build.yaml | jq -c 'to_entries | map({(.key): .value}) | add')
+          echo "BASE_IMAGES=$BASE_IMAGES" >> $GITHUB_ENV
+          
+          # Extract the version from config.yaml and save it in the GitHub environment
           echo "VERSION=$(yq e '.version' config.yaml)" >> $GITHUB_ENV
-
 
       - name: Build and push Docker images
         run: |
@@ -48,9 +55,12 @@ jobs:
           DOCKER_REPO="${{ env.DOCKERUSER }}/carconnectivity-addon"
           echo "Building Docker images for architectures: $ARCHS"
 
+          # Loop over each architecture and build the corresponding Docker image
           for ARCH in $(echo "$ARCHS" | tr ',' '\n'); do
+            # Use jq to retrieve the base image for the current architecture
             BASE_IMAGE=$(echo "$BASE_IMAGES" | jq -r --arg ARCH "$ARCH" '.[$ARCH]')
-
+            
+            # Check if the base image is available for the current architecture
             if [ -z "$BASE_IMAGE" ] || [ "$BASE_IMAGE" == "null" ]; then
               echo "Error: Base image for $ARCH is missing in build.yaml"
               exit 1
@@ -58,6 +68,7 @@ jobs:
 
             echo "Building for architecture: $ARCH with base image: $BASE_IMAGE"
 
+            # Build and push the Docker image for the current architecture
             docker buildx build \
               --platform linux/$ARCH \
               --build-arg BUILD_FROM="$BASE_IMAGE" \
