@@ -35,7 +35,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-
+        
+    - name: Set up build config
+      run: |
+        mkdir -p /tmp/build_config
+        echo '{}' > /tmp/build_config/config.json
+        
     - name: Build ${{ matrix.addon }} ${{ matrix.arch }} image
       uses: home-assistant/builder@master
       with:
