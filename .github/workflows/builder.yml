@@ -21,7 +21,7 @@ jobs:
 
       - name: Convert YAML to JSON
         run: |
-          yq eval -o=json config.yaml > config.json
+          yq eval config.yaml --tojson > config.json
 
       - name: Test build
         uses: home-assistant/builder@master
