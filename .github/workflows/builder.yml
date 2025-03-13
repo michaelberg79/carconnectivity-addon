@@ -34,7 +34,7 @@ jobs:
       - name: Read configurations from build.yaml
         id: config
         run: |
-          ARCHS=$(yq e '.build_from | keys | .[]' build.yaml)
+          ARCHS=$(yq e '.build_from | keys | .[]' build.yaml | paste -sd "," -)
           echo "ARCHS: $ARCHS"
           echo "ARCHS=$ARCHS" >> $GITHUB_ENV          
           echo "BUILD_ARGS=$(yq e -o=json '.args' build.yaml | jq -c .)" >> $GITHUB_ENV
@@ -48,7 +48,7 @@ jobs:
           DOCKER_REPO="${{ env.DOCKERUSER }}/carconnectivity-addon"
           echo "Building Docker images for architectures: $ARCHS"
 
-          for ARCH in $(echo "$ARCHS" | jq -r '.[]'); do
+          for ARCH in $(echo "$ARCHS" | tr ',' '\n'); do
             BASE_IMAGE=$(echo "$BASE_IMAGES" | jq -r --arg ARCH "$ARCH" '.[$ARCH]')
 
             if [ -z "$BASE_IMAGE" ] || [ "$BASE_IMAGE" == "null" ]; then
