@@ -11,7 +11,8 @@ on:
 env:
   REPOSITORY: pulpyyyy/carconnectivity-addon
   REGISTRY: docker.io
-
+  GIT_TAG_NAME: dev
+  
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -50,5 +51,4 @@ jobs:
             --${{ matrix.arch }} \
             --docker-hub "${{ env.REGISTRY }}" \
             --target /data/ \
-            --cosign \
-            --image "${{ env.REPOSITORY }}"
+            --generic $GIT_TAG_NAME
