@@ -58,5 +58,4 @@ jobs:
             --${{ matrix.arch }} \
             --docker-hub $env.REGISTRY \
             --target /data/
-            --cosign \
-            --generic $GIT_TAG_NAME
+            --cosign
