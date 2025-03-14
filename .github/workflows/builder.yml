@@ -1,11 +1,9 @@
 name: Build and Push Docker Images
 
 on:
-  release:
-    types: [published]
   push:
-    branches:
-      - main
+    tags:
+      - '*'
   workflow_dispatch:
   
 env:
