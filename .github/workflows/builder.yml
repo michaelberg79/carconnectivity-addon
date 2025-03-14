@@ -62,4 +62,3 @@ jobs:
             --image "${{ env.REPOSITORY }}-${{ matrix.arch }}"
             --release "0.0.0"
             --release-tag "test"
-            --cosign
