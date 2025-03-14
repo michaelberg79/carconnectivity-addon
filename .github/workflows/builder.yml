@@ -45,11 +45,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
-      - name: Build ${{ matrix.addon }} ${{ matrix.arch }} image
+      - name: Publish ${{ matrix.architecture }} builder
         uses: home-assistant/builder@2025.02.0
         with:
           args: |
-            --test \
             --addon \
             --${{ matrix.arch }} \
             --docker-hub "${{ env.REGISTRY }}" \
