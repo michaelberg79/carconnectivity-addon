@@ -49,10 +49,10 @@ jobs:
         uses: home-assistant/builder@2025.02.0
         with:
           args: |
-            --test
-            --addon
-            --${{ matrix.arch }}
-            --docker-hub "${{ env.REGISTRY }}"
-            --target /data/
-            --cosign
+            --test \
+            --addon \
+            --${{ matrix.arch }} \
+            --docker-hub "${{ env.REGISTRY }}" \
+            --target /data/ \
+            --cosign \
             --image "${{ env.REPOSITORY }}:${{ env.TAG || 'latest' }}-${{ matrix.arch }}"
