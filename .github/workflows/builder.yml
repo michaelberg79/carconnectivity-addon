@@ -61,4 +61,4 @@ jobs:
             --docker-hub "${{ env.REGISTRY }}"
             --target /data/
             --cosign
-            --generic "0.0.0"
+            --image "${{ env.REPOSITORY }}/carconnectivity-addon-${ matrix.arch }}:0.0.0"
