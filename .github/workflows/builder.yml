@@ -35,12 +35,6 @@ jobs:
         with:
           path: "./"
           
-      - name: debug
-        run: |
-          echo "Architectures: $archs"
-          echo "Image: $image"
-          echo "Version: $version"
-          
       - uses: olegtarasov/get-tag@v2.1.4
         if: github.event_name == 'release'
         name: Set tag environement variable
@@ -61,4 +55,4 @@ jobs:
             --docker-hub "${{ env.REGISTRY }}"
             --target /data/
             --cosign
-            --image "${{ env.REPOSITORY }}/carconnectivity-addon-${ matrix.arch }}:0.0.0"
+            --image "${{ env.REPOSITORY }}:${{ env.TAG || 'latest' }}-${{ matrix.arch }}"
