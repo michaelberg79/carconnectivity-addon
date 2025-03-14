@@ -54,4 +54,5 @@ jobs:
             --${{ matrix.arch }} \
             --docker-hub "${{ env.REGISTRY }}" \
             --target /data/ \
+            --cosign \
             --image "${{ env.REPOSITORY }}"
