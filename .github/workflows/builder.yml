@@ -54,4 +54,4 @@ jobs:
             --${{ matrix.arch }} \
             --docker-hub "${{ env.REGISTRY }}" \
             --target /data/ \
-            --image "${{ env.REPOSITORY }}:${{ env.TAG || 'latest' }}-${{ matrix.arch }}"
+            --image "${{ env.REPOSITORY }}:${{ env.TAG || 'latest' }}"
