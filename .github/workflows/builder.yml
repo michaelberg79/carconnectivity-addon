@@ -34,10 +34,6 @@ jobs:
         uses: home-assistant/actions/helpers/info@master
         with:
           path: "./"
-          
-      - uses: olegtarasov/get-tag@v2.1.4
-        if: github.event_name == 'release'
-        name: Set tag environement variable
         
       - name: Login to DockerHub
         uses: docker/login-action@v3.3.0
