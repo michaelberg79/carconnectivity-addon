@@ -11,7 +11,6 @@ on:
 env:
   REPOSITORY: pulpyyyy/carconnectivity-addon
   REGISTRY: hub.docker.com
-  GIT: https://github.com/Pulpyyyy/carconnectivity-addon
 
 concurrency:
   group: ${{ github.ref }}
@@ -30,14 +29,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4.2.2
 
-      - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@v5
-
       - name: Get information
         id: info
         uses: home-assistant/actions/helpers/info@master
         with:
           path: "./"
+          
+      - name: debug
+        run: |
+          echo "Architectures: $archs"
+          echo "Image: $image"
+          echo "Version: $version"
           
       - uses: olegtarasov/get-tag@v2.1.4
         if: github.event_name == 'release'
