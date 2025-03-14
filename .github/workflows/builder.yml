@@ -55,12 +55,11 @@ jobs:
         uses: home-assistant/builder@2025.02.0
         with:
           args: |
-            --test \
-            --addon \
-            --${{ matrix.arch }} \
-            --docker-hub $env.REGISTRY \
-            --target /data/
-            --cosign
-            --image "$env.REPOSITORY-{matrix.arch}"
-            --release 0.0.0
+            --test
+            --addon
+            --${{ matrix.arch }}
+            --docker-hub "${{ env.REGISTRY }}"
+            --image "${{ env.REPOSITORY }}-${{ matrix.arch }}"
+            --release "0.0.0"
             --release-tag "test"
+            --cosign
