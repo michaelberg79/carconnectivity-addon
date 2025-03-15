@@ -87,7 +87,7 @@ jobs:
 
             if [ -n "$old_version" ] && [ "$old_version" != "${!new_version}" ]; then
               echo "🔄 ${key}_VERSION: $old_version → ${!new_version}"
-              echo "- **${repo_name}** → (v${!new_version})\[${repo_url}\]" >> new_changelog.md
+              echo "- **${repo_name}** → (v${!new_version})\[${repo_url}\]" >> bot_changelog.md
             fi
           }
 
@@ -98,38 +98,67 @@ jobs:
       - name: Update build.yaml
         run: |
           echo "Updating build.yaml with new versions"
+          
+          # Iterate through a list of components and update their versions in build.yaml
           for key in SEAT SKODA VW TRONITY MQTT MQTTHA CC WEBUI; do
             new_version="LATEST_${key}_VERSION"
+            
+            # Use sed to replace the existing version with the latest version dynamically
             sed -i "s/${key}_VERSION: .*/${key}_VERSION: \"${!new_version}\"/" build.yaml
           done
-
+      
+          # Check if build.yaml has changed after updates
           if git diff --quiet build.yaml; then
             echo "No update needed."
             echo "CHANGES=false" >> $GITHUB_ENV
           else
             echo "Changes detected."
             echo "CHANGES=true" >> $GITHUB_ENV
-            
-            echo "" >> new_changelog.md
-            echo " --- " >> new_changelog.md
-            echo "" >> new_changelog.md
-            cat CHANGELOG.md >> new_changelog.md
-            mv new_changelog.md CHANGELOG.md
           fi
-          
+        
       - name: Increment version
         if: env.CHANGES == 'true'
         run: |
+          # Extract current version from config.yaml
           version=$(grep 'version:' config.yaml | awk '{print $2}')
+      
+          # Split version into an array (e.g., 1.2.3 -> [1, 2, 3])
           IFS='.' read -r -a parts <<< "$version"
+      
+          # Increment the patch version (last number)
           parts[2]=$((parts[2] + 1))
+      
+          # Reconstruct the new version string
           new_version="${parts[0]}.${parts[1]}.${parts[2]}"
+      
+          # Update the version in config.yaml
           sed -i "s/version: .*/version: $new_version/" config.yaml
-          echo "## $new_version" >> new_changelog.md
-          echo "" >> new_changelog.md
-          echo "### 🛠️ Fixes & Updates" >> new_changelog.md
-          cat CHANGELOG.md >> new_changelog.md
-          mv new_changelog.md CHANGELOG.md
+      
+          # Append build/fixes section to the changelog
+          echo "### 🛠️ Fixes & Updates" > build_changelog.md
+          cat bot_changelog.md >> build_changelog.md
+          rm bot_changelog.md
+          echo -e "\n --- \n" >> build_changelog.md
+          cat CHANGELOG.md >> build_changelog.md
+          mv build_changelog.md CHANGELOG.md
+      
+          # Append new features section to the changelog (if exists)
+          if [ -f next_changelog.md ]; then
+            echo "### 🚀 New Features" > header_changelog.md
+            cat next_changelog.md >> header_changelog.md
+            rm next_changelog.md
+            cat CHANGELOG.md >> header_changelog.md
+            mv header_changelog.md CHANGELOG.md
+          fi
+      
+          # Append the new version header section to the changelog
+          echo -e "## $new_version\n" > version_CHANGELOG.md
+          cat CHANGELOG.md >> version_CHANGELOG.md
+          mv version_CHANGELOG.md CHANGELOG.md
+      
+          git add config.yaml CHANGELOG.md
+          git commit -m "Increment version and build version to $new_version"
+          git push
 
       - name: Commit and push changes on the Current Branch
         if: env.CHANGES == 'true'
