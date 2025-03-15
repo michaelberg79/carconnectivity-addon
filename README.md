@@ -21,7 +21,7 @@
 The **CarConnectivity-Addon** module allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services. This guide explains how to properly configure the module.
 I am simply packaging the [excellent work done by Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-**The project is still under development, with reverse engineering of the api to be completed and communication with MQTT/Home assistant to be adapted.**
+**⚠️The project is still under development, with reverse engineering of the api to be completed and communication with MQTT/Home assistant to be adapted.⚠️**
 
 ## Add repository
 
