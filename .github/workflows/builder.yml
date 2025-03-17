@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   
 env:
-  REPOSITORY: pulpyyyy/carconnectivity-addon
+  REPOSITORY: pulpyyyy
   REGISTRY: docker.io
   GIT_TAG_NAME: dev
   
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         arch: [amd64, armhf, armv7, aarch64,  i386]
-        addon: [carconnectivity-addon]
+        addon: [carconnectivity-addon, carconnectivity-addon-edge]
 
     steps:
       - name: Check out repository
@@ -48,5 +48,5 @@ jobs:
             --addon \
             --${{ matrix.arch }} \
             --docker-hub "${{ env.REGISTRY }}" \
-            --target /data/ \
-            --image "${{ env.REPOSITORY }}-${{ matrix.arch }}"
+            --target /data/${{ matrix.addon }} \
+            --image "${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"

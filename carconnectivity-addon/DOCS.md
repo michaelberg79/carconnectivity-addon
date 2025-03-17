@@ -3,10 +3,13 @@
 # CarConnectivity-Addon Configuration Guide
 
 ## Introduction
+
 The **CarConnectivity-Addon** module allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services. This guide explains how to properly configure the module.
 I am simply packaging the [excellent work done by Till.](https://github.com/tillsteinbach/CarConnectivity)
 
 His work is also available as docker images. So if you're using Home Assistant as a stand-alone docker, you can directly use it too.
+
+**⚠️The project is still under development, with reverse engineering of the api to be completed and communication with MQTT/Home assistant to be adapted.⚠️**
 
 ## Add repository
 
@@ -48,8 +51,20 @@ You need to use **MQTT** to send vehicle data to home assistant, configure these
 
 ⚠️ If you're not already using MQTT on Home assistant, you can add, for example, [Mosquito addon AND MQTT integration](https://www.home-assistant.io/integrations/mqtt) 
 
+### 4. WEBUI
+You can visit http//x.x.x.x:4000 The WEBUI from Carconnectivity:
+- **Username**: login
+- **Password**: password
+- **WEBUI Port**: 4000
 
-### 4. Logging Level
+### 5. Logging Level
+Define the amount of information recorded in logs:
+- **Info**: Displays general operational information.
+- **Warning**: Displays only warnings.
+- **Error**: Displays only error messages.
+- **Debug**: Displays additional details useful for troubleshooting.
+
+### 6. API Logging Level
 Define the amount of information recorded in logs:
 - **Info**: Displays general operational information.
 - **Warning**: Displays only warnings.

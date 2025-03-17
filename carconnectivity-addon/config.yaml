@@ -1,0 +1,57 @@
+name: "CarConnectivity Addon"
+version: 0.1.7
+slug: "carconnectivity-addon"
+description: "Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT"
+image: "docker.io/pulpyyyy/carconnectivity-addon-{arch}"
+panel_icon: "mdi:car-wireless"
+webui: "[PROTO:ssl]://[HOST]:[PORT:4000]"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+ingress: false
+init: false
+ports:
+  4000/tcp: 4000
+ports_description:
+  4000/tcp: Carconnectivity web interface
+options:
+  connector_type_brand1: "seat"
+  connector_username_brand1: ""
+  connector_password_brand1: "password"
+  connector_spin_brand1: "1234"
+  connector_interval_brand1: 600
+  connector_type_brand2: "skoda"
+  connector_username_brand2: ""
+  connector_password_brand2: "password"
+  connector_spin_brand2: "1234"
+  connector_interval_brand2: 600
+  mqtt_username: "mqtt"
+  mqtt_password: "passwordmqtt"
+  mqtt_broker: "core-mosquitto.local.hass.io"
+  mqtt_port: "1883"
+  log_level: "info"
+  connector_username_webui: "admin"
+  connector_password_webui: "secret"
+  api_log_level: "info"
+schema:
+  connector_type_brand1: list(seat|cupra|skoda|vw|trionity)
+  connector_username_brand1: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
+  connector_password_brand1: password?
+  connector_interval_brand1: int(60,3600)?
+  connector_spin_brand1: match(^\d{4}$)?
+  connector_type_brand2: list(seat|cupra|skoda|vw|trionity)
+  connector_username_brand2: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
+  connector_password_brand2: password?
+  connector_interval_brand2: int(60,3600)?
+  connector_spin_brand2: match(^\d{4}$)?
+  mqtt_username: str?
+  mqtt_password: password?
+  mqtt_broker: str
+  mqtt_port: int
+  log_level: list(info|warning|error|debug)
+  connector_username_webui: str
+  connector_password_webui: password?
+  api_log_level: list(info|warning|error|debug)

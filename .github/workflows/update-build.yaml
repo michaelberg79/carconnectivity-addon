@@ -24,6 +24,9 @@ env:
 jobs:
   update-versions:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        addon: [carconnectivity-addon, carconnectivity-addon-edge]
 
     steps:
       - name: Checkout repository
@@ -33,66 +36,51 @@ jobs:
           fetch-depth: 0
           submodules: true # Also clones submodules
 
-      - name: Get latest versions of submodules main
-        if: github.ref == 'refs/heads/main'
+      - name: Get latest versions of submodules ${{ matrix.addon }}...
         run: |
           export LC_ALL=C
 
           get_latest_version() {
             repo_url=$1
-            git ls-remote --tags "$repo_url" | awk -F'/v' '/refs\/tags\/v/{print $2}' | grep -E '^[0-9]+(\.[0-9]+)*$' | sort -V | tail -n 1
+            if [ "${{ matrix.addon }}" == "carconnectivity-addon" ]; then
+              git ls-remote --tags "$repo_url" | awk -F'/v' '/refs\/tags\/v/{print $2}' | grep -E '^[0-9]+(\.[0-9]+)*$' | sort -V | tail -n 1
+            else
+              git ls-remote --tags "$repo_url" | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -V | tail -n 1
+            fi
           }
 
-          echo "Fetching latest versions for submodules..."
+          echo "Fetching latest versions for submodules"
           for repo_entry in $SUBMODULE_REPOS; do
             name=$(echo "$repo_entry" | cut -d= -f1)
             repo=$(echo "$repo_entry" | cut -d= -f2)
 
             latest_version=$(get_latest_version "$repo")
-            echo "LATEST_${name}_VERSION=$latest_version" >> $GITHUB_ENV
+            echo "LATEST_${name}_VERSION_${{ matrix.addon }}=$latest_version" >> $GITHUB_ENV
             echo "🔍 Found latest $name version: $latest_version"
           done
 
-      - name: Get latest versions of submodules
-        if: github.ref == 'refs/heads/beta'
+      - name: Display old and new versions ${{ matrix.addon }}...
         run: |
-          export LC_ALL=C
-
-          get_latest_version() {
-            repo_url=$1
-            git ls-remote --tags "$repo_url" | awk -F'/v' '/refs\/tags\/v/{print $2}' | sort -V | tail -n 1
-          }
-
-          echo "Fetching latest versions for submodules..."
-          for repo_entry in $SUBMODULE_REPOS; do
-            name=$(echo "$repo_entry" | cut -d= -f1)
-            repo=$(echo "$repo_entry" | cut -d= -f2)
-
-            latest_version=$(get_latest_version "$repo")
-            echo "LATEST_${name}_VERSION=$latest_version" >> $GITHUB_ENV
-            echo "🔍 Found latest $name version: $latest_version"
-          done
-
-      - name: Display old and new versions
-        run: |
-          echo "### Current and new versions:"
+          echo "### Current and new versions :"
 
           compare_versions() {
             local component=$1
-            local old_version=$(grep "${component}_VERSION" build.yaml | awk '{print $2}' | tr -d '"')
-            local new_version="LATEST_${key}_VERSION"
-            
-            local repo_url=$(echo "$SUBMODULE_REPOS" | grep "^${key}=" | cut -d '=' -f2)
+            local addon=$2
+            local old_version=$(grep "${component}_VERSION" ${addon}/build.yaml | awk '{print $2}' | tr -d '"')
+            local new_version_var="LATEST_${component}_VERSION_${addon}"
+            local new_version=$(printenv $new_version_var)
+
+            local repo_url=$(echo "$SUBMODULE_REPOS" | grep "^${component}=" | cut -d '=' -f2)
             local repo_name=$(basename "$repo_url" .git)
 
-            if [ -n "$old_version" ] && [ "$old_version" != "${!new_version}" ]; then
-              echo "🔄 ${key}_VERSION: $old_version → ${!new_version}"
-              echo "- **${repo_name}** → (v${!new_version})\[${repo_url}\]" >> bot_changelog.md
+            if [ -n "$old_version" ] && [ "$old_version" != "$new_version" ]; then
+              echo "🔄 ${component}_VERSION: $old_version → $new_version"
+              echo "- **${repo_name}** → [v$new_version](${repo_url})" >> ${addon}/bot_changelog.md
             fi
           }
 
           for key in SEAT SKODA VW TRONITY MQTT MQTTHA CC WEBUI; do
-            compare_versions "${key}"
+            compare_versions "${key}" "${{ matrix.addon }}"
           done
 
       - name: Update build.yaml
@@ -100,82 +88,70 @@ jobs:
           echo "Updating build.yaml with new versions"
           
           # Iterate through a list of components and update their versions in build.yaml
-          for key in SEAT SKODA VW TRONITY MQTT MQTTHA CC WEBUI; do
-            new_version="LATEST_${key}_VERSION"
-            
-            # Use sed to replace the existing version with the latest version dynamically
-            sed -i "s/${key}_VERSION: .*/${key}_VERSION: \"${!new_version}\"/" build.yaml
+          for component in SEAT SKODA VW TRONITY MQTT MQTTHA CC WEBUI; do
+            new_version_var="LATEST_${component}_VERSION_${{ matrix.addon }}"
+            new_version=$(printenv $new_version_var)
+
+            sed -i "s/${component}_VERSION: .*/${component}_VERSION: \"$new_version\"/" ${{ matrix.addon }}/build.yaml
           done
       
           # Check if build.yaml has changed after updates
-          if git diff --quiet build.yaml; then
+          if git diff --quiet ${{ matrix.addon }}/build.yaml; then
             echo "No update needed."
             echo "CHANGES=false" >> $GITHUB_ENV
           else
             echo "Changes detected."
             echo "CHANGES=true" >> $GITHUB_ENV
-          fi
-        
-      - name: Increment version
+          fi || true # Prevent exit failure
+
+      - name: Increment version ${{ matrix.addon }}
         if: env.CHANGES == 'true'
         run: |
           # Extract current version from config.yaml
-          version=$(grep 'version:' config.yaml | awk '{print $2}')
-      
-          # Split version into an array (e.g., 1.2.3 -> [1, 2, 3])
-          IFS='.' read -r -a parts <<< "$version"
-      
+          version=$(grep -E '^version:' "carconnectivity-addon-edge/config.yaml" | awk '{print $2}' | sed 's/"//g')
+          # Split the version into parts (x.y.z)
+          IFS='.' read -r major minor patch <<< "$version"
           # Increment the patch version (last number)
-          parts[2]=$((parts[2] + 1))
-      
-          # Reconstruct the new version string
-          new_version="${parts[0]}.${parts[1]}.${parts[2]}"
-      
+          patch=$((patch + 1))
+          # Construct the new version string
+          new_version="${major}.${minor}.${patch}"
           # Update the version in config.yaml
-          sed -i "s/version: .*/version: $new_version/" config.yaml
-      
-          # Append build/fixes section to the changelog
-          echo "### 🛠️ Fixes & Updates" > build_changelog.md
-          cat bot_changelog.md >> build_changelog.md
-          rm bot_changelog.md
-          echo -e "\n --- \n" >> build_changelog.md
-          cat CHANGELOG.md >> build_changelog.md
-          mv build_changelog.md CHANGELOG.md
-      
-          # Append new features section to the changelog (if exists)
-          if [ -f next_changelog.md ]; then
-            echo "### 🚀 New Features" > header_changelog.md
-            cat next_changelog.md >> header_changelog.md
-            rm next_changelog.md
-            cat CHANGELOG.md >> header_changelog.md
-            mv header_changelog.md CHANGELOG.md
-          fi
-      
-          # Append the new version header section to the changelog
-          echo -e "## $new_version\n" > version_CHANGELOG.md
-          cat CHANGELOG.md >> version_CHANGELOG.md
-          mv version_CHANGELOG.md CHANGELOG.md
-      
-          git add config.yaml CHANGELOG.md
-          git commit -m "Increment version and build version to $new_version"
-          git push
+          sed -i "s/^version: .*/version: $new_version/" "${{ matrix.addon }}/config.yaml"
+          echo "Version updated: $version -> $new_version"
 
-      - name: Commit and push changes on the Current Branch
+          # Append the new version header section to the changelog
+          cp ${{ matrix.addon }}/CHANGELOG.md ${{ matrix.addon }}/old_CHANGELOG.md
+          echo -e "## $new_version\n" > ${{ matrix.addon }}/CHANGELOG.md
+
+          # Append new features section to the changelog (if exists)
+          if [ -f ${{ matrix.addon }}/next_CHANGELOG.md ]; then
+            echo "### 🚀 New Features" >> ${{ matrix.addon }}/CHANGELOG.md
+            cat ${{ matrix.addon }}/next_CHANGELOG.md >> ${{ matrix.addon }}/CHANGELOG.md
+            > ${{ matrix.addon }}/next_CHANGELOG.md
+          fi
+
+          # Append build/fixes section to the changelog
+          echo -e "\n### 🛠️ Fixes & Updates\n" >> ${{ matrix.addon }}/CHANGELOG.md
+          cat ${{ matrix.addon }}/bot_changelog.md >> ${{ matrix.addon }}/CHANGELOG.md
+          echo -e "\n --- \n" >> ${{ matrix.addon }}/CHANGELOG.md
+          rm ${{ matrix.addon }}/bot_changelog.md
+
+          # Append previous changelog
+          cat ${{ matrix.addon }}/old_CHANGELOG.md >> ${{ matrix.addon }}/CHANGELOG.md
+          rm ${{ matrix.addon }}/old_CHANGELOG.md
+
+      - name: Commit and push changes on the Current Branch ${{ matrix.addon }}
         if: env.CHANGES == 'true'
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
-
-          CURRENT_BRANCH=$(echo "${{ github.ref }}" | sed 's|refs/heads/||')
-          echo "Committing changes on branch: $CURRENT_BRANCH"
-
-          git add build.yaml
-          git add CHANGELOG.md
-          git commit -m "Update build.yaml with latest submodule versions"
-          git push origin "$CURRENT_BRANCH"
+          git pull
+          git add .
+          git diff --cached --quiet || git commit -m "Update build.yaml with latest submodule versions"
+          git push
 
       - name: Create Pull Request
-        if:  env.CHANGES == 'true'
+        if: env.CHANGES == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -184,5 +160,9 @@ jobs:
           title: "Update Submodule Versions"
           body: |
             Automatically generated by GitHub Actions.
+            for component in SEAT SKODA VW TRONITY MQTT MQTTHA CC WEBUI; do
+              new_version_var="LATEST_${component}_VERSION_${{ matrix.addon }}"
+              new_version=$(printenv $new_version_var)
 
-            $(for key in SEAT SKODA VW TRONITY MQTT MQTTHA CC WEBUI; do echo "- **${key}_VERSION** → `${!key}`"; done)
+              echo "- **${key}_VERSION** → $(printenv $new_version_var)"; 
+            done)

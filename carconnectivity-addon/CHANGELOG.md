@@ -1,3 +1,17 @@
+## 0.1.7
+
+### 🚀 New Features
+- **Version available as docker images hosted on dockerhub**
+- **Rework support for multiple cars 🚗🚙. You should now be able to have 2 cars at the same time, whatever the brand is.
+⚠️ You will need to reconfigure the addon
+- 2 versions available : stable and edge
+- **MQTT port available in config**
+
+### 🛠️ Fixes & Updates
+- **CarConnectivity-connector-tronity** → [v0.3a2](https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git)
+
+ --- 
+
 ## 0.1.6
 
 ### 🛠️ Fixes & Updates

@@ -1,0 +1,59 @@
+configuration:
+  connector_type_brand1:
+    name: "Manufacturer brand for the 1st car"
+    description: "Allows exploiting specific options related to the brand."
+  connector_username_brand1:
+    name: "Username for the 1st car"
+    description: "Enter the email address used to log in to the service for the 1st car. Leave the value empty if you do not wish to use this connector."
+  connector_password_brand1:
+    name: "Password for the 1st car"
+    description: "Enter the password for your account for the 1st car."
+  connector_spin_brand1:
+    name: "PIN code for the 1st car"
+    description: "Enter the 4-digit PIN code used for remote access for the 1st car."
+  connector_interval_brand1:
+    name: "Refresh interval for the 1st car"
+    description: "Enter the interval in seconds between two information retrievals for the 1st car. Be aware that API calls are subject to a quota. Once the quota is exceeded, the API will be non-functional for a given period."
+
+  connector_type_brand2:
+    name: "Manufacturer brand for the 2nd car"
+    description: "Allows exploiting specific options related to the brand."
+  connector_username_brand2:
+    name: "Username for the 2nd car"
+    description: "Enter the email address used to log in to the service for the 2nd car. Leave the value empty if you do not wish to use this connector."
+  connector_password_brand2:
+    name: "Password for the 2nd car"
+    description: "Enter the password for your account for the 2nd car."
+  connector_spin_brand2:
+    name: "PIN code for the 2nd car"
+    description: "Enter the 4-digit PIN code used for remote access for the 2nd car."
+  connector_interval_brand2:
+    name: "Refresh interval for the 2nd car"
+    description: "Enter the interval in seconds between two information retrievals for the 2nd car. Be aware that API calls are subject to a quota. Once the quota is exceeded, the API will be non-functional for a given period."
+
+  mqtt_username:
+    name: "MQTT Username"
+    description: "Enter the username for connecting to the MQTT broker."
+  mqtt_password:
+    name: "MQTT Password"
+    description: "Enter the password for connecting to the MQTT broker."
+  mqtt_broker:
+    name: "MQTT Broker Address"
+    description: "Enter the IP address or domain name of the MQTT server."
+  mqtt_port:
+    name: "MQTT Broker port"
+    description: "Enter the port number of the MQTT server."
+  log_level:
+    name: "Log Level"
+    description: "Select the desired log level (info, warning, error, debug)."
+
+  connector_username_webui:
+    name: "WebUI administrator name"
+    description: "Administrator name for access to Carconnectivity WebUI"
+  connector_password_webui:
+    name: "WebUI password"
+    description: "Password for access to Carconnectivity WebUI"
+
+  api_log_level:
+    name: "Logging level for api"
+    description: "Select the desired logging level (info, warning, error, debug)."

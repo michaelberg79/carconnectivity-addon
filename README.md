@@ -18,6 +18,7 @@
 # CarConnectivity-Addon Configuration Guide
 
 ## Introduction
+
 The **CarConnectivity-Addon** module allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services. This guide explains how to properly configure the module.
 I am simply packaging the [excellent work done by Till.](https://github.com/tillsteinbach/CarConnectivity)
 
