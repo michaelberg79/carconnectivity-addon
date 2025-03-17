@@ -6,6 +6,8 @@
 The **CarConnectivity-Addon** module allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services. This guide explains how to properly configure the module.
 I am simply packaging the [excellent work done by Till.](https://github.com/tillsteinbach/CarConnectivity)
 
+His work is also available as docker images. So if you're using Home Assistant as a stand-alone docker, you can directly use it too.
+
 ## Add repository
 
 [![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
