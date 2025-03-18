@@ -4,7 +4,7 @@ configuration:
     description: "Permet d'exploiter les options spécifiques lies à la marque."
   connector_username_brand1:
     name: "Nom d'utilisateur pour la 1ère voiture"
-    description: "Entrez l'adresse e-mail utilisée pour vous connecter au service pour la 1ère voiture. Laissez la valeur vide si vous ne souhaitez pas utilise ce connecteur."
+    description: "Entrez l'adresse e-mail utilisée pour vous connecter au service pour la 1ère voiture."
   connector_password_brand1:
     name: "Mot de passe pour la 1ère voiture"
     description: "Entrez le mot de passe de votre compte pour la 1ère voiture"
@@ -20,7 +20,7 @@ configuration:
     description: "Permet d'exploiter les options spécifiques lies à la marque."
   connector_username_brand2:
     name: "Nom d'utilisateur pour la 2ème voiture"
-    description: "Entrez l'adresse e-mail utilisée pour vous connecter au service pour la 2ème voiture. Laissez la valeur vide si vous ne souhaitez pas utilise ce connecteur."
+    description: "Entrez l'adresse e-mail utilisée pour vous connecter au service pour la 2ème voiture. Laissez la valeur vide si vous ne souhaitez pas utiliser ce connecteur."
   connector_password_brand2:
     name: "Mot de passe pour la 2ème voiture"
     description: "Entrez le mot de passe de votre compte pour la 2ème voiture"

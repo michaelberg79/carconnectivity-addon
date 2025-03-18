@@ -4,7 +4,7 @@ configuration:
     description: "Ermöglicht die Nutzung spezifischer Optionen, die mit der Marke verbunden sind."
   connector_username_brand1:
     name: "Benutzername für das erste Auto"
-    description: "Geben Sie die E-Mail-Adresse ein, die Sie für die Anmeldung beim Dienst für das erste Auto verwenden. Lassen Sie das Feld leer, wenn Sie diesen Connector nicht verwenden möchten."
+    description: "Geben Sie die E-Mail-Adresse ein, die Sie für die Anmeldung beim Dienst für das erste Auto verwenden."
   connector_password_brand1:
     name: "Passwort für das erste Auto"
     description: "Geben Sie das Passwort für Ihr Konto für das erste Auto ein."

@@ -4,7 +4,7 @@ configuration:
     description: "Allows exploiting specific options related to the brand."
   connector_username_brand1:
     name: "Username for the 1st car"
-    description: "Enter the email address used to log in to the service for the 1st car. Leave the value empty if you do not wish to use this connector."
+    description: "Enter the email address used to log in to the service for the 1st car."
   connector_password_brand1:
     name: "Password for the 1st car"
     description: "Enter the password for your account for the 1st car."

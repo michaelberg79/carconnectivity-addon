@@ -4,7 +4,7 @@ configuration:
     description: "Consente di sfruttare opzioni specifiche legate al marchio."
   connector_username_brand1:
     name: "Nome utente per la prima auto"
-    description: "Inserisci l'indirizzo email utilizzato per accedere al servizio per la prima auto. Lascia il campo vuoto se non desideri utilizzare questo connettore."
+    description: "Inserisci l'indirizzo email utilizzato per accedere al servizio per la prima auto."
   connector_password_brand1:
     name: "Password per la prima auto"
     description: "Inserisci la password del tuo account per la prima auto."
