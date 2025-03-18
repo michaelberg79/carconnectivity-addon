@@ -13,10 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # Fetches the repository code
+        uses: actions/checkout@v4
+      
+      - name: Pull latest changes
+        run: |
+          git pull origin main
 
       - name: Sync files to main directory
         run: |
+          ls -la  # Debug: List repository contents before syncing
           # Sync files while deleting removed ones, ignore specified files, copy from edge to main directory
           rsync -av --delete \
             --exclude-from='./carconnectivity-addon-edge/.sync-exclude' \  
