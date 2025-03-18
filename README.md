@@ -47,16 +47,14 @@ If you own multiple vehicles from different brands, you can configure multiple s
 Each car manufacturer provides an online service that allows you to access your vehicle's data remotely. To connect, you need to provide your login credentials.
 
 #### Required Information:
+- **Brand**: The manufacturer’s brand.
 - **Username**: The email address used to log into the manufacturer’s service.
 - **Password**: The password for your manufacturer account.
 - **PIN Code**: A 4-digit code required for remote access to certain vehicle features.
 - **Refresh Interval**: Defines how often (in seconds) the vehicle's data is updated.
   - **Warning:** Setting a refresh rate too frequently may exceed the API request limits imposed by the manufacturer, resulting in temporary access restrictions.
 
-#### ⚠️ Special Case: Seat/Cupra Connector
-The **Seat/Cupra** connector includes an additional option:
-- **Manufacturer Brand**: Allows you to use brand-specific features.
-  - Select the corresponding brand (**Seat** or **Cupra**) to ensure proper data retrieval.
+⚠️ You can use 2 accounts for 2 different brands or 2 cars that are not linked to the same account.
 
 ### 3. MQTT Configuration (Mandatory)
 You need to use **MQTT** to send vehicle data to home assistant, configure these settings:
