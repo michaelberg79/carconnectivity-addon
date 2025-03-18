@@ -6,7 +6,7 @@ on:
       - 'carconnectivity-addon-edge/**'  # Trigger only when changes occur in this directory
     branches:
       - main  # Change this if your main branch has a different name
-    workflow_dispatch: # Allows manually triggering the action if needed
+  workflow_dispatch: # Allows manually triggering the action if needed
 
 jobs:
   sync-directories:
