@@ -1,0 +1,37 @@
+name: Sync Edge to Main
+
+on:
+  push:
+    paths:
+      - 'carconnectivity-addon-edge/**'  # Trigger only when changes occur in this directory
+    branches:
+      - main  # Change this if your main branch has a different name
+    workflow_dispatch: # Allows manually triggering the action if needed
+
+jobs:
+  sync-directories:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Fetches the repository code
+
+      - name: Sync files to main directory
+        run: |
+          # Sync files while deleting removed ones, ignore specified files, copy from edge to main directory
+          rsync -av --delete \
+            --exclude-from='carconnectivity-addon-edge/.sync-exclude' \  
+            carconnectivity-addon-edge/ carconnectivity-addon/  
+
+      - name: Commit changes if any
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add carconnectivity-addon/
+          # Check if there are changes
+          if ! git diff --cached --quiet; then 
+            git commit -m "Sync from carconnectivity-addon-edge"
+            git push
+          else
+            echo "No changes to commit"
+          fi
