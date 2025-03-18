@@ -123,8 +123,8 @@ jobs:
           cp ${{ matrix.addon }}/CHANGELOG.md ${{ matrix.addon }}/old_CHANGELOG.md
           echo -e "## $new_version\n" > ${{ matrix.addon }}/CHANGELOG.md
 
-          # Append new features section to the changelog (if exists)
-          if [ -f ${{ matrix.addon }}/next_CHANGELOG.md ]; then
+          # Append new features section to the changelog (if exists and size > 0)
+          if [ -f ${{ matrix.addon }}/next_CHANGELOG.md ] && [ -s ${{ matrix.addon }}/next_CHANGELOG.md ]; then
             echo "### 🚀 New Features" >> ${{ matrix.addon }}/CHANGELOG.md
             cat ${{ matrix.addon }}/next_CHANGELOG.md >> ${{ matrix.addon }}/CHANGELOG.md
             > ${{ matrix.addon }}/next_CHANGELOG.md
