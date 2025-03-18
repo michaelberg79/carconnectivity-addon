@@ -1,7 +1,5 @@
 ## 0.1.8
 
-### 🚀 New Features
-
 ### 🛠️ Fixes & Updates
 
 - **CarConnectivity-connector-seatcupra** → [v0.2a4](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
