@@ -38,7 +38,7 @@ options:
   api_log_level: "info"
 schema:
   connector_type_brand1: list(seat|cupra|skoda|vw|trionity)
-  connector_username_brand1: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
+  connector_username_brand1: match(^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
   connector_password_brand1: password?
   connector_interval_brand1: int(60,3600)?
   connector_spin_brand1: match(^\d{4}$)?
