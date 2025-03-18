@@ -1,0 +1,1 @@
+- Update/fix translations,documentation and readme according to latest version
