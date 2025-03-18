@@ -1,5 +1,5 @@
 name: "CarConnectivity Addon edge"
-version: 0.1.7
+version: 0.1.8
 slug: "carconnectivity-addon-edge"
 description: "⚠️EDGE VERSION⚠️ Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT. ⚠️MAY BE INSTABLE⚠️ "
 image: "docker.io/pulpyyyy/carconnectivity-addon-edge-{arch}"
