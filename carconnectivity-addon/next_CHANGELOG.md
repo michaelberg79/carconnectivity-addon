@@ -1,0 +1,2 @@
+- The 1st car/account is required to get started
+- Update/fix translations,documentation and readme according to latest version

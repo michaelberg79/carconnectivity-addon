@@ -13,7 +13,7 @@ His work is also available as docker images. So if you're using Home Assistant a
 
 ## Add repository
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## General Configuration
 
@@ -21,7 +21,8 @@ Only fill in the settings for the brands of vehicles you own. **Leave all other 
 
 ### 1. Selecting Your Vehicle Brand
 Choose the manufacturer corresponding to your vehicle from the supported brands:
-- **Seat/Cupra**
+- **Seat**
+- **Cupra**
 - **Skoda**
 - **Volkswagen**
 - **Tronity**

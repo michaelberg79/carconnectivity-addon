@@ -131,10 +131,16 @@ jobs:
           fi
 
           # Append build/fixes section to the changelog
-          echo -e "\n### 🛠️ Fixes & Updates\n" >> ${{ matrix.addon }}/CHANGELOG.md
+          echo -e "\n### 🛠️ Fixes & Updates\n" >> ${{ matrix.addon }}/CHANGELOG.md  
           cat ${{ matrix.addon }}/bot_changelog.md >> ${{ matrix.addon }}/CHANGELOG.md
-          echo -e "\n --- \n" >> ${{ matrix.addon }}/CHANGELOG.md
           rm ${{ matrix.addon }}/bot_changelog.md
+
+          if [ -f ${{ matrix.addon }}/fix_CHANGELOG.md ] && [ -s ${{ matrix.addon }}/fix_CHANGELOG.md ]; then
+            cat ${{ matrix.addon }}/fix_CHANGELOG.md >> ${{ matrix.addon }}/CHANGELOG.md
+            > ${{ matrix.addon }}/fix_CHANGELOG.md
+          fi
+          echo -e "\n --- \n" >> ${{ matrix.addon }}/CHANGELOG.md
+
 
           # Append previous changelog
           cat ${{ matrix.addon }}/old_CHANGELOG.md >> ${{ matrix.addon }}/CHANGELOG.md
