@@ -23,7 +23,7 @@
 
 ### 🚀 New Features
 - **Version available as docker images hosted on dockerhub**
-- **Rework support for multiple cars 🚗🚙. You should now be able to have 2 cars at the same time, whatever the brand is.
+- **Rework support for multiple cars 🚗🚙. You should now be able to have 2 cars at the same time, whatever the brand is.**
 ⚠️ You will need to reconfigure the addon
 - 2 versions available : stable and edge
 - **MQTT port available in config**
