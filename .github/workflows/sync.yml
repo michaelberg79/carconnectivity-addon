@@ -20,7 +20,7 @@ jobs:
 
       - name: Sync files to main directory
         run: |
-          rsync -av --delete --exclude-from='carconnectivity-addon-edge/.sync-exclude' ./carconnectivity-addon-edge/* ./carconnectivity-addon/
+          rsync -av --delete --exclude-from='carconnectivity-addon-edge/.sync-exclude' ./carconnectivity-addon-edge/ ./carconnectivity-addon/
 
       - name: Commit changes if any
         run: |
