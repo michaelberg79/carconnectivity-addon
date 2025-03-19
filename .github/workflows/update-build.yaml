@@ -118,14 +118,19 @@ jobs:
           sed -i "s/^version: .*/version: $new_version/" "${{ matrix.addon }}/config.yaml"
           echo "Version updated: $version -> $new_version"
 
-          # Append the new version header section to the changelog
+          # Backup for later usage
           cp ${{ matrix.addon }}/CHANGELOG.md ${{ matrix.addon }}/old_CHANGELOG.md
+
+          # Append the new version header section to the changelog
           echo -e "## $new_version\n" > ${{ matrix.addon }}/CHANGELOG.md
 
-          # Append new features section to the changelog (if exists and size > 0)
           if [ -f ${{ matrix.addon }}/next_CHANGELOG.md ] && [ -s ${{ matrix.addon }}/next_CHANGELOG.md ]; then
             echo "### 🚀 New Features" >> ${{ matrix.addon }}/CHANGELOG.md
             cat ${{ matrix.addon }}/next_CHANGELOG.md >> ${{ matrix.addon }}/CHANGELOG.md
+            # append to main
+            if [ "${{ matrix.addon }}" = "carconnectivity-addon-edge" ]; then
+              cat ${{ matrix.addon }}/next_CHANGELOG.md >> carconnectivity-addon/next_CHANGELOG.md
+            fi
             > ${{ matrix.addon }}/next_CHANGELOG.md
           fi
 
@@ -136,6 +141,10 @@ jobs:
 
           if [ -f ${{ matrix.addon }}/fix_CHANGELOG.md ] && [ -s ${{ matrix.addon }}/fix_CHANGELOG.md ]; then
             cat ${{ matrix.addon }}/fix_CHANGELOG.md >> ${{ matrix.addon }}/CHANGELOG.md
+            # append to main
+            if [ "${{ matrix.addon }}" = "carconnectivity-addon-edge" ]; then
+              cat ${{ matrix.addon }}/fix_CHANGELOG.md >> carconnectivity-addon/fix_CHANGELOG.md
+            fi
             > ${{ matrix.addon }}/fix_CHANGELOG.md
           fi
           echo -e "\n --- \n" >> ${{ matrix.addon }}/CHANGELOG.md
