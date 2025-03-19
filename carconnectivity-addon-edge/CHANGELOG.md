@@ -1,3 +1,13 @@
+## 0.1.9
+
+### 🚀 New Features
+- The 1st car/account is required to get started
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.2a7](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+- Update/fix translations,documentation and readme according to latest version
+ --- 
+
 ## 0.1.8
 
 ### 🛠️ Fixes & Updates
