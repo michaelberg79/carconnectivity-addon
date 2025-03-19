@@ -18,13 +18,25 @@ jobs:
           fetch-depth: 0
           submodules: false
 
+      - name: List contents of the repository
+        run: |
+          echo "Listing contents of the repository:"
+          ls -la
+
+      - name: List contents of the source directory
+        run: |
+          echo "Listing contents of carconnectivity-addon-edge:"
+          ls -la carconnectivity-addon-edge
+
+      - name: List contents of the source directory
+        run: |
+          echo "Listing contents of carconnectivity-addon:"
+          ls -la carconnectivity-addon
+
       - name: Sync files to main directory
         run: |
-          ls -la  # Debug: List repository contents before syncing
-          # Sync files while deleting removed ones, ignore specified files, copy from edge to main directory
-          rsync -av --delete \
-            --exclude-from='carconnectivity-addon-edge/.sync-exclude' \  
-            carconnectivity-addon-edge/ carconnectivity-addon/  
+          ls -la
+          rsync -av --delete --exclude-from='carconnectivity-addon-edge/.sync-exclude' ./carconnectivity-addon-edge ./carconnectivity-addon
 
       - name: Commit changes if any
         run: |
