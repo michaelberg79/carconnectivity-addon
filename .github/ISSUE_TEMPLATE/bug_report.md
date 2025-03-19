@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: bug
+assignees: ''
+
+---
+
 ## Description
 
 Describe the issue or feature request in detail. Include any relevant information.
