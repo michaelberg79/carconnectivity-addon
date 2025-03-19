@@ -1,0 +1,59 @@
+configuration:
+  connector_type_brand1:
+    name: "Marca del produttore per la prima auto"
+    description: "Consente di sfruttare opzioni specifiche legate al marchio."
+  connector_username_brand1:
+    name: "Nome utente per la prima auto"
+    description: "Inserisci l'indirizzo email utilizzato per accedere al servizio per la prima auto."
+  connector_password_brand1:
+    name: "Password per la prima auto"
+    description: "Inserisci la password del tuo account per la prima auto."
+  connector_spin_brand1:
+    name: "Codice PIN per la prima auto"
+    description: "Inserisci il codice PIN a 4 cifre utilizzato per l'accesso remoto per la prima auto."
+  connector_interval_brand1:
+    name: "Intervallo di aggiornamento per la prima auto"
+    description: "Inserisci l'intervallo in secondi tra due recuperi di informazioni per la prima auto. Attenzione, le chiamate API sono soggette a una quota. Una volta superata la quota, l'API non sarà più funzionale per un periodo determinato."
+
+  connector_type_brand2:
+    name: "Marca del produttore per la seconda auto"
+    description: "Consente di sfruttare opzioni specifiche legate al marchio."
+  connector_username_brand2:
+    name: "Nome utente per la seconda auto"
+    description: "Inserisci l'indirizzo email utilizzato per accedere al servizio per la seconda auto. Lascia il campo vuoto se non desideri utilizzare questo connettore."
+  connector_password_brand2:
+    name: "Password per la seconda auto"
+    description: "Inserisci la password del tuo account per la seconda auto."
+  connector_spin_brand2:
+    name: "Codice PIN per la seconda auto"
+    description: "Inserisci il codice PIN a 4 cifre utilizzato per l'accesso remoto per la seconda auto."
+  connector_interval_brand2:
+    name: "Intervallo di aggiornamento per la seconda auto"
+    description: "Inserisci l'intervallo in secondi tra due recuperi di informazioni per la seconda auto. Attenzione, le chiamate API sono soggette a una quota. Una volta superata la quota, l'API non sarà più funzionale per un periodo determinato."
+
+  mqtt_username:
+    name: "Nome utente MQTT"
+    description: "Inserisci il nome utente per la connessione al broker MQTT."
+  mqtt_password:
+    name: "Password MQTT"
+    description: "Inserisci la password per la connessione al broker MQTT."
+  mqtt_broker:
+    name: "Indirizzo del broker MQTT"
+    description: "Inserisci l'indirizzo IP o il nome di dominio del server MQTT."
+  mqtt_port:
+    name: "Porta del broker MQTT"
+    description: "Inserisci il numero di porta del server MQTT."
+  log_level:
+    name: "Livello di log"
+    description: "Seleziona il livello di log desiderato (info, warning, error, debug)."
+
+  connector_username_webui:
+    name: "Nome amministratore WebUI"
+    description: "Nome dell'amministratore per l'accesso alla Carconnectivity WebUI"
+  connector_password_webui:
+    name: "Password WebUI"
+    description: "Password per l'accesso a Carconnectivity WebUI"
+
+  api_log_level:
+    name: "Livello di log per l'api"
+    description: "Selezionare il livello di log desiderato (info, warning, error, debug)"
