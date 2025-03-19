@@ -8,3 +8,5 @@ This is the EDGE VERSION. In other words, the latest features of Till's componen
 So, it's sometimes possible for everything to work well, but much more likely for many things to go wrong.
 
 ## [Refer to main doc for further details](https://github.com/Pulpyyyy/carconnectivity-addon/)
+
+## [Edge changelog](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md)
