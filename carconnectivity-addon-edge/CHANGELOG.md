@@ -1,3 +1,13 @@
+## 0.1.10
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-connector-seatcupra** → [v0.2a5](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.2a8](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+
+ --- 
+
 ## 0.1.9
 
 ### 🚀 New Features
