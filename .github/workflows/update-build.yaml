@@ -82,7 +82,7 @@ jobs:
 
             if [ -n "$old_version" ] && [ "$old_version" != "$new_version" ]; then
               echo "🔄 ${component}_VERSION: $old_version → $new_version"
-              echo "- **${repo_name}** → [v$new_version](${repo_url})" >> ${addon}/bot_changelog.md
+              echo "- **${repo_name}** → [$new_version](${repo_url})" >> ${addon}/bot_changelog.md
             fi
           }
 
