@@ -1,6 +1,10 @@
 name: Build and Push Docker Images
 
 on:
+  workflow_run:
+    workflows: ["Update build.yaml on new submodule release"]
+    types:
+      - completed
   push:
     tags:
       - '*'
