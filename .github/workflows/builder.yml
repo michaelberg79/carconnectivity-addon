@@ -9,7 +9,6 @@ on:
 env:
   REPOSITORY: pulpyyyy
   REGISTRY: docker.io
-  GIT_TAG_NAME: dev
   
 concurrency:
   group: ${{ github.ref }}
@@ -40,13 +39,31 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Check if Docker image exists
+        run: |
+          REPOSITORY="your-dockerhub-user/repository-name"
+          IMAGE="${REPOSITORY}/${{ matrix.addon }}-${{ matrix.arch }}"
+
+          TAG=$(grep -E '^version:' "${{ matrix.addon }}/config.yaml" | awk '{print $2}' | sed 's/"//g')
+
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://hub.docker.com/v2/repositories/$IMAGE/tags/$TAG")
+
+          if [ "$STATUS" -eq 404 ]; then
+            echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
+            echo "The image $IMAGE:$TAG does not exist on Docker Hub."
+          else
+            echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
+            echo "The image $IMAGE:$TAG exists on Docker Hub."
+          fi
           
-      - name: Publish ${{ matrix.architecture }} builder
-        uses: home-assistant/builder@2025.02.0
-        with:
-          args: |
-            --addon \
-            --${{ matrix.arch }} \
-            --docker-hub "${{ env.REGISTRY }}" \
-            --target /data/${{ matrix.addon }} \
-            --image "${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"
+      # - name: Publish ${{ matrix.architecture }} builder
+      #   if: env.IMAGE_EXISTS == 'false'
+      #   uses: home-assistant/builder@2025.02.0
+      #   with:
+      #     args: |
+      #       --addon \
+      #       --${{ matrix.arch }} \
+      #       --docker-hub "${{ env.REGISTRY }}" \
+      #       --target /data/${{ matrix.addon }} \
+      #       --image "${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"
