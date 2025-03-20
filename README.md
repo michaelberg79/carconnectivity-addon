@@ -55,7 +55,7 @@ Each car manufacturer provides an online service that allows you to access your 
 - **Refresh Interval**: Defines how often (in seconds) the vehicle's data is updated.
   - **Warning:** Setting a refresh rate too frequently may exceed the API request limits imposed by the manufacturer, resulting in temporary access restrictions.
 
-⚠️ You can use 2 accounts for 2 different brands or 2 cars that are not linked to the same account.
+⚠️ You can use 2 accounts for 2 different brands or 2 cars of a same brand that are not linked to the same account.
 
 ### 3. MQTT Configuration (Mandatory)
 You need to use **MQTT** to send vehicle data to home assistant, configure these settings:
