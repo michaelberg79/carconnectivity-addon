@@ -117,6 +117,7 @@ jobs:
           # Update the version in config.yaml
           sed -i "s/^version: .*/version: $new_version/" "${{ matrix.addon }}/config.yaml"
           echo "Version updated: $version -> $new_version"
+          echo "NEW_VERSION=$" >> $GITHUB_ENV
 
           # Backup for later usage
           cp ${{ matrix.addon }}/CHANGELOG.md ${{ matrix.addon }}/old_CHANGELOG.md
