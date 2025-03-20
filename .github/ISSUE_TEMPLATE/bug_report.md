@@ -29,7 +29,7 @@ Describe what actually happens.
 ## Environment
 Provide details about the environment where the issue occurs.
 - Home Assistant version : 
-- Addon Version (specify version number AND build type - normal or edge) : 
+- Addon version (specify version number AND build type - normal or edge, the latter is meaningless as it changes almost daily) :
 - Other relevant details : 
 
 ## Configuration
