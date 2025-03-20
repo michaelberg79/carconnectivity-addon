@@ -106,7 +106,7 @@ jobs:
       - name: Increment version ${{ matrix.addon }}
         if: env.CHANGES == 'true'
         run: |
-          # Extract current version from config.yaml
+          # Extract current version from config.yaml from edge, so it's sync when main is updated
           version=$(grep -E '^version:' "carconnectivity-addon-edge/config.yaml" | awk '{print $2}' | sed 's/"//g')
           # Split the version into parts (x.y.z)
           IFS='.' read -r major minor patch <<< "$version"
