@@ -7,6 +7,12 @@ assignees: ''
 
 ---
 
+## Environment
+Provide details about the environment where the issue occurs.
+- Home Assistant version : 
+- Addon version (specify version number AND build type - normal or edge, latest is meaningless as it changes almost daily) :
+- Other relevant details :
+  
 ## Description
 
 Describe the issue or feature request in detail. Include any relevant information.
@@ -25,12 +31,6 @@ Describe what you expected to happen.
 ## Actual Behavior
 
 Describe what actually happens.
-
-## Environment
-Provide details about the environment where the issue occurs.
-- Home Assistant version : 
-- Addon version (specify version number AND build type - normal or edge, latest is meaningless as it changes almost daily) :
-- Other relevant details : 
 
 ## Configuration
 
