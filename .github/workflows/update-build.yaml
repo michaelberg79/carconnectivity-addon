@@ -24,6 +24,7 @@ env:
 jobs:
   update-versions:
     runs-on: ubuntu-latest
+    max-parallel: 1
     strategy:
       matrix:
         addon: [carconnectivity-addon, carconnectivity-addon-edge]
