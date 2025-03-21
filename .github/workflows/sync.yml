@@ -1,5 +1,8 @@
 name: Sync Edge to Main
-
+permissions:
+  contents: write
+  pull-requests: write
+  
 on:
   push:
     paths:
