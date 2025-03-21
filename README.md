@@ -15,6 +15,11 @@
 
 # Home Assistant Add-on: CarConnectivity
 
+|         | Stable                                                                                                                         | Edge                                                                                                                                         |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version | ![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge) | ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge) |
+
+
 # CarConnectivity-Addon Configuration Guide
 
 ## Introduction
