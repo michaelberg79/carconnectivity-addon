@@ -47,6 +47,8 @@ LABEL \
     io.hass.description="${BUILD_DESCRIPTION}" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version=${BUILD_VERSION}
-
+    io.hass.version=${BUILD_VERSION} \
+    org.opencontainers.image.source="https://github.com/Pulpyyyy/carconnectivity-addon" \
+    org.opencontainers.image.description="The CarConnectivity-Addon module allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services."
+    
 ENTRYPOINT ["/bin/sh", "-c", "/tmp/entrypoint.sh"]
