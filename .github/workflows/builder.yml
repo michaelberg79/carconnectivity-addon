@@ -60,7 +60,7 @@ jobs:
           
       - name: Publish ${{ matrix.architecture }} builder
         if: env.IMAGE_EXISTS == 'false'
-        uses: home-assistant/builder@2025.02.0
+        uses: home-assistant/builder@2025.03.0
         with:
           args: |
             --addon \
