@@ -51,9 +51,8 @@ LABEL \
     org.opencontainers.image.source="${BUILD_SOURCE}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
     org.opencontainers.image.title="${BUILD_NAME}" \
-    org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
+    org.opencontainers.image.documentation="${BUILD_SOURCE}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
-    org.opencontainers.image.revision=${BUILD_REF} \
     org.opencontainers.image.version=${BUILD_VERSION}
     
 ENTRYPOINT ["/bin/sh", "-c", "/tmp/entrypoint.sh"]
