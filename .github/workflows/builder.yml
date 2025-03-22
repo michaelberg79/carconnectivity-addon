@@ -67,7 +67,6 @@ jobs:
         uses: home-assistant/builder@2025.03.0
         with:
           args: |
-            --cosign \
             --addon \
             --${{ matrix.arch }} \
             --docker-hub "${{ env.REGISTRY }}" \
