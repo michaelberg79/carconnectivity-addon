@@ -1,4 +1,24 @@
+![Supports aarch64 Architecture][aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
+![Supports armhf Architecture][armhf-shield]
+![Supports armv7 Architecture][armv7-shield]
+![Supports i386 Architecture][i386-shield]
+[![GitHub sourcecode](https://img.shields.io/badge/Source-GitHub-green)](https://github.com/Pulpyyyy/carconnectivity-addon/)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/releases/latest)
+[![GitHub issues](https://img.shields.io/github/issues/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/issues)
+
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
+[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
+[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
+[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+
 # Home Assistant Add-on: CarConnectivity
+
+|         | Stable                                                                                                                         | Edge                                                                                                                                         |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version | ![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge) | ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge) |
+
 
 # CarConnectivity-Addon Configuration Guide
 
@@ -33,16 +53,14 @@ If you own multiple vehicles from different brands, you can configure multiple s
 Each car manufacturer provides an online service that allows you to access your vehicle's data remotely. To connect, you need to provide your login credentials.
 
 #### Required Information:
+- **Brand**: The manufacturer’s brand.
 - **Username**: The email address used to log into the manufacturer’s service.
 - **Password**: The password for your manufacturer account.
 - **PIN Code**: A 4-digit code required for remote access to certain vehicle features.
 - **Refresh Interval**: Defines how often (in seconds) the vehicle's data is updated.
   - **Warning:** Setting a refresh rate too frequently may exceed the API request limits imposed by the manufacturer, resulting in temporary access restrictions.
 
-#### ⚠️ Special Case: Seat/Cupra Connector
-The **Seat/Cupra** connector includes an additional option:
-- **Manufacturer Brand**: Allows you to use brand-specific features.
-  - Select the corresponding brand (**Seat** or **Cupra**) to ensure proper data retrieval.
+⚠️ You can use 2 accounts for 2 different brands or 2 cars of a same brand that are not linked to the same account.
 
 ### 3. MQTT Configuration (Mandatory)
 You need to use **MQTT** to send vehicle data to home assistant, configure these settings:
