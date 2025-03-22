@@ -29,6 +29,7 @@ RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
     echo "VW_VERSION=${VW_VERSION}" >> versions.txt && \
     echo "TRONITY_VERSION=${TRONITY_VERSION}" >> versions.txt && \
+    echo "VOLVO_VERSION=${VOLVO_VERSION}" >> versions.txt && \
     echo "WEBUI_VERSION=${WEBUI_VERSION}" >> versions.txt && \
     echo "MQTT_VERSION=${MQTT_VERSION}" >> versions.txt && \
     echo "MQTTHA_VERSION=${MQTTHA_VERSION}" >> versions.txt && \

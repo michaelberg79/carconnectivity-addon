@@ -28,6 +28,10 @@ options:
   connector_password_brand2: "password"
   connector_spin_brand2: "1234"
   connector_interval_brand2: 600
+  connector_volvo_key_primary: ""
+  connector_volvo_key_secondary: ""
+  connector_volvo_token: ""
+  connector_volvo_interval: 600
   mqtt_username: "mqtt"
   mqtt_password: "passwordmqtt"
   mqtt_broker: "core-mosquitto.local.hass.io"
@@ -47,6 +51,10 @@ schema:
   connector_password_brand2: password?
   connector_interval_brand2: int(60,3600)?
   connector_spin_brand2: match(^\d{4}$)?
+  connector_volvo_key_primary: str?
+  connector_volvo_key_secondary: str?
+  connector_volvo_token: str?
+  connector_volvo_interval: int(60,3600)?
   mqtt_username: str?
   mqtt_password: password?
   mqtt_broker: str

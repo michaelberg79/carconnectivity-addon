@@ -5,8 +5,8 @@
 
 - Fix connector for volkswagen
 
- --- 
- 
+---
+
 ## 0.1.11
 
 ### 🚀 New Features
@@ -36,7 +36,7 @@
 ### 🛠️ Fixes & Updates
 - **CarConnectivity-connector-tronity** → [v0.3a2](https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git)
 
- --- 
+ ---
 
 ## 0.1.6
 
@@ -44,6 +44,7 @@
   - `CarConnectivity-connector-volkswagen` → [v0.4.2](https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen/releases)
 
 ---
+
 ## 0.1.5
 
 ### 🛠️ Fixes & Updates
@@ -57,7 +58,7 @@
 - Updated MQTT HA to Version 0.1.1
 
 ---
- 
+
 ## 0.1.3
 
 ### 🚀 New Features

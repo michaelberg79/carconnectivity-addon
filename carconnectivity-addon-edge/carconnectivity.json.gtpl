@@ -1,4 +1,4 @@
- {
+{
     "carConnectivity": {
         "log_level": "{{ .log_level }}",
         "connectors": [
@@ -40,6 +40,19 @@
                 }
             }
             {{- end }}
+            {{- if and .connector_volvo_key_primary .connector_type_brand1 }}
+            ,
+            {
+                "type": "volvo",
+                "config": {
+                    "key_primary": "{{ .connector_volvo_key_primary }}",
+                    "key_secondary": "{{ .connector_volvo_key_secondary }}",
+                    "token": "{{ .connector_volvo_token }}",
+                    "interval": {{ .connector_volvo_interval }},
+                    "api_log_level": "{{ .api_log_level }}"
+                }
+            }
+            {{- end }}
         ],
         "plugins": [
             {
@@ -55,7 +68,7 @@
             {
                 "type": "webui",
                 "config": {
-                    "username": "{{ .connector_username_webui }}", 
+                    "username": "{{ .connector_username_webui }}",
                     "password": "{{ .connector_password_webui }}",
                     "log_level": "{{ .log_level }}"
                 }
