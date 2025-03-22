@@ -65,7 +65,7 @@ jobs:
             echo "The image $IMAGE:$TAG exists on Docker Hub."
 
             # Fetch the tag details from Docker Hub and check if architecture exists
-            TAGARCH=$(curl -s "https://hub.docker.com/v2/repositories/$IMAGE/tags/$TAG" | grep $ARCH
+            TAGARCH=$(curl -s "https://hub.docker.com/v2/repositories/$IMAGE/tags/$TAG" | grep $ARCH)
 
             # Check if $TAGARCH is empty or if the requested architecture exists
             if [ -z "$TAGARCH" ]; then
