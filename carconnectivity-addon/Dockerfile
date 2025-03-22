@@ -51,7 +51,6 @@ LABEL \
     org.opencontainers.image.source="${BUILD_SOURCE}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
     org.opencontainers.image.title="${BUILD_NAME}" \
-    org.opencontainers.image.documentation="${BUILD_SOURCE}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
     org.opencontainers.image.version=${BUILD_VERSION}
     
