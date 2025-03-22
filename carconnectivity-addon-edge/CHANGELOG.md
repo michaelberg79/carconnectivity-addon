@@ -1,3 +1,12 @@
+## 0.1.12
+
+
+### 🛠️ Fixes & Updates
+
+- Fix connector for volkswagen
+
+ --- 
+ 
 ## 0.1.11
 
 
