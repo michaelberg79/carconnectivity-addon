@@ -62,7 +62,7 @@ jobs:
             echo "The image $IMAGE:$TAG exists on Docker Hub."
           fi
           
-      - name: Publish ${{ matrix.architecture }} builder
+      - name: Publish ${{ matrix.arch }} builder
         if: env.IMAGE_EXISTS == 'false'
         uses: home-assistant/builder@2025.03.0
         with:
@@ -71,4 +71,4 @@ jobs:
             --${{ matrix.arch }} \
             --docker-hub "${{ env.REGISTRY }}" \
             --target /data/${{ matrix.addon }} \
-            --image "${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"
+            --image "${{ env.REPOSITORY }}/${{ matrix.addon }}"
