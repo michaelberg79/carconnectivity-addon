@@ -46,6 +46,7 @@ Choose the manufacturer corresponding to your vehicle from the supported brands:
 - **Skoda**
 - **Volkswagen**
 - **Tronity**
+- **Volvo**
 
 If you own multiple vehicles from different brands, you can configure multiple sections.
 
@@ -53,6 +54,7 @@ If you own multiple vehicles from different brands, you can configure multiple s
 Each car manufacturer provides an online service that allows you to access your vehicle's data remotely. To connect, you need to provide your login credentials.
 
 #### Required Information:
+For Seat, Cupra, Skoda, Volkswagen and Tronity:
 - **Brand**: The manufacturer’s brand.
 - **Username**: The email address used to log into the manufacturer’s service.
 - **Password**: The password for your manufacturer account.
@@ -62,6 +64,13 @@ Each car manufacturer provides an online service that allows you to access your 
 
 ⚠️ You can use 2 accounts for 2 different brands or 2 cars of a same brand that are not linked to the same account.
 
+For volvo:
+- **API Key primary**: Volvo API primary key.
+- **API Key secondary**: Volvo API secondary key.
+- **Vehicule Token**: Access token for the vehicule.
+- **Refresh Interval**: Defines how often (in seconds) the vehicle's data is updated.
+  - **Warning:** Setting a refresh rate too frequently may exceed the API request limits imposed by the manufacturer, resulting in temporary access restrictions.
+  
 ### 3. MQTT Configuration (Mandatory)
 You need to use **MQTT** to send vehicle data to home assistant, configure these settings:
 - **Username**: MQTT broker login
