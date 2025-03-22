@@ -50,8 +50,11 @@ jobs:
 
       - name: Check if Docker image exists
         run: |
-          IMAGE="${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"
-          TAG=$(grep -E '^version:' "${{ matrix.addon }}/config.yaml" | awk '{print $2}' | sed 's/"//g')
+          IMAGE="${{ env.REPOSITORY }}/${{ matrix.addon }}"
+          TAG=$(grep -E '^version:' "${{ matrix.addon }}/config.yaml" | awk '{print $2}' | tr -d '"')
+          ARCH="${{ matrix.arch }}"  # The architecture we are checking for
+
+          # Check if the image with the specified tag exists on Docker Hub
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://hub.docker.com/v2/repositories/$IMAGE/tags/$TAG")
 
           if [ "$STATUS" -eq 404 ]; then
@@ -60,8 +63,20 @@ jobs:
           else
             echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
             echo "The image $IMAGE:$TAG exists on Docker Hub."
+
+            # Fetch the tag details from Docker Hub and check if architecture exists
+            TAGARCH=$(curl -s "https://hub.docker.com/v2/repositories/$IMAGE/tags/$TAG" | grep $ARCH
+
+            # Check if $TAGARCH is empty or if the requested architecture exists
+            if [ -z "$TAGARCH" ]; then
+              echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
+              echo "No architecture $ARCH available for $IMAGE:$TAG."
+            else
+              echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
+              echo "The image $IMAGE:$TAG exists for architecture $ARCH."
+            fi
           fi
-          
+
       - name: Publish ${{ matrix.arch }} builder
         if: env.IMAGE_EXISTS == 'false'
         uses: home-assistant/builder@2025.03.0
