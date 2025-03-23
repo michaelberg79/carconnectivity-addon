@@ -96,9 +96,9 @@ jobs:
             IMAGES="$IMAGES ${{ env.REPOSITORY }}/${{ matrix.addon }}-$ARCH"
           done
 
-          docker manifest create "${{ env.REPOSITORY }}/${{ matrix.addon }}:latest" "$IMAGES"
-          docker manifest push "${{ env.REPOSITORY }}/${{ matrix.addon }}:latest"
-          docker manifest create "${{ env.REPOSITORY }}/${{ matrix.addon }}:${{ env.VERSION }}" "$IMAGES"
-          docker manifest push "${{ env.REPOSITORY }}/${{ matrix.addon }}:${{ env.VERSION }}"
+          docker manifest create ${{ env.REPOSITORY }}/${{ matrix.addon }}:latest $IMAGES
+          docker manifest push ${{ env.REPOSITORY }}/${{ matrix.addon }}:latest
+          docker manifest create ${{ env.REPOSITORY }}/${{ matrix.addon }}:${{ env.VERSION }} $IMAGES
+          docker manifest push ${{ env.REPOSITORY }}/${{ matrix.addon }}:${{ env.VERSION }}
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
