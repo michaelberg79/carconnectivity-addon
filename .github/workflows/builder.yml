@@ -51,15 +51,15 @@ jobs:
       - name: Check if Docker image exists
         run: |
           IMAGE="${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"
-          TAG=$(grep -E '^version:' "${{ matrix.addon }}/config.yaml" | awk '{print $2}' | sed 's/"//g')
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://hub.docker.com/v2/repositories/$IMAGE/tags/$TAG")
-
+          VERSION=$(grep -E '^version:' "${{ matrix.addon }}/config.yaml" | awk '{print $2}' | sed 's/"//g')
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://hub.docker.com/v2/repositories/$IMAGE/tags/$VERSION")
+          echo "VERSION=$" >> $GITHUB_ENV
           if [ "$STATUS" -eq 404 ]; then
             echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
-            echo "The image $IMAGE:$TAG does not exist on Docker Hub."
+            echo "The image $IMAGE:$VERSION does not exist on Docker Hub."
           else
             echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
-            echo "The image $IMAGE:$TAG exists on Docker Hub."
+            echo "The image $IMAGE:$VERSION exists on Docker Hub."
           fi
 
       - name: Publish ${{ matrix.arch }} builder
@@ -98,5 +98,7 @@ jobs:
 
           docker manifest create "${{ env.REPOSITORY }}/${{ matrix.addon }}:latest" $IMAGES
           docker manifest push "${{ env.REPOSITORY }}/${{ matrix.addon }}:latest"
+          docker manifest create "${{ env.REPOSITORY }}/${{ matrix.addon }}:${{ env.VERSION }}" $IMAGES
+          docker manifest push "${{ env.REPOSITORY }}/${{ matrix.addon }}:${{ env.VERSION }}"
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
