@@ -32,7 +32,6 @@ RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
     echo "WEBUI_VERSION=${WEBUI_VERSION}" >> versions.txt && \
     echo "MQTT_VERSION=${MQTT_VERSION}" >> versions.txt && \
     echo "MQTTHA_VERSION=${MQTTHA_VERSION}" >> versions.txt && \
-    echo "CC_VERSION=${CC_VERSION}" >> versions.txt && \
     chmod +x /tmp/entrypoint.sh && \
     touch /tmp/carconnectivity.token && \
     apk del build-base libffi-dev && \
