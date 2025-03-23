@@ -25,6 +25,3 @@
 [submodule "CarConnectivity"]
 	path = CarConnectivity
 	url = https://github.com/tillsteinbach/CarConnectivity
-[submodule "CarConnectivity-connector-volvo"]
-	path = CarConnectivity-connector-volvo
-	url = https://github.com/tillsteinbach/CarConnectivity-connector-volvo.git
