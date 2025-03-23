@@ -39,7 +39,7 @@ configuration:
     description: "La clé ressemble à ceci 'de0c63a885ffdac4ccc92d8744905611caf'"
   connector_volvo_token:
     name: "Token sépécifique à la voiture Volvo"
-    description: "La clé ressemble à ceci 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+    description: "La token ressemble à ceci 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
     name: "Intervalle de rafraîchissement pour la voiture Volvo"
     description: "Entrez l'intervalle en secondes entre deux récupérations des informations pour la 1ère voiture. Attention, les appels API sont soumis à un quota. Une fois le quota dépassé, l'API n'est plus fonctionnelle pendant une période donnée."

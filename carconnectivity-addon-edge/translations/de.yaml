@@ -39,7 +39,7 @@ configuration:
     description: "Der Schlüssel sieht so aus: 'de0c63a885ffdac4ccc92d8744905611caf'"
   connector_volvo_token:
     name: "Fahrzeugspezifisches Volvo-Token"
-    description: "Der Schlüssel sieht so aus: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+    description: "Der Token sieht wie folgt aus: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
     name: "Aktualisierungsintervall für das Volvo-Fahrzeug"
     description: "Geben Sie das Intervall in Sekunden zwischen zwei Abrufen der Informationen für das erste Fahrzeug ein. Achtung, API-Aufrufe unterliegen einem Kontingent. Sobald das Kontingent überschritten ist, funktioniert die API für einen bestimmten Zeitraum nicht mehr."

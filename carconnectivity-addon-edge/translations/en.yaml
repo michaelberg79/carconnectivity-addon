@@ -39,7 +39,7 @@ configuration:
     description: "The key looks like this 'de0c63a885ffdac4ccc92d8744905611caf'"
   connector_volvo_token:
     name: "Vehicle-specific Volvo token"
-    description: "The key looks like this 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+    description: "The token looks like this 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
     name: "Refresh interval for the Volvo car"
     description: "Enter the interval in seconds between two data retrievals for the first car. Be careful, API calls are subject to a quota. Once the quota is exceeded, the API will no longer function for a certain period of time."

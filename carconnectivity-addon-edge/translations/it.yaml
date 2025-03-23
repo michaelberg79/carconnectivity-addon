@@ -39,7 +39,7 @@ configuration:
     description: "La chiave ha questo aspetto 'de0c63a885ffdac4ccc92d8744905611caf'"
   connector_volvo_token:
     name: "Token specifico del veicolo Volvo"
-    description: "La chiave ha questo aspetto 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+    description: "La token ha questo aspetto 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
     name: "Intervallo di aggiornamento per l'auto Volvo"
     description: "Inserisci l'intervallo in secondi tra due recuperi di informazioni per la prima auto. Attenzione, le chiamate API sono soggette a un limite. Una volta superato il limite, l'API non sarà più funzionante per un determinato periodo di tempo."
