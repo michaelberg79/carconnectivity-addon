@@ -1,58 +1,26 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
-
-ARG SEAT_VERSION
-ARG SKODA_VERSION
-ARG VW_VERSION
-ARG TRONITY_VERSION
-ARG MQTT_VERSION
-ARG MQTTHA_VERSION
-ARG WEBUI_VERSION
-ARG CC_VERSION
-
-WORKDIR /tmp/
-ADD carconnectivity.json.gtpl .
-ADD entrypoint.sh .
-
-RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
-    python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install --upgrade pip --no-cache && \
-    /opt/venv/bin/pip install --no-cache carconnectivity-connector-seatcupra==${SEAT_VERSION} \
-        carconnectivity-connector-skoda==${SKODA_VERSION} \
-        carconnectivity==${CC_VERSION} \
-        carconnectivity-connector-volkswagen==${VW_VERSION} \
-        carconnectivity-connector-tronity==${TRONITY_VERSION} \
-        carconnectivity-plugin-webui==${WEBUI_VERSION} \
-        carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
-    echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" > versions.txt && \
-    echo "SEAT_VERSION=${SEAT_VERSION}" > versions.txt && \
-    echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
-    echo "VW_VERSION=${VW_VERSION}" >> versions.txt && \
-    echo "TRONITY_VERSION=${TRONITY_VERSION}" >> versions.txt && \
-    echo "VOLVO_VERSION=${VOLVO_VERSION}" >> versions.txt && \
-    echo "WEBUI_VERSION=${WEBUI_VERSION}" >> versions.txt && \
-    echo "MQTT_VERSION=${MQTT_VERSION}" >> versions.txt && \
-    echo "MQTTHA_VERSION=${MQTTHA_VERSION}" >> versions.txt && \
-    chmod +x /tmp/entrypoint.sh && \
-    touch /tmp/carconnectivity.token && \
-    apk del build-base libffi-dev && \
-    rm -rf /var/cache/apk/*
-
-ARG BUILD_ARCH
-ARG BUILD_DESCRIPTION
-ARG BUILD_NAME
-ARG BUILD_VERSION
-
-LABEL \
-    io.hass.name="${BUILD_NAME}" \
-    io.hass.description="${BUILD_DESCRIPTION}" \
-    io.hass.arch="${BUILD_ARCH}" \
-    io.hass.type="addon" \
-    io.hass.version=${BUILD_VERSION} \
-    org.opencontainers.image.source="${BUILD_SOURCE}" \
-    org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.title="${BUILD_NAME}" \
-    org.opencontainers.image.created=${BUILD_DATE} \
-    org.opencontainers.image.version=${BUILD_VERSION}
-    
-ENTRYPOINT ["/bin/sh", "-c", "/tmp/entrypoint.sh"]
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
+build_from:
+    aarch64: "ghcr.io/home-assistant/aarch64-base:3.21"
+    amd64: "ghcr.io/home-assistant/amd64-base:3.21"
+    armhf: "ghcr.io/home-assistant/armhf-base:3.21"
+    armv7: "ghcr.io/home-assistant/armv7-base:3.21"
+    i386: "ghcr.io/home-assistant/i386-base:3.21"
+  
+  labels:
+    org.opencontainers.image.title: "Home Assistant Add-on: CarConnectivity Edge"
+    org.opencontainers.image.description: "Addon version of Carconnectivity Edge made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT"
+    org.opencontainers.image.source: "https://github.com/Pulpyyyy/carconnectivity-addon"
+    org.opencontainers.image.licenses: "Apache License 2.0"
+  
+  args:
+    TEMPIO_VERSION: "2024.11.2"
+    SEAT_VERSION: "v0.2"
+    SKODA_VERSION: "v0.5"
+    VW_VERSION: "v0.5"
+    TRONITY_VERSION: "v0.4"
+    VOLVO_VERSION: "0.1a1"
+    MQTT_VERSION: "v0.5"
+    MQTTHA_VERSION: "v0.3a1"
+    WEBUI_VERSION: "v0.3.1"
+    CC_VERSION: "v0.6a1"
+  
