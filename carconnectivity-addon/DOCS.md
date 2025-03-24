@@ -46,6 +46,7 @@ Choose the manufacturer corresponding to your vehicle from the supported brands:
 - **Skoda**
 - **Volkswagen**
 - **Tronity**
+- **Volvo**
 
 If you own multiple vehicles from different brands, you can configure multiple sections.
 
