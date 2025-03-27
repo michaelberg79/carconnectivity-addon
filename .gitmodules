@@ -16,7 +16,7 @@
 [submodule "CarConnectivity-connector-volkswagen"]
 	path = CarConnectivity-connector-volkswagen
 	url = https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen
-[submodule "CarConnectivity-connector-volkswagen"]
+[submodule "CarConnectivity-connector-volvo"]
 	path = CarConnectivity-connector-volvo
 	url = https://github.com/tillsteinbach/CarConnectivity-connector-volvo
 [submodule "CarConnectivity-plugin-webui"]
