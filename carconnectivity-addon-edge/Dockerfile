@@ -33,7 +33,7 @@ RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
         carconnectivity-plugin-webui==${WEBUI_VERSION} \
         carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
     echo "ADDON=${BUILD_NAME} ${BUILD_VERSION}" > versions.txt && \
-    echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" > versions.txt && \
+    echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" >> versions.txt && \
     echo "SEAT_VERSION=${SEAT_VERSION}" >> versions.txt && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
     echo "VW_VERSION=${VW_VERSION}" >> versions.txt && \
