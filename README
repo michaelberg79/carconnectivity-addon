@@ -104,4 +104,4 @@ Define the amount of information recorded in logs:
 ---
 
 If you have any questions or encounter issues during configuration, refer to the module documentation.
-If you find a bug, please open an issue
+If you find a bug, please open an issue.
