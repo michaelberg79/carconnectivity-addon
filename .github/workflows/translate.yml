@@ -5,8 +5,9 @@ permissions:
   
 on:
     push:
-        branches: ['**']
-        workflow_dispatch: # Allows manually triggering the action if needed
+      paths:
+        - README
+      workflow_dispatch: # Allows manually triggering the action if needed
 
 jobs:
     translate:
