@@ -4,58 +4,69 @@ configuration:
     description: "Permite explorar opções específicas relacionadas à marca."
   connector_username_brand1:
     name: "Nome de usuário para o 1º carro"
-    description: "Digite o endereço de e-mail usado para fazer login no serviço para o 1º carro."
+    description: "Insira o endereço de e-mail usado para acessar o serviço do 1º carro."
   connector_password_brand1:
     name: "Senha para o 1º carro"
-    description: "Digite a senha da sua conta para o 1º carro."
+    description: "Insira a senha da sua conta para o 1º carro."
   connector_spin_brand1:
     name: "Código PIN para o 1º carro"
-    description: "Digite o código PIN de 4 dígitos usado para acesso remoto ao 1º carro."
+    description: "Insira o código PIN de 4 dígitos usado para acesso remoto ao 1º carro."
   connector_interval_brand1:
     name: "Intervalo de atualização para o 1º carro"
-    description: "Digite o intervalo em segundos entre duas recuperações de informações para o 1º carro. Esteja ciente de que as chamadas de API estão sujeitas a uma cota. Uma vez excedida, a API ficará inoperante por um determinado período."
+    description: "Insira o intervalo em segundos entre duas recuperações de informações para o 1º carro. Esteja ciente de que chamadas de API estão sujeitas a uma cota. Uma vez que a cota for excedida, a API ficará inoperante por um determinado período."
 
   connector_type_brand2:
     name: "Marca do fabricante para o 2º carro"
     description: "Permite explorar opções específicas relacionadas à marca."
   connector_username_brand2:
     name: "Nome de usuário para o 2º carro"
-    description: "Digite o endereço de e-mail usado para fazer login no serviço para o 2º carro. Deixe o valor vazio se não desejar usar este conector."
+    description: "Insira o endereço de e-mail usado para acessar o serviço do 2º carro. Deixe o valor vazio se não quiser usar este conector."
   connector_password_brand2:
     name: "Senha para o 2º carro"
-    description: "Digite a senha da sua conta para o 2º carro."
+    description: "Insira a senha da sua conta para o 2º carro."
   connector_spin_brand2:
     name: "Código PIN para o 2º carro"
-    description: "Digite o código PIN de 4 dígitos usado para acesso remoto ao 2º carro."
+    description: "Insira o código PIN de 4 dígitos usado para acesso remoto ao 2º carro."
   connector_interval_brand2:
     name: "Intervalo de atualização para o 2º carro"
-    description: "Digite o intervalo em segundos entre duas recuperações de informações para o 2º carro. Esteja ciente de que as chamadas de API estão sujeitas a uma cota. Uma vez excedida, a API ficará inoperante por um determinado período."
+    description: "Insira o intervalo em segundos entre duas recuperações de informações para o 2º carro. Esteja ciente de que chamadas de API estão sujeitas a uma cota. Uma vez que a cota for excedida, a API ficará inoperante por um determinado período."
 
   connector_volvo_key_primary:
     name: "Chave primária para APIs da Volvo"
-    description: "A chave tem este formato 'd64b33a7067a4c428def9474964'"
+    description: "A chave tem o seguinte formato: 'd64b33a7067a4c428def9474964'"
   connector_volvo_key_secondary:
     name: "Chave secundária para APIs da Volvo"
-    description: "A chave tem este formato 'de0c63a885ffdac4ccc92d8744905611caf'"
+    description: "A chave tem o seguinte formato: 'de0c63a885ffdac4ccc92d8744905611caf'"
   connector_volvo_token:
     name: "Token específico do veículo Volvo"
-    description: "O token tem este formato 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+    description: "O token tem o seguinte formato: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
     name: "Intervalo de atualização para o carro Volvo"
-    description: "Digite o intervalo em segundos entre duas recuperações de dados para o primeiro carro. Cuidado, as chamadas de API estão sujeitas a uma cota. Uma vez excedida, a API não funcionará por um determinado período de tempo."
+    description: "Insira o intervalo em segundos entre duas recuperações de dados para o primeiro carro. Atenção, chamadas de API estão sujeitas a uma cota. Uma vez que a cota for excedida, a API não funcionará por um determinado período."
 
   mqtt_username:
     name: "Nome de usuário MQTT"
-    description: "Digite o nome de usuário para se conectar ao broker MQTT."
+    description: "Insira o nome de usuário para conexão ao broker MQTT."
   mqtt_password:
     name: "Senha MQTT"
-    description: "Digite a senha para se conectar ao broker MQTT."
+    description: "Insira a senha para conexão ao broker MQTT."
   mqtt_broker:
     name: "Endereço do broker MQTT"
-    description: "Digite o endereço IP ou o nome de domínio do servidor MQTT."
+    description: "Insira o endereço IP ou o nome de domínio do servidor MQTT."
   mqtt_port:
     name: "Porta do broker MQTT"
-    description: "Digite o número da porta do servidor MQTT."
+    description: "Insira o número da porta do servidor MQTT."
   log_level:
     name: "Nível de log"
-    description: "Selecione
+    description: "Selecione o nível de log desejado (info, warning, error, debug)."
+
+  connector_username_webui:
+    name: "Nome do administrador WebUI"
+    description: "Nome do administrador para acesso à interface WebUI do Carconnectivity."
+  connector_password_webui:
+    name: "Senha do WebUI"
+    description: "Senha para acesso à interface WebUI do Carconnectivity."
+
+  api_log_level:
+    name: "Nível de log para API"
+    description: "Selecione o nível de log desejado (info, warning, error, debug)."
