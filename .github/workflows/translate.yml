@@ -21,9 +21,9 @@ jobs:
             - name: Auto Translate
               uses: Lin-jun-xiang/action-translate-readme@v2 # Based on the tag
               with:
-                token: ${{ secrets.ACTION_BOT }} # Based on step2 name
+                # token: ${{ secrets.ACTION_BOT }} # Based on step2 name
                 # zhipuai: ${{ secrets.zhipuai_api_key }} # Optional: Based on step3
-                # openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
+                openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
                 langs: "French,Italian,German,Spanish,Polish,Portuguese" # You can define any langs
 
             - name: Copy README to README.md
@@ -33,6 +33,6 @@ jobs:
               run: |
                 git config --global user.name "github-actions[bot]"
                 git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                git add README.md
+                git add README.*md
                 git commit -m "Automated: Copy README to README.md" || echo "No changes to commit"
                 git push
