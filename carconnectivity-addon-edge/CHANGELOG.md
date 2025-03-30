@@ -1,3 +1,13 @@
+## 0.1.13
+
+### 🚀 New Features
+- **Add Volvo cars support🚗🚙.**
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.3a2](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+
+ --- 
+
 ## 0.2.0
 
 ### 🚀 New Features
