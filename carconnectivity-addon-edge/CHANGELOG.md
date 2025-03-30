@@ -157,7 +157,7 @@
 ## 0.0.3
 
 ### 🛠️ Fixes & Updates
-- Fix Home Assistant versioning  
+- Fix Home Assistant versioning
 - Updated connectors and plugins:  
   - `CarConnectivity-connector-seatcupra` → [v0.1.1](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra/releases)
   - `CarConnectivity-plugin-mqtt` → [v0.4.2](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt/releases) 
