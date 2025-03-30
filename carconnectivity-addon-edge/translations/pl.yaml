@@ -1,0 +1,72 @@
+configuration:
+  connector_type_brand1:
+    name: "Marka producenta dla 1. samochodu"
+    description: "Pozwala na wykorzystanie specyficznych opcji związanych z marką."
+  connector_username_brand1:
+    name: "Nazwa użytkownika dla 1. samochodu"
+    description: "Wprowadź adres e-mail używany do logowania się do usługi dla 1. samochodu."
+  connector_password_brand1:
+    name: "Hasło dla 1. samochodu"
+    description: "Wprowadź hasło do swojego konta dla 1. samochodu."
+  connector_spin_brand1:
+    name: "Kod PIN dla 1. samochodu"
+    description: "Wprowadź 4-cyfrowy kod PIN używany do zdalnego dostępu do 1. samochodu."
+  connector_interval_brand1:
+    name: "Interwał odświeżania dla 1. samochodu"
+    description: "Wprowadź interwał w sekundach między dwoma pobraniami informacji dla 1. samochodu. Pamiętaj, że wywołania API są objęte limitem. Po jego przekroczeniu API przestanie działać przez określony czas."
+
+  connector_type_brand2:
+    name: "Marka producenta dla 2. samochodu"
+    description: "Pozwala na wykorzystanie specyficznych opcji związanych z marką."
+  connector_username_brand2:
+    name: "Nazwa użytkownika dla 2. samochodu"
+    description: "Wprowadź adres e-mail używany do logowania się do usługi dla 2. samochodu. Pozostaw wartość pustą, jeśli nie chcesz używać tego konektora."
+  connector_password_brand2:
+    name: "Hasło dla 2. samochodu"
+    description: "Wprowadź hasło do swojego konta dla 2. samochodu."
+  connector_spin_brand2:
+    name: "Kod PIN dla 2. samochodu"
+    description: "Wprowadź 4-cyfrowy kod PIN używany do zdalnego dostępu do 2. samochodu."
+  connector_interval_brand2:
+    name: "Interwał odświeżania dla 2. samochodu"
+    description: "Wprowadź interwał w sekundach między dwoma pobraniami informacji dla 2. samochodu. Pamiętaj, że wywołania API są objęte limitem. Po jego przekroczeniu API przestanie działać przez określony czas."
+
+  connector_volvo_key_primary:
+    name: "Klucz główny dla API Volvo"
+    description: "Klucz ma taki format 'd64b33a7067a4c428def9474964'"
+  connector_volvo_key_secondary:
+    name: "Klucz dodatkowy dla API Volvo"
+    description: "Klucz ma taki format 'de0c63a885ffdac4ccc92d8744905611caf'"
+  connector_volvo_token:
+    name: "Token specyficzny dla pojazdu Volvo"
+    description: "Token ma taki format 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_interval:
+    name: "Interwał odświeżania dla samochodu Volvo"
+    description: "Wprowadź interwał w sekundach między dwoma pobraniami danych dla pierwszego samochodu. Uwaga, wywołania API są objęte limitem. Po jego przekroczeniu API przestanie działać przez określony czas."
+
+  mqtt_username:
+    name: "Nazwa użytkownika MQTT"
+    description: "Wprowadź nazwę użytkownika do połączenia z brokerem MQTT."
+  mqtt_password:
+    name: "Hasło MQTT"
+    description: "Wprowadź hasło do połączenia z brokerem MQTT."
+  mqtt_broker:
+    name: "Adres brokera MQTT"
+    description: "Wprowadź adres IP lub nazwę domeny serwera MQTT."
+  mqtt_port:
+    name: "Port brokera MQTT"
+    description: "Wprowadź numer portu serwera MQTT."
+  log_level:
+    name: "Poziom logów"
+    description: "Wybierz pożądany poziom logów (info, warning, error, debug)."
+
+  connector_username_webui:
+    name: "Nazwa administratora WebUI"
+    description: "Nazwa administratora do dostępu do Carconnectivity WebUI."
+  connector_password_webui:
+    name: "Hasło WebUI"
+    description: "Hasło do dostępu do Carconnectivity WebUI."
+
+  api_log_level:
+    name: "Poziom logów API"
+    description: "Wybierz pożądany poziom logów (info, warning, error, debug)."

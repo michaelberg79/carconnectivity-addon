@@ -1,0 +1,72 @@
+configuration:
+  connector_type_brand1:
+    name: "Marca del fabricante para el 1º coche"
+    description: "Permite explotar opciones específicas relacionadas con la marca."
+  connector_username_brand1:
+    name: "Nombre de usuario para el 1º coche"
+    description: "Ingrese la dirección de correo electrónico utilizada para iniciar sesión en el servicio para el 1º coche."
+  connector_password_brand1:
+    name: "Contraseña para el 1º coche"
+    description: "Ingrese la contraseña de su cuenta para el 1º coche."
+  connector_spin_brand1:
+    name: "Código PIN para el 1º coche"
+    description: "Ingrese el código PIN de 4 dígitos utilizado para el acceso remoto al 1º coche."
+  connector_interval_brand1:
+    name: "Intervalo de actualización para el 1º coche"
+    description: "Ingrese el intervalo en segundos entre dos recuperaciones de información para el 1º coche. Tenga en cuenta que las llamadas a la API están sujetas a una cuota. Una vez superada, la API dejará de funcionar por un período determinado."
+
+  connector_type_brand2:
+    name: "Marca del fabricante para el 2º coche"
+    description: "Permite explotar opciones específicas relacionadas con la marca."
+  connector_username_brand2:
+    name: "Nombre de usuario para el 2º coche"
+    description: "Ingrese la dirección de correo electrónico utilizada para iniciar sesión en el servicio para el 2º coche. Deje el valor vacío si no desea usar este conector."
+  connector_password_brand2:
+    name: "Contraseña para el 2º coche"
+    description: "Ingrese la contraseña de su cuenta para el 2º coche."
+  connector_spin_brand2:
+    name: "Código PIN para el 2º coche"
+    description: "Ingrese el código PIN de 4 dígitos utilizado para el acceso remoto al 2º coche."
+  connector_interval_brand2:
+    name: "Intervalo de actualización para el 2º coche"
+    description: "Ingrese el intervalo en segundos entre dos recuperaciones de información para el 2º coche. Tenga en cuenta que las llamadas a la API están sujetas a una cuota. Una vez superada, la API dejará de funcionar por un período determinado."
+
+  connector_volvo_key_primary:
+    name: "Clave primaria para las API de Volvo"
+    description: "La clave tiene este formato 'd64b33a7067a4c428def9474964'"
+  connector_volvo_key_secondary:
+    name: "Clave secundaria para las API de Volvo"
+    description: "La clave tiene este formato 'de0c63a885ffdac4ccc92d8744905611caf'"
+  connector_volvo_token:
+    name: "Token específico del vehículo Volvo"
+    description: "El token tiene este formato 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_interval:
+    name: "Intervalo de actualización para el coche Volvo"
+    description: "Ingrese el intervalo en segundos entre dos recuperaciones de datos para el primer coche. Tenga cuidado, las llamadas a la API están sujetas a una cuota. Una vez superada, la API dejará de funcionar por un determinado período de tiempo."
+
+  mqtt_username:
+    name: "Nombre de usuario MQTT"
+    description: "Ingrese el nombre de usuario para conectarse al broker MQTT."
+  mqtt_password:
+    name: "Contraseña MQTT"
+    description: "Ingrese la contraseña para conectarse al broker MQTT."
+  mqtt_broker:
+    name: "Dirección del broker MQTT"
+    description: "Ingrese la dirección IP o el nombre de dominio del servidor MQTT."
+  mqtt_port:
+    name: "Puerto del broker MQTT"
+    description: "Ingrese el número de puerto del servidor MQTT."
+  log_level:
+    name: "Nivel de log"
+    description: "Seleccione el nivel de log deseado (info, warning, error, debug)."
+
+  connector_username_webui:
+    name: "Nombre del administrador WebUI"
+    description: "Nombre del administrador para acceder a Carconnectivity WebUI."
+  connector_password_webui:
+    name: "Contraseña del WebUI"
+    description: "Contraseña para acceder a Carconnectivity WebUI."
+
+  api_log_level:
+    name: "Nivel de log para la API"
+    description: "Seleccione el nivel de log deseado (info, warning, error, debug)."
