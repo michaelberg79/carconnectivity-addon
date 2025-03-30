@@ -4,10 +4,10 @@ permissions:
   pull-requests: write
   
 on:
-    push:
-      paths:
-        - README
-      workflow_dispatch: # Allows manually triggering the action if needed
+  push:
+    paths:
+      - README
+  workflow_dispatch: # Allows manually triggering the action if needed
 
 jobs:
     translate:
