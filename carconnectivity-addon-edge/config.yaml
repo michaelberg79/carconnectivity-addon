@@ -28,8 +28,8 @@ options:
   connector_password_brand2: "password"
   connector_spin_brand2: "1234"
   connector_interval_brand2: 600
-  mqtt_username: "mqtt"
-  mqtt_password: "passwordmqtt"
+  mqtt_username: ""
+  mqtt_password: ""
   mqtt_broker: "core-mosquitto.local.hass.io"
   mqtt_port: "1883"
   log_level: "info"
