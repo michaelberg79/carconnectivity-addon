@@ -1,1 +1,0 @@
-- Fix for empty user/password for MQTT

@@ -1,5 +1,5 @@
 name: "CarConnectivity Addon"
-version: 0.1.14
+version: 0.1.15
 slug: "carconnectivity-addon"
 description: "Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT"
 image: "docker.io/pulpyyyy/carconnectivity-addon-{arch}"
