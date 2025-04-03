@@ -1,4 +1,4 @@
-## 0.1.15
+## 0.1.14
 
 ### 🚀 New Features
 - Add translations for Polish, Spanish and Portuguese
