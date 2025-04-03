@@ -1,1 +1,0 @@
-- Add translations for Polish, Spanish and Portuguese

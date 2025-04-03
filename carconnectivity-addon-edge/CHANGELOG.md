@@ -1,3 +1,20 @@
+## 0.1.14
+
+### 🚀 New Features
+- Add translations for Polish, Spanish and Portuguese
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-connector-seatcupra** → [v0.3](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
+- **CarConnectivity-connector-skoda** → [v0.6](https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git)
+- **CarConnectivity-connector-volkswagen** → [v0.6](https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git)
+- **CarConnectivity-connector-tronity** → [v0.5](https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git)
+- **CarConnectivity-plugin-mqtt** → [v0.6](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git)
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.3](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+- **CarConnectivity** → [v0.6](https://github.com/tillsteinbach/CarConnectivity.git)
+- **CarConnectivity-plugin-webui** → [v0.4](https://github.com/tillsteinbach/CarConnectivity-plugin-webui.git)
+- Fix for empty user/password for MQTT
+ --- 
+
 ## 0.1.13
 
 ### 🚀 New Features
