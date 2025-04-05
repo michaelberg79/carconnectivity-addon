@@ -1,7 +1,27 @@
+## 0.2.0
+
+### 🚀 New Features
+- Add Expert Mode
+
+  Expert Mode enables the use of all native Carconnectivity functions, including those not available through the graphical interface—as long as the corresponding functions are supported by the add-on binaries.
+
+  ⚠️ Warning:
+  This mode disables all content validation and safety checks. As a result, even a small mistake (such as an invalid JSON syntax) can prevent the add-on from launching correctly.
+
+  Expert Mode is intended for advanced users only.
+  To use it safely, you must:
+
+  Be familiar with JSON syntax and structure.
+
+  Refer to the official Carconnectivity documentation for the list of supported functions and expected parameters.
+
+ --- 
+
 ## 0.1.14
 
 ### 🚀 New Features
 - Add translations for Polish, Spanish and Portuguese
+
 ### 🛠️ Fixes & Updates
 
 - **CarConnectivity-connector-seatcupra** → [v0.3](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
@@ -13,6 +33,7 @@
 - **CarConnectivity** → [v0.6](https://github.com/tillsteinbach/CarConnectivity.git)
 - **CarConnectivity-plugin-webui** → [v0.4](https://github.com/tillsteinbach/CarConnectivity-plugin-webui.git)
 - Fix for empty user/password for MQTT
+
  --- 
 
 ## 0.1.13
