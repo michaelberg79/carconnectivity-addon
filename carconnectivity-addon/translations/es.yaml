@@ -57,3 +57,6 @@ configuration:
   api_log_level:
     name: "Nivel de registro de la API"
     description: "Selecciona el nivel de registro deseado (info, warning, error, debug)."
+  expert:
+    name: "Activar el Modo Experto"
+    description: "El Modo Experto permite el uso de un archivo de configuración personalizado. Cuando este modo está activado, el usuario debe proporcionar un archivo /addon_config/carconnectivity.expert.json que contenga los ajustes deseados. Este reemplaza completamente la configuración de la interfaz gráfica, que estará disponible en /addon_config/carconnectivity.UI.json. Consulte la documentación de Carconnectivity para más detalles."

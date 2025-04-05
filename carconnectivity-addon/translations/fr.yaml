@@ -57,3 +57,6 @@ configuration:
   api_log_level:
     name: "Niveau de journalisation pour les api"
     description: "Sélectionnez le niveau de journalisation souhaité (info, warning, error, debug)."
+  expert:
+    name: "Activer le mode expert"
+    description: "Le Mode Expert permet d’utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur doit fournir un fichier /addon_config/carconnectivity.expert.json contenant les paramètres souhaités. Il remplace complétement la configuration issue de l'interface graphique, qui sera disponible dans /addon_config/carconnectivity.UI.json. Il faut se reférer à la documention de Carconnectivity"

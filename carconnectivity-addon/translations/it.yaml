@@ -57,3 +57,6 @@ configuration:
   api_log_level:
     name: "Livello di log per l'api"
     description: "Selezionare il livello di log desiderato (info, warning, error, debug)"
+  expert:
+    name: "Abilita la modalità esperto"
+    description: "La Modalità Esperto consente l'uso di un file di configurazione personalizzato. Quando questa modalità è attivata, l'utente deve fornire un file /addon_config/carconnectivity.expert.json contenente le impostazioni desiderate. Questo sostituisce completamente la configurazione dell'interfaccia grafica, che sarà disponibile in /addon_config/carconnectivity.UI.json. Si prega di fare riferimento alla documentazione di Carconnectivity per maggiori dettagli."
