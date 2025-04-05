@@ -36,6 +36,7 @@ options:
   connector_username_webui: "admin"
   connector_password_webui: "secret"
   api_log_level: "info"
+  expert: false
 schema:
   connector_type_brand1: list(seat|cupra|skoda|volkswagen|trionity)
   connector_username_brand1: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
@@ -55,3 +56,4 @@ schema:
   connector_username_webui: str
   connector_password_webui: password?
   api_log_level: list(info|warning|error|debug)
+  expert: bool

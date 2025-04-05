@@ -57,3 +57,6 @@ configuration:
   api_log_level:
     name: "Logging level for api"
     description: "Select the desired logging level (info, warning, error, debug)."
+  expert:
+    name: "Enable Expert Mode"
+    description: "Expert Mode allows the use of a custom configuration file. When this mode is enabled, the user must provide a /addon_config/carconnectivity.expert.json file containing the desired settings. It completely replaces the configuration from the graphical interface, which will be available in /addon_config/carconnectivity.UI.json. Refer to the Carconnectivity documentation for more details."
