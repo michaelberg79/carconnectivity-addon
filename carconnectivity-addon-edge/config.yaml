@@ -5,6 +5,8 @@ description: "⚠️EDGE VERSION⚠️ Addon version of Carconnectivity made by 
 image: "docker.io/pulpyyyy/carconnectivity-addon-edge-{arch}"
 panel_icon: "mdi:car-wireless"
 webui: "[PROTO:ssl]://[HOST]:[PORT:4000]"
+map:
+  - addon_config:rw
 arch:
   - aarch64
   - amd64
