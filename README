@@ -106,6 +106,8 @@ To use it safely, you must:
 
 Be familiar with JSON syntax and structure.
 
+The Expert Mode allows the use of a custom configuration file. When this mode is enabled, the user can provide a file named /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json containing the desired settings. This completely replaces the configuration from the graphical interface, which will be available in /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. The directory /addon_configs/1b1291d4_carconnectivity-addon/ may not appear in the Home Assistant file system. If this is the case, the supervisor should be restarted.
+
 Refer to the official Carconnectivity documentation for the list of supported functions and expected parameters.
 
 ## Best Practices

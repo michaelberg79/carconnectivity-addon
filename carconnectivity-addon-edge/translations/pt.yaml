@@ -59,4 +59,5 @@ configuration:
     description: "Selecione o nível de log desejado (info, warning, error, debug)."
   expert:
     name: "Ativar o modo experiente"
-    description: "O Modo Especialista permite o uso de um arquivo de configuração personalizado. Quando este modo está ativado, o usuário deve fornecer um arquivo /addon_config/carconnectivity.expert.json contendo as configurações desejadas. Ele substitui completamente a configuração da interface gráfica, que estará disponível em /addon_config/carconnectivity.UI.json. Consulte a documentação do Carconnectivity para mais detalhes."
+    description: "O Modo Especialista permite o uso de um arquivo de configuração personalizado. Quando este modo está ativado, o usuário pode fornecer um arquivo chamado /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json contendo as configurações desejadas. Isso substitui completamente a configuração da interface gráfica, que estará disponível em /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Recomenda-se consultar a documentação do Carconnectivity. O diretório /addon_configs/1b1291d4_carconnectivity-addon/ pode não aparecer no sistema de arquivos do Home Assistant. Se for o caso, é necessário reiniciar o supervisor."
+

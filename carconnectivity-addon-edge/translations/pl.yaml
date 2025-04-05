@@ -59,4 +59,5 @@ configuration:
     description: "Wybierz żądany poziom logowania (info, warning, error, debug)."
   expert:
     name: "Włącz tryb eksperta"
-    description: "Tryb ekspercki umożliwia użycie niestandardowego pliku konfiguracyjnego. Gdy ten tryb jest włączony, użytkownik musi dostarczyć plik /addon_config/carconnectivity.expert.json zawierający żądane ustawienia. Całkowicie zastępuje on konfigurację z interfejsu graficznego, która będzie dostępna w /addon_config/carconnectivity.UI.json. Proszę zapoznać się z dokumentacją Carconnectivity, aby uzyskać więcej informacji."
+    description: "Tryb ekspercki umożliwia korzystanie z własnego pliku konfiguracyjnego. Po włączeniu tego trybu użytkownik może dostarczyć plik o nazwie /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json zawierający żądane ustawienia. Plik ten całkowicie zastępuje konfigurację z interfejsu graficznego, która będzie dostępna w /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Zaleca się zapoznanie z dokumentacją Carconnectivity. Katalog /addon_configs/1b1291d4_carconnectivity-addon/ może nie być widoczny w systemie plików Home Assistant. W takim przypadku należy ponownie uruchomić supervisor."
+
