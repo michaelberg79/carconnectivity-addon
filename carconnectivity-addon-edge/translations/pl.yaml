@@ -1,35 +1,51 @@
 configuration:
   connector_type_brand1:
-    name: "Marka producenta dla pierwszego samochodu"
-    description: "Pozwala na wykorzystanie specyficznych opcji związanych z marką."
+    name: "Marka producenta dla 1. samochodu"
+    description: "Pozwala na wykorzystanie opcji specyficznych dla marki."
   connector_username_brand1:
-    name: "Nazwa użytkownika dla pierwszego samochodu"
-    description: "Wprowadź adres e-mail używany do logowania do usługi dla pierwszego samochodu."
+    name: "Nazwa użytkownika dla 1. samochodu"
+    description: "Wprowadź adres e-mail używany do logowania do usługi dla 1. samochodu."
   connector_password_brand1:
-    name: "Hasło dla pierwszego samochodu"
-    description: "Wprowadź hasło do swojego konta dla pierwszego samochodu."
+    name: "Hasło dla 1. samochodu"
+    description: "Wprowadź hasło do swojego konta dla 1. samochodu."
   connector_spin_brand1:
-    name: "Kod PIN dla pierwszego samochodu"
-    description: "Wprowadź 4-cyfrowy kod PIN używany do zdalnego dostępu do pierwszego samochodu."
+    name: "Kod PIN dla 1. samochodu"
+    description: "Wprowadź 4-cyfrowy kod PIN używany do zdalnego dostępu do 1. samochodu."
   connector_interval_brand1:
-    name: "Interwał odświeżania dla pierwszego samochodu"
-    description: "Wprowadź interwał w sekundach między dwoma pobraniami informacji dla pierwszego samochodu. Pamiętaj, że wywołania API podlegają limitowi. Po jego przekroczeniu API będzie niedostępne przez określony czas."
+    name: "Interwał odświeżania dla 1. samochodu"
+    description: "Wprowadź interwał w sekundach między dwoma pobieraniami informacji dla 1. samochodu. Uwaga, wywołania API podlegają limitowi. Po przekroczeniu limitu API przestanie działać przez pewien okres."
 
   connector_type_brand2:
-    name: "Marka producenta dla drugiego samochodu"
-    description: "Pozwala na wykorzystanie specyficznych opcji związanych z marką."
+    name: "Marka producenta dla 2. samochodu"
+    description: "Pozwala na wykorzystanie opcji specyficznych dla marki."
   connector_username_brand2:
-    name: "Nazwa użytkownika dla drugiego samochodu"
-    description: "Wprowadź adres e-mail używany do logowania do usługi dla drugiego samochodu. Pozostaw puste, jeśli nie chcesz korzystać z tego łącznika."
+    name: "Nazwa użytkownika dla 2. samochodu"
+    description: "Wprowadź adres e-mail używany do logowania do usługi dla 2. samochodu. Pozostaw puste, jeśli nie chcesz korzystać z tego łącznika."
   connector_password_brand2:
-    name: "Hasło dla drugiego samochodu"
-    description: "Wprowadź hasło do swojego konta dla drugiego samochodu."
+    name: "Hasło dla 2. samochodu"
+    description: "Wprowadź hasło do swojego konta dla 2. samochodu."
   connector_spin_brand2:
-    name: "Kod PIN dla drugiego samochodu"
-    description: "Wprowadź 4-cyfrowy kod PIN używany do zdalnego dostępu do drugiego samochodu."
+    name: "Kod PIN dla 2. samochodu"
+    description: "Wprowadź 4-cyfrowy kod PIN używany do zdalnego dostępu do 2. samochodu."
   connector_interval_brand2:
-    name: "Interwał odświeżania dla drugiego samochodu"
-    description: "Wprowadź interwał w sekundach między dwoma pobraniami informacji dla drugiego samochodu. Pamiętaj, że wywołania API podlegają limitowi. Po jego przekroczeniu API będzie niedostępne przez określony czas."
+    name: "Interwał odświeżania dla 2. samochodu"
+    description: "Wprowadź interwał w sekundach między dwoma pobieraniami informacji dla 2. samochodu. Uwaga, wywołania API podlegają limitowi. Po przekroczeniu limitu API przestanie działać przez pewien okres."
+
+  connector_volvo_key_primary:
+    name: "Główny klucz do API Volvo"
+    description: "Klucz wygląda tak: 'd64b33a7067a4c428def9474964'"
+  connector_volvo_key_secondary:
+    name: "Drugorzędny klucz do API Volvo"
+    description: "Klucz wygląda tak: 'de0c63a885ffdac4ccc92d8744905611caf'"
+  connected_volvo_vehicule_token:
+    name: "Token specyficzny dla pojazdu Volvo"
+    description: "Token wygląda tak: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_location_token:
+    name: "Token specyficzny dla lokalizacji"
+    description: "Token wygląda tak: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_interval:
+    name: "Interwał odświeżania dla pojazdu Volvo"
+    description: "Wprowadź interwał w sekundach między dwoma pobraniami danych dla pierwszego pojazdu. Pamiętaj, że wywołania API podlegają limitowi. Po przekroczeniu limitu API przestanie działać na określony czas."
 
   mqtt_username:
     name: "Nazwa użytkownika MQTT"
@@ -45,19 +61,18 @@ configuration:
     description: "Wprowadź numer portu serwera MQTT."
   log_level:
     name: "Poziom logowania"
-    description: "Wybierz żądany poziom logowania (info, warning, error, debug)."
+    description: "Wybierz żądany poziom logowania (info, ostrzeżenie, błąd, debug)."
 
   connector_username_webui:
     name: "Nazwa administratora WebUI"
-    description: "Nazwa administratora do dostępu do Carconnectivity WebUI."
+    description: "Nazwa administratora do dostępu do WebUI Carconnectivity"
   connector_password_webui:
     name: "Hasło WebUI"
-    description: "Hasło do dostępu do Carconnectivity WebUI."
+    description: "Hasło do dostępu do WebUI Carconnectivity"
 
   api_log_level:
-    name: "Poziom logowania API"
-    description: "Wybierz żądany poziom logowania (info, warning, error, debug)."
+    name: "Poziom logowania dla API"
+    description: "Wybierz żądany poziom logowania (info, ostrzeżenie, błąd, debug)."
   expert:
     name: "Włącz tryb eksperta"
-    description: "Tryb ekspercki umożliwia korzystanie z własnego pliku konfiguracyjnego. Po włączeniu tego trybu użytkownik może dostarczyć plik o nazwie /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json zawierający żądane ustawienia. Plik ten całkowicie zastępuje konfigurację z interfejsu graficznego, która będzie dostępna w /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Zaleca się zapoznanie z dokumentacją Carconnectivity. Katalog /addon_configs/1b1291d4_carconnectivity-addon/ może nie być widoczny w systemie plików Home Assistant. W takim przypadku należy ponownie uruchomić supervisor."
-
+    description: "Tryb eksperta pozwala na użycie niestandardowego pliku konfiguracyjnego. Gdy tryb ten jest włączony, użytkownik może dostarczyć plik o nazwie /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json zawierający żądane ustawienia. Zastępuje to całkowicie konfigurację z interfejsu graficznego, która będzie dostępna w /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Zapoznaj się z dokumentacją Carconnectivity. Katalog /addon_configs/1b1291d4_carconnectivity-addon/ może nie pojawić się w systemie plików Home Assistant. W takim przypadku należy ponownie uruchomić nadzorcę."
