@@ -1,102 +1,90 @@
-![Supports aarch64 Architecture][aarch64-shield]
-![Supports amd64 Architecture][amd64-shield]
-![Supports armhf Architecture][armhf-shield]
-![Supports armv7 Architecture][armv7-shield]
-![Supports i386 Architecture][i386-shield]
-[![GitHub sourcecode](https://img.shields.io/badge/Source-GitHub-green)](https://github.com/Pulpyyyy/carconnectivity-addon/)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/releases/latest)
-[![GitHub issues](https://img.shields.io/github/issues/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/issues)
+# Guida alla configurazione del CarConnectivity-Addon
 
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
-[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+## Introduzione
 
-# Home Assistant Add-on: CarConnectivity
+Il **modulo CarConnectivity-Addon** ti consente di connetterti e recuperare informazioni sul tuo veicolo dai servizi online dei produttori compatibili. Questa guida spiega come configurare correttamente il modulo.
+Sto semplicemente confezionando il [lavoro eccellente svolto da Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-|         | Stable                                                                                                                         | Edge                                                                                                                                         |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Version | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
+Il suo lavoro è disponibile anche come immagini docker. Quindi, se stai usando Home Assistant come docker autonomo, puoi usarlo direttamente.
 
-# Translated guides
+**⚠️Il progetto è ancora in fase di sviluppo, con l'ingegneria inversa dell'api da completare e la comunicazione con MQTT/Home assistant da adattare.⚠️**
 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.French.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Italian.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.German.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Spanish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Polish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Portuguese.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1280px-Flag_of_Portugal.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg" width="40" height="30"></a>
+## Aggiungi repository
 
+[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
+## Configurazione generale
 
-![Supports aarch64 Architecture][aarch64-shield]
-![Supports amd64 Architecture][amd64-shield]
-![Supports armhf Architecture][armhf-shield]
-![Supports armv7 Architecture][armv7-shield]
-![Supports i386 Architecture][i386-shield]
-[![GitHub sourcecode](https://img.shields.io/badge/Source-GitHub-green)](https://github.com/Pulpyyyy/carconnectivity-addon/)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/releases/latest)
-[![GitHub issues](https://img.shields.io/github/issues/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/issues)
+Compila solo le impostazioni per i marchi di veicoli di cui sei proprietario. **Lascia vuoti tutti gli altri campi.**
 
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
-[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+### 1. Selezionare il marchio del tuo veicolo
+Scegli il produttore corrispondente al tuo veicolo tra i marchi supportati:
+- **Seat**
+- **Cupra**
+- **Skoda**
+- **Volkswagen**
+- **Tronity**
+- **Volvo**
 
-# Home Assistant Add-on: CarConnectivity
+Se possiedi più veicoli di marchi diversi, puoi configurare più sezioni.
 
-|         | Stable                                                                                                                         | Edge                                                                                                                                         |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Version | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
+### 2. Connessione ai servizi online del produttore
+Ogni produttore di auto fornisce un servizio online che consente di accedere ai dati del tuo veicolo da remoto. Per connetterti, devi fornire le tue credenziali di accesso.
 
-# Translated guides
+#### Informazioni richieste:
+Per Seat, Cupra, Skoda, Volkswagen e Tronity:
+- **Marca**: Il marchio del produttore.
+- **Nome utente**: L'indirizzo email utilizzato per accedere al servizio del produttore.
+- **Password**: La password per il tuo account del produttore.
+- **Codice PIN**: Un codice a 4 cifre richiesto per l'accesso remoto a determinate funzionalità del veicolo.
+- **Intervallo di aggiornamento**: Definisce ogni quanto (in secondi) i dati del veicolo vengono aggiornati.
+  - **Attenzione:** Impostare un tasso di aggiornamento troppo frequente potrebbe superare i limiti di richiesta API imposti dal produttore, causando restrizioni temporanee all'accesso.
 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.French.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Italian.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.German.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Spanish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Polish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Portuguese.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1280px-Flag_of_Portugal.svg.png" width="40" height="30"></a> 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg" width="40" height="30"></a>
+⚠️ Puoi utilizzare 2 account per 2 marchi diversi o 2 auto dello stesso marchio che non sono collegate allo stesso account.
 
+Per volvo:
+- **API Key primary**: Chiave API primaria Volvo.
+- **API Key secondary**: Chiave API secondaria Volvo.
+- **Vehicule Token**: Token di accesso per il veicolo.
+- **Vehicule Location Token**: Token di accesso per l'endpoint della posizione.
+- **Intervallo di aggiornamento**: Definisce ogni quanto (in secondi) i dati del veicolo vengono aggiornati.
+  - **Attenzione:** Impostare un tasso di aggiornamento troppo frequente potrebbe superare i limiti di richiesta API imposti dal produttore, causando restrizioni temporanee all'accesso.
 
+### 3. Configurazione MQTT (Obbligatoria)
+Devi utilizzare **MQTT** per inviare i dati del veicolo a home assistant, configura queste impostazioni:
+- **Nome utente**: Login del broker MQTT
+- **Password**: Password del broker MQTT
+- **Broker Address**: IP o nome a dominio del server MQTT
 
-![Supporta architettura aarch64][aarch64-shield]  
-![Supporta architettura amd64][amd64-shield]  
-![Supporta architettura armhf][armhf-shield]  
-![Supporta architettura armv7][armv7-shield]  
-![Supporta architettura i386][i386-shield]  
-[![Codice sorgente GitHub](https://img.shields.io/badge/Source-GitHub-green)](https://github.com/Pulpyyyy/carconnectivity-addon/)  
-[![Rilascio GitHub (ultimo per data)](https://img.shields.io/github/v/release/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/releases/latest)  
-[![Problemi GitHub](https://img.shields.io/github/issues/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/issues)  
+⚠️ Se non stai già utilizzando MQTT su Home assistant, puoi aggiungere, ad esempio, [Mosquito addon E INTEGRAZIONE MQTT](https://www.home-assistant.io/integrations/mqtt) 
 
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg  
-[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg  
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg  
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg  
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg  
+### 4. WEBUI
+Puoi visitare http//x.x.x.x:4000 La WEBUI di Carconnectivity:
+- **Nome utente**: login
+- **Password**: password
+- **WEBUI Port**: 4000
 
-# Home Assistant Add-on: CarConnectivity  
+### 5. Livello di registrazione
+Definisci la quantità di informazioni registrate nei log:
+- **Info**: Mostra informazioni operative generali.
+- **Warning**: Mostra solo avvisi.
+- **Error**: Mostra solo messaggi di errore.
+- **Debug**: Mostra dettagli aggiuntivi utili per la risoluzione dei problemi.
 
-|         | Stabile                                                                                                                         | Edge                                                                                                                                         |  
-| ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |  
-| Version | [![Rilascio GitHub (ultimo per data)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Versione immagine Docker (ultimo semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |  
+### 6. Livello di registrazione API
+Definisci la quantità di informazioni registrate nei log:
+- **Info**: Mostra informazioni operative generali.
+- **Warning**: Mostra solo avvisi.
+- **Error**: Mostra solo messaggi di errore.
+- **Debug**: Mostra dettagli aggiuntivi utili per la risoluzione dei problemi.
 
-# Guide tradotte  
+## Migliori pratiche
+- **Compila solo le impostazioni per i marchi di veicoli di cui sei proprietario.**
+- **Non condividere le tue credenziali di accesso.**
+- **Regola l'intervallo di aggiornamento per evitare di superare i limiti di richiesta API. Ricorda che il limite sembra essere di circa 1000 req/giorno**
+- **Usa il livello di registrazione "Debug" solo quando risolvi problemi.**
 
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.French.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png" width="40" height="30"></a>  
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Italian.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png" width="40" height="30"></a>  
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.German.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png" width="40" height="30"></a>  
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Spanish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png" width="40" height="30"></a>  
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Polish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png" width="40" height="30"></a>  
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Portuguese.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1280px-Flag_of_Portugal.svg.png" width="40" height="30"></a>  
-<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg" width="40" height="30"></a>  
+---
 
-# Guida alla configurazione di CarConnectivity-Addon  
-
-## Introduzione  
-
-Il modulo **CarConnectivity-Addon** consente di connettersi e recuperare informazioni sul proprio veicolo dai servizi
+Se hai domande o incontri problemi durante la configurazione, fai riferimento alla documentazione del modulo.
+Se trovi un bug, ti preghiamo di aprire un problema.
