@@ -19,7 +19,7 @@ WORKDIR /tmp/
 ADD carconnectivity.json.gtpl .
 ADD entrypoint.sh .
 
-RUN echo "BUILD_VERSION=${BUILD_VERSION}" >> versions.txt && \
+RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
     apk add --no-cache python3 py3-pip build-base libffi-dev && \
     python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --upgrade pip --no-cache && \
