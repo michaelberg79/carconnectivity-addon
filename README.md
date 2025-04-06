@@ -95,6 +95,21 @@ Define the amount of information recorded in logs:
 - **Error**: Displays only error messages.
 - **Debug**: Displays additional details useful for troubleshooting.
 
+### 7. Expert Mode
+Expert Mode enables the use of all native Carconnectivity functions, including those not available through the graphical interface—as long as the corresponding functions are supported by the add-on binaries.
+
+⚠️ Warning:
+This mode disables all content validation and safety checks. As a result, even a small mistake (such as an invalid JSON syntax) can prevent the add-on from launching correctly.
+
+Expert Mode is intended for advanced users only.
+To use it safely, you must:
+
+Be familiar with JSON syntax and structure.
+
+The Expert Mode allows the use of a custom configuration file. When this mode is enabled, the user can provide a file named /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json containing the desired settings. This completely replaces the configuration from the graphical interface, which will be available in /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. The directory /addon_configs/1b1291d4_carconnectivity-addon/ may not appear in the Home Assistant file system. If this is the case, the supervisor should be restarted.
+
+Refer to the official Carconnectivity documentation for the list of supported functions and expected parameters.
+
 ## Best Practices
 - **Only fill in the settings for the vehicle brands you own.**
 - **Do not share your login credentials.**
@@ -104,4 +119,4 @@ Define the amount of information recorded in logs:
 ---
 
 If you have any questions or encounter issues during configuration, refer to the module documentation.
-If you find a bug, please open an issue
+If you find a bug, please open an issue.
