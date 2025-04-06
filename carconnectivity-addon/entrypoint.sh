@@ -15,7 +15,7 @@ term_handler() {
 trap 'term_handler' TERM
 cd /tmp
 
-echo -e "\n\n\n>>>>>>>>> STARTING\n"
+echo -e "\n\n\n>>>>>>>>> ⏳ STARTING ⏳\n"
 EXPERT_MODE=$(jq -r '.expert' /data/options.json 2>/dev/null)
 
 if [ "$EXPERT_MODE" = "true" ]; then
@@ -41,8 +41,9 @@ if [ "$EXPERT_MODE" = "true" ] && [ "$EXPERT_FILE" = "true" ] && [ "$EXPERT_SYNT
     echo "The expert configuration can apply. Let's use it"
 else
     echo "The configuration is being generated"
-    tempio -conf /data/options.json -template carconnectivity.json.gtpl -out /config/carconnectivity.UI.json
-    jq . /config/carconnectivity.UI.json > /config/carconnectivity.UI.json
+    tempio -conf /data/options.json -template carconnectivity.json.gtpl -out /tmp/carconnectivity.UI.json
+    # only for beautifier
+    jq . /tmp/carconnectivity.UI.json > /config/carconnectivity.UI.json
     ln -nfs /config/carconnectivity.UI.json /tmp/carconnectivity.json
 fi
 
