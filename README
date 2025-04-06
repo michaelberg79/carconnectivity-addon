@@ -68,6 +68,7 @@ For volvo:
 - **API Key primary**: Volvo API primary key.
 - **API Key secondary**: Volvo API secondary key.
 - **Vehicule Token**: Access token for the vehicule.
+- **Vehicule Location Token**: Access token for the location endpoint.
 - **Refresh Interval**: Defines how often (in seconds) the vehicle's data is updated.
   - **Warning:** Setting a refresh rate too frequently may exceed the API request limits imposed by the manufacturer, resulting in temporary access restrictions.
   

@@ -1,5 +1,10 @@
 ARG BUILD_FROM
-FROM ${BUILD_FROM}
+FROM $BUILD_FROM
+
+ARG BUILD_ARCH
+ARG BUILD_DESCRIPTION
+ARG BUILD_NAME
+ARG BUILD_VERSION
 
 ARG SEAT_VERSION
 ARG SKODA_VERSION
@@ -10,29 +15,23 @@ ARG MQTT_VERSION
 ARG MQTTHA_VERSION
 ARG WEBUI_VERSION
 ARG CC_VERSION
-ARG BUILD_ARCH
-ARG BUILD_DESCRIPTION
-ARG BUILD_NAME
-ARG BUILD_VERSION
-ARG BUILD_SOURCE
-ARG BUILD_DATE
 
 WORKDIR /tmp/
 ADD carconnectivity.json.gtpl .
 ADD entrypoint.sh .
 
-RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
+RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
+    apk add --no-cache python3 py3-pip build-base libffi-dev && \
     python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --upgrade pip --no-cache && \
-    /opt/venv/bin/pip install --no-cache carconnectivity-connector-seatcupra==${SEAT_VERSION} \
+    /opt/venv/bin/pip install --no-cache carconnectivity==${CC_VERSION} \
+        carconnectivity-connector-seatcupra==${SEAT_VERSION} \
         carconnectivity-connector-skoda==${SKODA_VERSION} \
-        carconnectivity==${CC_VERSION} \
         carconnectivity-connector-volkswagen==${VW_VERSION} \
         carconnectivity-connector-tronity==${TRONITY_VERSION} \
         carconnectivity-connector-volvo==${VOLVO_VERSION} \
         carconnectivity-plugin-webui==${WEBUI_VERSION} \
         carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
-    echo "ADDON=${BUILD_NAME} ${BUILD_VERSION}" > versions.txt && \
     echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" >> versions.txt && \
     echo "SEAT_VERSION=${SEAT_VERSION}" >> versions.txt && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
@@ -44,20 +43,19 @@ RUN apk add --no-cache python3 py3-pip build-base libffi-dev && \
     echo "MQTTHA_VERSION=${MQTTHA_VERSION}" >> versions.txt && \
     chmod +x /tmp/entrypoint.sh && \
     touch /tmp/carconnectivity.token && \
-    rm -rf /var/cache/apk/* && apk del build-base libffi-dev
+    apk del build-base libffi-dev && \
+    rm -rf /var/cache/apk/*
 
 LABEL \
     io.hass.name="${BUILD_NAME}" \
     io.hass.description="${BUILD_DESCRIPTION}" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
-    io.hass.version="${BUILD_VERSION}" \
+    io.hass.version=${BUILD_VERSION} \
     org.opencontainers.image.source="${BUILD_SOURCE}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
     org.opencontainers.image.title="${BUILD_NAME}" \
-    org.opencontainers.image.created="${BUILD_DATE}" \
-    org.opencontainers.image.version="${BUILD_VERSION}"
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.version=${BUILD_VERSION}
     
-ENTRYPOINT ["/tmp/entrypoint.sh"]
-
-EXPOSE 4000
+ENTRYPOINT ["/bin/sh", "-c", "/tmp/entrypoint.sh"]

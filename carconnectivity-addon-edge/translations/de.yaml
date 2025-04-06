@@ -32,17 +32,20 @@ configuration:
     description: "Geben Sie das Intervall in Sekunden zwischen zwei Informationsabrufen für das zweite Auto ein. Beachten Sie, dass API-Aufrufe einem Kontingent unterliegen. Sobald das Kontingent überschritten ist, ist die API für einen bestimmten Zeitraum nicht mehr funktionsfähig."
 
   connector_volvo_key_primary:
-    name: "Primärschlüssel für Volvo-APIs"
+    name: "Primärschlüssel für Volvo APIs"
     description: "Der Schlüssel sieht so aus: 'd64b33a7067a4c428def9474964'"
   connector_volvo_key_secondary:
-    name: "Sekundärschlüssel für Volvo-APIs"
+    name: "Sekundärschlüssel für Volvo APIs"
     description: "Der Schlüssel sieht so aus: 'de0c63a885ffdac4ccc92d8744905611caf'"
-  connector_volvo_token:
+  connected_volvo_vehicule_token:
     name: "Fahrzeugspezifisches Volvo-Token"
-    description: "Der Token sieht wie folgt aus: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+    description: "Das Token sieht so aus: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_location_token:
+    name: "Standortspezifisches Token"
+    description: "Das Token sieht so aus: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
     name: "Aktualisierungsintervall für das Volvo-Fahrzeug"
-    description: "Geben Sie das Intervall in Sekunden zwischen zwei Abrufen der Informationen für das erste Fahrzeug ein. Achtung, API-Aufrufe unterliegen einem Kontingent. Sobald das Kontingent überschritten ist, funktioniert die API für einen bestimmten Zeitraum nicht mehr."
+    description: "Geben Sie das Intervall in Sekunden zwischen zwei Datenabrufen für das erste Fahrzeug ein. Achten Sie darauf, dass API-Aufrufe einem Kontingent unterliegen. Sobald das Kontingent überschritten wird, ist die API für einen bestimmten Zeitraum nicht funktionsfähig."
 
   mqtt_username:
     name: "MQTT Benutzername"
@@ -70,3 +73,6 @@ configuration:
   api_log_level:
     name: "Protokollierungsstufe für api"
     description: "Wählen Sie die gewünschte Protokollierungsstufe (info, warning, error, debug)."
+  expert:
+    name: "Expertenmodus aktivieren"
+    description: "Der Expertenmodus ermöglicht die Verwendung einer benutzerdefinierten Konfigurationsdatei. Wenn dieser Modus aktiviert ist, kann der Benutzer eine Datei mit dem Namen /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json bereitstellen, die die gewünschten Einstellungen enthält. Diese Datei ersetzt vollständig die Konfiguration aus der grafischen Benutzeroberfläche, die unter /addon_configs/1b1291d4_carconnectivity-addon//carconnectivity.UI.json verfügbar ist. Es wird empfohlen, die Dokumentation von Carconnectivity zu konsultieren. Das Verzeichnis /addon_configs/1b1291d4_carconnectivity-addon/ ist möglicherweise nicht im Dateisystem von Home Assistant sichtbar. In diesem Fall sollte der Supervisor neu gestartet werden."

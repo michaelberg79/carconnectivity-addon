@@ -33,16 +33,19 @@ configuration:
 
   connector_volvo_key_primary:
     name: "Chiave primaria per le API Volvo"
-    description: "La chiave ha questo aspetto 'd64b33a7067a4c428def9474964'"
+    description: "La chiave assomiglia a questa 'd64b33a7067a4c428def9474964'"
   connector_volvo_key_secondary:
     name: "Chiave secondaria per le API Volvo"
-    description: "La chiave ha questo aspetto 'de0c63a885ffdac4ccc92d8744905611caf'"
-  connector_volvo_token:
+    description: "La chiave assomiglia a questa 'de0c63a885ffdac4ccc92d8744905611caf'"
+  connected_volvo_vehicule_token:
     name: "Token specifico del veicolo Volvo"
-    description: "La token ha questo aspetto 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+    description: "Il token assomiglia a questo 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_location_token:
+    name: "Token specifico per la localizzazione"
+    description: "Il token assomiglia a questo 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
-    name: "Intervallo di aggiornamento per l'auto Volvo"
-    description: "Inserisci l'intervallo in secondi tra due recuperi di informazioni per la prima auto. Attenzione, le chiamate API sono soggette a un limite. Una volta superato il limite, l'API non sarà più funzionante per un determinato periodo di tempo."
+    name: "Intervallo di aggiornamento per la Volvo"
+    description: "Inserisci l'intervallo in secondi tra due recuperi di dati per il primo veicolo. Fai attenzione, le chiamate API sono soggette a un limite. Una volta superato il limite, l'API non sarà funzionante per
 
   mqtt_username:
     name: "Nome utente MQTT"
@@ -70,3 +73,7 @@ configuration:
   api_log_level:
     name: "Livello di log per l'api"
     description: "Selezionare il livello di log desiderato (info, warning, error, debug)"
+  expert:
+    name: "Abilita la modalità esperto"
+    description: "La Modalità Esperto consente l'utilizzo di un file di configurazione personalizzato. Quando questa modalità è attivata, l'utente può fornire un file denominato /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json contenente le impostazioni desiderate. Questo sostituisce completamente la configurazione dell'interfaccia grafica, che sarà disponibile in /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Si consiglia di consultare la documentazione di Carconnectivity. La directory /addon_configs/1b1291d4_carconnectivity-addon/ potrebbe non apparire nel file system di Home Assistant. In tal caso, è necessario riavviare il supervisore."
+

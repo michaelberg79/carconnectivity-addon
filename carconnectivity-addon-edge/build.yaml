@@ -5,7 +5,7 @@ build_from:
   armhf: "ghcr.io/home-assistant/armhf-base:3.21"
   armv7: "ghcr.io/home-assistant/armv7-base:3.21"
   i386: "ghcr.io/home-assistant/i386-base:3.21"
-  
+
 labels:
   org.opencontainers.image.title: "Home Assistant Add-on: CarConnectivity Edge"
   org.opencontainers.image.description: "Addon version of Carconnectivity Edge made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT"
@@ -14,12 +14,12 @@ labels:
 
 args:
   TEMPIO_VERSION: "2024.11.2"
-  SEAT_VERSION: "v0.2"
-  SKODA_VERSION: "v0.5"
-  VW_VERSION: "v0.5"
-  TRONITY_VERSION: "v0.4"
-  VOLVO_VERSION: "0.1a1"
-  MQTT_VERSION: "v0.5"
-  MQTTHA_VERSION: "v0.3a2"
-  WEBUI_VERSION: "v0.3.1"
-  CC_VERSION: "v0.6a1"
+  SEAT_VERSION: "v0.3"
+  SKODA_VERSION: "v0.6"
+  VW_VERSION: "v0.6"
+  TRONITY_VERSION: "v0.5"
+  VOLVO_VERSION: "v0.1a1"
+  MQTT_VERSION: "v0.6"
+  MQTTHA_VERSION: "v0.3"
+  WEBUI_VERSION: "v0.4"
+  CC_VERSION: "v0.6"
