@@ -19,15 +19,14 @@
 | ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
 
-
-
-
 # Translated guides
 
-| ![French Flag](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png) | ![Italian Flag](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png) | ![German Flag](https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png) | ![Spanish Flag](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png) | ![Polish Flag](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png) | ![Portuguese Flag](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1280px-Flag_of_Portugal.svg.png) |
-|---------|-----------|-----------|-----------|-----------|-----------|
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png" width="20"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png" width="20"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png" width="20"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png" width="20"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png" width="20"/> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1280px-Flag_of_Portugal.svg.png" width="20"/> |
+|------------------------------------------------|------------------------------------------------|------------------------------------------------|------------------------------------------------|------------------------------------------------|------------------------------------------------|
 | [README.French.md](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.French.md) | [README.Italian.md](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Italian.md) | [README.German.md](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.German.md) | [README.Spanish.md](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Spanish.md) | [README.Polish.md](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Polish.md) | [README.Portuguese.md](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Portuguese.md) |
 
+
+# CarConnectivity-Addon Configuration Guide
 
 ## Introduction
 
