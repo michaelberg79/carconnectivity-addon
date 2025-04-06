@@ -1,0 +1,36 @@
+![Supporta architettura aarch64][aarch64-shield]  
+![Supporta architettura amd64][amd64-shield]  
+![Supporta architettura armhf][armhf-shield]  
+![Supporta architettura armv7][armv7-shield]  
+![Supporta architettura i386][i386-shield]  
+[![Codice sorgente GitHub](https://img.shields.io/badge/Source-GitHub-green)](https://github.com/Pulpyyyy/carconnectivity-addon/)  
+[![Rilascio GitHub (ultimo per data)](https://img.shields.io/github/v/release/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/releases/latest)  
+[![Problemi GitHub](https://img.shields.io/github/issues/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/issues)  
+
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg  
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg  
+[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg  
+[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg  
+[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg  
+
+# Home Assistant Add-on: CarConnectivity  
+
+|         | Stabile                                                                                                                         | Edge                                                                                                                                         |  
+| ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |  
+| Version | [![Rilascio GitHub (ultimo per data)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Versione immagine Docker (ultimo semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |  
+
+# Guide tradotte  
+
+<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.French.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png" width="40" height="30"></a>  
+<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Italian.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png" width="40" height="30"></a>  
+<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.German.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png" width="40" height="30"></a>  
+<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Spanish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png" width="40" height="30"></a>  
+<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Polish.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flag_of_Poland.svg/1280px-Flag_of_Poland.svg.png" width="40" height="30"></a>  
+<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.Portuguese.md"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/1280px-Flag_of_Portugal.svg.png" width="40" height="30"></a>  
+<a href="https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg" width="40" height="30"></a>  
+
+# Guida alla configurazione di CarConnectivity-Addon  
+
+## Introduzione  
+
+Il modulo **CarConnectivity-Addon** consente di connettersi e recuperare informazioni sul proprio veicolo dai servizi
