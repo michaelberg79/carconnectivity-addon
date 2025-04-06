@@ -47,7 +47,8 @@
                 "config": {
                     "key_primary": "{{ .connector_volvo_key_primary }}",
                     "key_secondary": "{{ .connector_volvo_key_secondary }}",
-                    "token": "{{ .connector_volvo_token }}",
+                    "connected_vehicle_token": "{{ .connected_volvo_vehicule_token }}",
+                    "location_token": "{{ .connector_volvo_location_token }}",
                     "interval": {{ .connector_volvo_interval }},
                     "api_log_level": "{{ .api_log_level }}"
                 }

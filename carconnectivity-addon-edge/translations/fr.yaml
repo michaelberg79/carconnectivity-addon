@@ -37,8 +37,11 @@ configuration:
   connector_volvo_key_secondary:
     name: "Clé secondaire pour les API Volvo"
     description: "La clé ressemble à ceci 'de0c63a885ffdac4ccc92d8744905611caf'"
-  connector_volvo_token:
+  connected_volvo_vehicule_token:
     name: "Token sépécifique à la voiture Volvo"
+    description: "La token ressemble à ceci 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_location_token:
+    name: "Token spécifique à la géolocalisation"
     description: "La token ressemble à ceci 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_interval:
     name: "Intervalle de rafraîchissement pour la voiture Volvo"
@@ -70,3 +73,6 @@ configuration:
   api_log_level:
     name: "Niveau de journalisation pour les api"
     description: "Sélectionnez le niveau de journalisation souhaité (info, warning, error, debug)."
+  expert:
+    name: "Activer le mode expert"
+    description: "Le Mode Expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json contenant les paramètres souhaités. Il remplace complétement la configuration issue de l'interface graphique, qui sera disponible dans /addon_configs/1b1291d4_carconnectivity-addon//carconnectivity.UI.json. Il faut se reférer à la documention de Carconnectivity. Le répertoire /addon_configs/1b1291d4_carconnectivity-addon/ peut ne pas apparaitre dans le système de fichiers de Home Assistant. Si tel est le cas, alors il faut redémarrer le supervisor."
