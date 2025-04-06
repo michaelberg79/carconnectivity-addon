@@ -88,6 +88,7 @@ else
 fi
 
 DEBUG_LEVEL=$(jq -r '.log_level' /data/options.json 2>/dev/null || echo "info")
+echo -e "TYPE=v$(hostname)"
 print_file versions.txt
 
 if [ "$DEBUG_LEVEL" = "debug" ] || [ "$EXPERT_MODE" = "true" ]; then
