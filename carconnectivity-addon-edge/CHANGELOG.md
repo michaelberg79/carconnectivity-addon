@@ -1,3 +1,12 @@
+## 0.2.1
+
+### 🚀 New Features
+- Add Volvo support 
+- **Add Volvo cars support(experimental)🚗🚙.**
+⚠️ You may need to reconfigure the addon
+
+ --- 
+
 ## 0.2.0
 
 ### 🚀 New Features

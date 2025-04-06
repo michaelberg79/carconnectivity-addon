@@ -1,10 +1,12 @@
 name: "CarConnectivity Addon edge"
-version: 0.2.0
+version: 0.2.1
 slug: "carconnectivity-addon-edge"
 description: "⚠️EDGE VERSION⚠️ Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT. ⚠️MAY BE INSTABLE⚠️ "
 image: "docker.io/pulpyyyy/carconnectivity-addon-edge-{arch}"
 panel_icon: "mdi:car-wireless"
 webui: "[PROTO:ssl]://[HOST]:[PORT:4000]"
+map:
+  - addon_config:rw
 map:
   - addon_config:rw
 arch:
@@ -30,6 +32,11 @@ options:
   connector_password_brand2: "password"
   connector_spin_brand2: "1234"
   connector_interval_brand2: 600
+  connector_volvo_key_primary: ""
+  connector_volvo_key_secondary: ""
+  connected_volvo_vehicule_token: ""
+  connector_volvo_location_token: ""
+  connector_volvo_interval: 600
   mqtt_username: ""
   mqtt_password: ""
   mqtt_broker: "core-mosquitto.local.hass.io"
@@ -39,8 +46,10 @@ options:
   connector_password_webui: "secret"
   api_log_level: "info"
   expert: false
+  expert: false
 schema:
   connector_type_brand1: list(seat|cupra|skoda|volkswagen|trionity)
+  connector_username_brand1: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
   connector_username_brand1: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
   connector_password_brand1: password?
   connector_interval_brand1: int(60,3600)?
@@ -50,6 +59,11 @@ schema:
   connector_password_brand2: password?
   connector_interval_brand2: int(60,3600)?
   connector_spin_brand2: match(^\d{4}$)?
+  connector_volvo_key_primary: str?
+  connector_volvo_key_secondary: str?
+  connected_volvo_vehicule_token: str?
+  connector_volvo_location_token: str?
+  connector_volvo_interval: int(60,3600)?
   mqtt_username: str?
   mqtt_password: password?
   mqtt_broker: str
@@ -58,4 +72,5 @@ schema:
   connector_username_webui: str
   connector_password_webui: password?
   api_log_level: list(info|warning|error|debug)
+  expert: bool
   expert: bool

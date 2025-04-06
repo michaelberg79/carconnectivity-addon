@@ -10,6 +10,7 @@ ARG SEAT_VERSION
 ARG SKODA_VERSION
 ARG VW_VERSION
 ARG TRONITY_VERSION
+ARG VOLVO_VERSION
 ARG MQTT_VERSION
 ARG MQTTHA_VERSION
 ARG WEBUI_VERSION
@@ -28,6 +29,7 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
         carconnectivity-connector-skoda==${SKODA_VERSION} \
         carconnectivity-connector-volkswagen==${VW_VERSION} \
         carconnectivity-connector-tronity==${TRONITY_VERSION} \
+        carconnectivity-connector-volvo==${VOLVO_VERSION} \
         carconnectivity-plugin-webui==${WEBUI_VERSION} \
         carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
     echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" >> versions.txt && \
@@ -35,6 +37,7 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
     echo "VW_VERSION=${VW_VERSION}" >> versions.txt && \
     echo "TRONITY_VERSION=${TRONITY_VERSION}" >> versions.txt && \
+    echo "VOLVO_VERSION=${VOLVO_VERSION}" >> versions.txt && \
     echo "WEBUI_VERSION=${WEBUI_VERSION}" >> versions.txt && \
     echo "MQTT_VERSION=${MQTT_VERSION}" >> versions.txt && \
     echo "MQTTHA_VERSION=${MQTTHA_VERSION}" >> versions.txt && \

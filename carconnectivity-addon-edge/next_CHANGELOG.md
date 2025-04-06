@@ -11,3 +11,5 @@
   Be familiar with JSON syntax and structure.
 
   Refer to the official Carconnectivity documentation for the list of supported functions and expected parameters.
+  
+- Add Volvo support

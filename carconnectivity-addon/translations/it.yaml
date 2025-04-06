@@ -31,6 +31,22 @@ configuration:
     name: "Intervallo di aggiornamento per la seconda auto"
     description: "Inserisci l'intervallo in secondi tra due recuperi di informazioni per la seconda auto. Attenzione, le chiamate API sono soggette a una quota. Una volta superata la quota, l'API non sarà più funzionale per un periodo determinato."
 
+  connector_volvo_key_primary:
+    name: "Chiave primaria per le API Volvo"
+    description: "La chiave assomiglia a questa 'd64b33a7067a4c428def9474964'"
+  connector_volvo_key_secondary:
+    name: "Chiave secondaria per le API Volvo"
+    description: "La chiave assomiglia a questa 'de0c63a885ffdac4ccc92d8744905611caf'"
+  connected_volvo_vehicule_token:
+    name: "Token specifico del veicolo Volvo"
+    description: "Il token assomiglia a questo 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_location_token:
+    name: "Token specifico per la localizzazione"
+    description: "Il token assomiglia a questo 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_interval:
+    name: "Intervallo di aggiornamento per la Volvo"
+    description: "Inserisci l'intervallo in secondi tra due recuperi di dati per il primo veicolo. Fai attenzione, le chiamate API sono soggette a un limite. Una volta superato il limite, l'API non sarà funzionante per
+
   mqtt_username:
     name: "Nome utente MQTT"
     description: "Inserisci il nome utente per la connessione al broker MQTT."
