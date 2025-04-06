@@ -10,33 +10,49 @@ configuration:
     description: "Digite a senha da sua conta para o 1º carro."
   connector_spin_brand1:
     name: "Código PIN para o 1º carro"
-    description: "Digite o código PIN de 4 dígitos usado para acesso remoto ao 1º carro."
+    description: "Digite o código PIN de 4 dígitos usado para o acesso remoto ao 1º carro."
   connector_interval_brand1:
     name: "Intervalo de atualização para o 1º carro"
-    description: "Digite o intervalo em segundos entre duas recuperações de informações para o 1º carro. Esteja ciente de que as chamadas de API estão sujeitas a uma cota. Uma vez excedida, a API ficará inoperante por um determinado período."
+    description: "Digite o intervalo em segundos entre duas recuperações de informações para o 1º carro. Atenção, as chamadas de API estão sujeitas a um limite. Após o limite ser excedido, a API ficará inativa por um período."
 
   connector_type_brand2:
     name: "Marca do fabricante para o 2º carro"
     description: "Permite explorar opções específicas relacionadas à marca."
   connector_username_brand2:
     name: "Nome de usuário para o 2º carro"
-    description: "Digite o endereço de e-mail usado para fazer login no serviço para o 2º carro. Deixe o valor vazio se não desejar usar este conector."
+    description: "Digite o endereço de e-mail usado para fazer login no serviço para o 2º carro. Deixe o campo vazio se não quiser usar esse conector."
   connector_password_brand2:
     name: "Senha para o 2º carro"
     description: "Digite a senha da sua conta para o 2º carro."
   connector_spin_brand2:
     name: "Código PIN para o 2º carro"
-    description: "Digite o código PIN de 4 dígitos usado para acesso remoto ao 2º carro."
+    description: "Digite o código PIN de 4 dígitos usado para o acesso remoto ao 2º carro."
   connector_interval_brand2:
     name: "Intervalo de atualização para o 2º carro"
-    description: "Digite o intervalo em segundos entre duas recuperações de informações para o 2º carro. Esteja ciente de que as chamadas de API estão sujeitas a uma cota. Uma vez excedida, a API ficará inoperante por um determinado período."
+    description: "Digite o intervalo em segundos entre duas recuperações de informações para o 2º carro. Atenção, as chamadas de API estão sujeitas a um limite. Após o limite ser excedido, a API ficará inativa por um período."
+
+  connector_volvo_key_primary:
+    name: "Chave primária para as APIs da Volvo"
+    description: "A chave se parece com isto: 'd64b33a7067a4c428def9474964'"
+  connector_volvo_key_secondary:
+    name: "Chave secundária para as APIs da Volvo"
+    description: "A chave se parece com isto: 'de0c63a885ffdac4ccc92d8744905611caf'"
+  connected_volvo_vehicule_token:
+    name: "Token específico do veículo Volvo"
+    description: "O token se parece com isto: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_location_token:
+    name: "Token específico de localização"
+    description: "O token se parece com isto: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
+  connector_volvo_interval:
+    name: "Intervalo de atualização para o carro Volvo"
+    description: "Digite o intervalo em segundos entre duas recuperações de dados para o primeiro carro. Atenção, as chamadas da API estão sujeitas a um limite. Após ultrapassar o limite, a API ficará inoperante por um período determinado."
 
   mqtt_username:
     name: "Nome de usuário MQTT"
-    description: "Digite o nome de usuário para se conectar ao broker MQTT."
+    description: "Digite o nome de usuário para conectar-se ao broker MQTT."
   mqtt_password:
     name: "Senha MQTT"
-    description: "Digite a senha para se conectar ao broker MQTT."
+    description: "Digite a senha para conectar-se ao broker MQTT."
   mqtt_broker:
     name: "Endereço do broker MQTT"
     description: "Digite o endereço IP ou o nome de domínio do servidor MQTT."
@@ -45,19 +61,18 @@ configuration:
     description: "Digite o número da porta do servidor MQTT."
   log_level:
     name: "Nível de log"
-    description: "Selecione o nível de log desejado (info, warning, error, debug)."
+    description: "Selecione o nível de log desejado (info, aviso, erro, depuração)."
 
   connector_username_webui:
-    name: "Nome do administrador WebUI"
-    description: "Nome do administrador para acesso ao Carconnectivity WebUI."
+    name: "Nome do administrador do WebUI"
+    description: "Nome do administrador para acessar o WebUI do Carconnectivity"
   connector_password_webui:
     name: "Senha do WebUI"
-    description: "Senha para acesso ao Carconnectivity WebUI."
+    description: "Senha para acessar o WebUI do Carconnectivity"
 
   api_log_level:
     name: "Nível de log da API"
-    description: "Selecione o nível de log desejado (info, warning, error, debug)."
+    description: "Selecione o nível de log desejado (info, aviso, erro, depuração)."
   expert:
-    name: "Ativar o modo experiente"
-    description: "O Modo Especialista permite o uso de um arquivo de configuração personalizado. Quando este modo está ativado, o usuário pode fornecer um arquivo chamado /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json contendo as configurações desejadas. Isso substitui completamente a configuração da interface gráfica, que estará disponível em /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Recomenda-se consultar a documentação do Carconnectivity. O diretório /addon_configs/1b1291d4_carconnectivity-addon/ pode não aparecer no sistema de arquivos do Home Assistant. Se for o caso, é necessário reiniciar o supervisor."
-
+    name: "Habilitar modo especialista"
+    description: "O modo especialista permite o uso de um arquivo de configuração personalizado. Quando esse modo está ativado, o usuário pode fornecer um arquivo chamado /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json com as configurações desejadas. Isso substitui completamente a configuração da interface gráfica, que estará disponível em /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Consulte a documentação do Carconnectivity. O diretório /addon_configs/1b1291d4_carconnectivity-addon/ pode não aparecer no sistema de arquivos do Home Assistant. Se isso acontecer, o supervisor deve ser reiniciado."
