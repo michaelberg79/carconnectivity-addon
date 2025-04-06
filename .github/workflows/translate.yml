@@ -21,7 +21,8 @@ jobs:
             - name: Auto Translate
               uses: Lin-jun-xiang/action-translate-readme@v2 # Based on the tag
               with:
-                openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
+                token: ${{ secrets.ACTION_BOT }} # Based on step2 name
+                #openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
                 langs: "French,Italian,German,Spanish,Polish,Portuguese" # You can define any langs
 
             - name: Copy README to README.md
