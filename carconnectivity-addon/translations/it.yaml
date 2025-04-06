@@ -57,3 +57,7 @@ configuration:
   api_log_level:
     name: "Livello di log per l'api"
     description: "Selezionare il livello di log desiderato (info, warning, error, debug)"
+  expert:
+    name: "Abilita la modalità esperto"
+    description: "La Modalità Esperto consente l'utilizzo di un file di configurazione personalizzato. Quando questa modalità è attivata, l'utente può fornire un file denominato /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json contenente le impostazioni desiderate. Questo sostituisce completamente la configurazione dell'interfaccia grafica, che sarà disponibile in /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Si consiglia di consultare la documentazione di Carconnectivity. La directory /addon_configs/1b1291d4_carconnectivity-addon/ potrebbe non apparire nel file system di Home Assistant. In tal caso, è necessario riavviare il supervisore."
+

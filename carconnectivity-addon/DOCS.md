@@ -13,6 +13,7 @@
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 
+<<<<<<< HEAD
 # Home Assistant Add-on: CarConnectivity
 
 |         | Stable                                                                                                                         | Edge                                                                                                                                         |
@@ -102,7 +103,14 @@ Define the amount of information recorded in logs:
 If you have any questions or encounter issues during configuration, refer to the module documentation.
 If you find a bug, please open an issue
 
+=======
+>>>>>>> 21007a6b9f4494497364ea6b1327d4490a449787
 # Home Assistant Add-on: CarConnectivity
+
+|         | Stable                                                                                                                         | Edge                                                                                                                                         |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
+
 
 # CarConnectivity-Addon Configuration Guide
 
@@ -114,6 +122,9 @@ I am simply packaging the [excellent work done by Till.](https://github.com/till
 His work is also available as docker images. So if you're using Home Assistant as a stand-alone docker, you can directly use it too.
 
 **⚠️The project is still under development, with reverse engineering of the api to be completed and communication with MQTT/Home assistant to be adapted.⚠️**
+
+
+![Connected car as MQTT device](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/mqtt_device.png)
 
 ## Add repository
 
@@ -137,16 +148,14 @@ If you own multiple vehicles from different brands, you can configure multiple s
 Each car manufacturer provides an online service that allows you to access your vehicle's data remotely. To connect, you need to provide your login credentials.
 
 #### Required Information:
+- **Brand**: The manufacturer’s brand.
 - **Username**: The email address used to log into the manufacturer’s service.
 - **Password**: The password for your manufacturer account.
 - **PIN Code**: A 4-digit code required for remote access to certain vehicle features.
 - **Refresh Interval**: Defines how often (in seconds) the vehicle's data is updated.
   - **Warning:** Setting a refresh rate too frequently may exceed the API request limits imposed by the manufacturer, resulting in temporary access restrictions.
 
-#### ⚠️ Special Case: Seat/Cupra Connector
-The **Seat/Cupra** connector includes an additional option:
-- **Manufacturer Brand**: Allows you to use brand-specific features.
-  - Select the corresponding brand (**Seat** or **Cupra**) to ensure proper data retrieval.
+⚠️ You can use 2 accounts for 2 different brands or 2 cars of a same brand that are not linked to the same account.
 
 ### 3. MQTT Configuration (Mandatory)
 You need to use **MQTT** to send vehicle data to home assistant, configure these settings:
@@ -161,6 +170,8 @@ You can visit http//x.x.x.x:4000 The WEBUI from Carconnectivity:
 - **Username**: login
 - **Password**: password
 - **WEBUI Port**: 4000
+
+![WEBUI View](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/webui_view.jpeg)
 
 ### 5. Logging Level
 Define the amount of information recorded in logs:

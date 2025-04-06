@@ -1,0 +1,63 @@
+configuration:
+  connector_type_brand1:
+    name: "Marca del fabricante para el primer coche"
+    description: "Permite explotar opciones específicas relacionadas con la marca."
+  connector_username_brand1:
+    name: "Nombre de usuario para el primer coche"
+    description: "Introduce la dirección de correo electrónico utilizada para iniciar sesión en el servicio para el primer coche."
+  connector_password_brand1:
+    name: "Contraseña para el primer coche"
+    description: "Introduce la contraseña de tu cuenta para el primer coche."
+  connector_spin_brand1:
+    name: "Código PIN para el primer coche"
+    description: "Introduce el código PIN de 4 dígitos utilizado para el acceso remoto al primer coche."
+  connector_interval_brand1:
+    name: "Intervalo de actualización para el primer coche"
+    description: "Introduce el intervalo en segundos entre dos recuperaciones de información para el primer coche. Ten en cuenta que las llamadas a la API están sujetas a una cuota. Una vez superada, la API no funcionará durante un período determinado."
+
+  connector_type_brand2:
+    name: "Marca del fabricante para el segundo coche"
+    description: "Permite explotar opciones específicas relacionadas con la marca."
+  connector_username_brand2:
+    name: "Nombre de usuario para el segundo coche"
+    description: "Introduce la dirección de correo electrónico utilizada para iniciar sesión en el servicio para el segundo coche. Deja el valor vacío si no deseas utilizar este conector."
+  connector_password_brand2:
+    name: "Contraseña para el segundo coche"
+    description: "Introduce la contraseña de tu cuenta para el segundo coche."
+  connector_spin_brand2:
+    name: "Código PIN para el segundo coche"
+    description: "Introduce el código PIN de 4 dígitos utilizado para el acceso remoto al segundo coche."
+  connector_interval_brand2:
+    name: "Intervalo de actualización para el segundo coche"
+    description: "Introduce el intervalo en segundos entre dos recuperaciones de información para el segundo coche. Ten en cuenta que las llamadas a la API están sujetas a una cuota. Una vez superada, la API no funcionará durante un período determinado."
+
+  mqtt_username:
+    name: "Nombre de usuario MQTT"
+    description: "Introduce el nombre de usuario para conectarte al broker MQTT."
+  mqtt_password:
+    name: "Contraseña MQTT"
+    description: "Introduce la contraseña para conectarte al broker MQTT."
+  mqtt_broker:
+    name: "Dirección del broker MQTT"
+    description: "Introduce la dirección IP o el nombre de dominio del servidor MQTT."
+  mqtt_port:
+    name: "Puerto del broker MQTT"
+    description: "Introduce el número de puerto del servidor MQTT."
+  log_level:
+    name: "Nivel de registro"
+    description: "Selecciona el nivel de registro deseado (info, warning, error, debug)."
+
+  connector_username_webui:
+    name: "Nombre de administrador WebUI"
+    description: "Nombre del administrador para acceder a Carconnectivity WebUI."
+  connector_password_webui:
+    name: "Contraseña WebUI"
+    description: "Contraseña para acceder a Carconnectivity WebUI."
+
+  api_log_level:
+    name: "Nivel de registro de la API"
+    description: "Selecciona el nivel de registro deseado (info, warning, error, debug)."
+  expert:
+    name: "Activar el Modo Experto"
+    description: "El modo experto permite utilizar un archivo de configuración personalizado. Cuando este modo está activado, el usuario puede proporcionar un archivo llamado /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json que contiene los parámetros deseados. Esto reemplaza completamente la configuración de la interfaz gráfica, que estará disponible en /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json. Se recomienda consultar la documentación de Carconnectivity. Es posible que el directorio /addon_configs/1b1291d4_carconnectivity-addon/ no aparezca en el sistema de archivos de Home Assistant. Si este es el caso, se debe reiniciar el supervisor."
+

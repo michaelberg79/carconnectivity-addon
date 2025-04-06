@@ -57,3 +57,6 @@ configuration:
   api_log_level:
     name: "Protokollierungsstufe für api"
     description: "Wählen Sie die gewünschte Protokollierungsstufe (info, warning, error, debug)."
+  expert:
+    name: "Expertenmodus aktivieren"
+    description: "Der Expertenmodus ermöglicht die Verwendung einer benutzerdefinierten Konfigurationsdatei. Wenn dieser Modus aktiviert ist, kann der Benutzer eine Datei mit dem Namen /addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json bereitstellen, die die gewünschten Einstellungen enthält. Diese Datei ersetzt vollständig die Konfiguration aus der grafischen Benutzeroberfläche, die unter /addon_configs/1b1291d4_carconnectivity-addon//carconnectivity.UI.json verfügbar ist. Es wird empfohlen, die Dokumentation von Carconnectivity zu konsultieren. Das Verzeichnis /addon_configs/1b1291d4_carconnectivity-addon/ ist möglicherweise nicht im Dateisystem von Home Assistant sichtbar. In diesem Fall sollte der Supervisor neu gestartet werden."

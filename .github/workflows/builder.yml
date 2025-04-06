@@ -3,7 +3,7 @@ permissions:
   contents: read
   packages: write
   id-token: write
-  
+
 on:
   workflow_run:
     workflows: ["Update build.yaml on new submodule release"]
@@ -28,47 +28,27 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [amd64, armhf, armv7, aarch64,  i386]
         addon: [carconnectivity-addon, carconnectivity-addon-edge]
-
+        
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
 
       - name: Get information
         id: info
         uses: home-assistant/actions/helpers/info@master
         with:
-          path: "./"
-        
-      - name: Login to DockerHub
-        uses: docker/login-action@v3.4.0
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Check if Docker image exists
-        run: |
-          IMAGE="${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"
-          TAG=$(grep -E '^version:' "${{ matrix.addon }}/config.yaml" | awk '{print $2}' | sed 's/"//g')
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://hub.docker.com/v2/repositories/$IMAGE/tags/$TAG")
-
-          if [ "$STATUS" -eq 404 ]; then
-            echo "IMAGE_EXISTS=false" >> $GITHUB_ENV
-            echo "The image $IMAGE:$TAG does not exist on Docker Hub."
-          else
-            echo "IMAGE_EXISTS=true" >> $GITHUB_ENV
-            echo "The image $IMAGE:$TAG exists on Docker Hub."
-          fi
+          path: "./${{ matrix.addon }}"
           
-      - name: Publish ${{ matrix.architecture }} builder
-        if: env.IMAGE_EXISTS == 'false'
+      - name: Publish builder
         uses: home-assistant/builder@2025.03.0
         with:
           args: |
             --addon \
-            --${{ matrix.arch }} \
+            --all \
             --docker-hub "${{ env.REGISTRY }}" \
             --target /data/${{ matrix.addon }} \
-            --image "${{ env.REPOSITORY }}/${{ matrix.addon }}-${{ matrix.arch }}"
+            --docker-hub ${{ env.REPOSITORY }} \
+            --docker-hub-check \
+            --docker-user ${{ secrets.DOCKERHUB_USERNAME }} \
+            --docker-password ${{ secrets.DOCKERHUB_TOKEN }}

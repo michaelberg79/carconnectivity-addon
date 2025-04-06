@@ -174,15 +174,6 @@ jobs:
           git diff --cached --quiet || git commit -m "Update build.yaml with latest submodule versions"
           git push
 
-      # - name: Run Release Drafter
-      #   if: env.CHANGES == 'true' 
-      #   uses: release-drafter/release-drafter@v6
-      #   with:
-      #     tag: ${{ env.NEW_VERSION }}
-      #     name: ${{ env.NEW_VERSION }}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
       - name: Create Pull Request
         if: env.CHANGES == 'true'
         uses: peter-evans/create-pull-request@v7
