@@ -29,9 +29,9 @@ configuration:
     description: "Introduce el código PIN de 4 dígitos utilizado para el acceso remoto para el 2do coche."
   connector_interval_brand2:
     name: "Intervalo de actualización para el 2do coche"
-    description: "Introduce el intervalo en segundos entre dos recuperaciones de información para el 2do coche. Ten en cuenta que las llamadas a la API están sujetas a un cupo. Una vez superado el cupo, la API no funcionará durante un período de tiempo."
+    description: "Introduce el intervalo en segundos entre dos recuperaciones de información para el 1er coche. Ten en cuenta que las llamadas a la API están sujetas a un cupo. Una vez superado el cupo, la API no funcionará durante un período de tiempo."
 
-connector_volvo_key_primary:
+  connector_volvo_key_primary:
     name: "Clave primaria para las API de Volvo"
     description: "La clave se ve así: 'd64b33a7067a4c428def9474964'"
   connector_volvo_key_secondary:
