@@ -33,31 +33,39 @@ jobs:
           BRANCH="translate-readme-${LANG_CODE}"
       
           content=$(cat README)
-          readme_text=$(jq -Rs . <<< "$content")
+          readme_text=$(jq -Rs . <<< "$content") # Encodage JSON sûr
       
           echo "Translating to $LANG_NAME..."
       
+          payload=$(jq -n \
+            --arg model "gpt-4" \
+            --arg system "You are a professional technical translator." \
+            --arg user "Translate the following README into $LANG_NAME while keeping the markdown format:\n\n$content" \
+            --argjson temp 0.2 \
+            '{
+              model: $model,
+              temperature: $temp,
+              messages: [
+                { role: "system", content: $system },
+                { role: "user", content: $user }
+              ]
+            }')
+
           response=$(curl --fail --show-error --silent --max-time 60 https://api.openai.com/v1/chat/completions \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENAI_API_KEY" \
-            -d @- <<EOF
-              {
-                "model": "gpt-4",
-                "messages": [
-                  { "role": "system", "content": "You are a professional technical translator." },
-                  { "role": "user", "content": "Translate the following README into $LANG_NAME while keeping the markdown format:\n\n$readme_text" }
-                ],
-                "temperature": 0.2
-              }
-              EOF
-          )
+            -d "$payload")
       
           echo "$response" | jq -r '.choices[0].message.content' > "README.${LANG_NAME}"
           
-          cat README.header > README.${LANG_NAME}.md
-          echo -e "\n\n" >> README.${LANG_NAME}.md
-          cat README.${LANG_NAME} >> README.${LANG_NAME}.md
-          rm README.${LANG_NAME}
+          if [ -f README.header ]; then
+            cat README.header > README.${LANG_NAME}.md
+            echo -e "\n\n" >> README.${LANG_NAME}.md
+            cat README.${LANG_NAME} >> README.${LANG_NAME}.md
+            rm README.${LANG_NAME}
+          else
+            mv README.${LANG_NAME} README.${LANG_NAME}.md
+          fi
       
           echo "✅ Generated README.${LANG_NAME}.md"
 
