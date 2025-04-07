@@ -20,8 +20,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+      # - name: Install jq
+      #   run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Translate README to ${{ matrix.lang }}
         env:
@@ -55,7 +55,6 @@ jobs:
 
       - name: Commit and push translation to branch
         run: |
-          # Si la langue est English, gérer DOCS.md
           if [ "${{ matrix.lang }}" == "English" ]; then
             echo "🔁 English detected — copying to carconnectivity-addon/.../DOCS.md"
             mkdir -p carconnectivity-addon/carconnectivity-addon
@@ -67,7 +66,6 @@ jobs:
           git checkout -b $BRANCH
           git add README.${{ matrix.lang }}.md
 
-          # Ajouter DOCS.md si langue = English
           if [ "${{ matrix.lang }}" == "English" ]; then
             git add carconnectivity-addon/carconnectivity-addon/DOCS.md
           fi
