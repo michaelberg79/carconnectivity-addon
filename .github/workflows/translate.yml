@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y --reinstall jq
+        run: sudo apt-get update
 
       - name: Translate README to ${{ matrix.lang }}
         env:
