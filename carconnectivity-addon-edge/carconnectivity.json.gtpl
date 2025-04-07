@@ -4,14 +4,10 @@
         "connectors": [
             {{- if .connector_username_brand1 }}
             {
-                {{- if or (eq .connector_type_brand1 "seat") (eq .connector_type_brand1 "cupra") }}
-                    "type": "seatcupra",
-                {{- else }}
-                    "type": "{{ .connector_type_brand1 }}",
-                {{- end }}
+                "type": "{{ if or (eq .connector_type_brand1 "seat") (eq .connector_type_brand1 "cupra") }}seatcupra{{ else }}{{ .connector_type_brand1 }}{{ end }}",
                 "config": {
                     {{- if or (eq .connector_type_brand1 "seat") (eq .connector_type_brand1 "cupra") }}
-                        "brand": "{{ .connector_type_brand1 }}",
+                    "brand": "{{ .connector_type_brand1 }}",
                     {{- end }}
                     "username": "{{ .connector_username_brand1 }}",
                     "password": "{{ .connector_password_brand1 }}",
@@ -26,15 +22,11 @@
             {{- end }}
             {{- if .connector_username_brand2 }}
             {
-                {{- if or (eq .connector_type_brand2 "seat") (eq .connector_type_brand2 "cupra") }}
-                    "type": "seatcupra",
-                {{- else }}
-                    "type": "{{ .connector_type_brand2 }}",
-                {{- end }}
+                "type": "{{ if or (eq .connector_type_brand2 "seat") (eq .connector_type_brand2 "cupra") }}seatcupra{{ else }}{{ .connector_type_brand2 }}{{ end }}",
                 "connector_id": "{{ .connector_type_brand2 }}2",
                 "config": {
                     {{- if or (eq .connector_type_brand2 "seat") (eq .connector_type_brand2 "cupra") }}
-                        "brand": "{{ .connector_type_brand2 }}",
+                    "brand": "{{ .connector_type_brand2 }}",
                     {{- end }}
                     "username": "{{ .connector_username_brand2 }}",
                     "password": "{{ .connector_password_brand2 }}",
@@ -44,10 +36,10 @@
                 }
             }
             {{- end }}
-            {{ if and (or .connector_username_brand1 .connector_username_brand2) .connector_volvo_key_primary }}
+            {{- if and (or .connector_username_brand1 .connector_username_brand2) .connector_volvo_key_primary }}
             ,
             {{- end }}
-            {{- if .connector_volvo_key_primary}}
+            {{- if .connector_volvo_key_primary }}
             {
                 "type": "volvo",
                 "config": {
