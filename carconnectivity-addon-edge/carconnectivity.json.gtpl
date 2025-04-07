@@ -21,7 +21,7 @@
                 }
             }
             {{- end }}
-            {{ if and (or .connector_type_brand1 .connector_type_brand2) .connector_volvo_key_primary }}
+            {{- if and .connector_username_brand1 .connector_username_brand2 }}
             ,
             {{- end }}
             {{- if .connector_username_brand2 }}
@@ -44,7 +44,7 @@
                 }
             }
             {{- end }}
-            {{- if or .connector_type_brand1 .connector_type_brand2 }}
+            {{ if and (or .connector_username_brand1 .connector_username_brand2) .connector_volvo_key_primary }}
             ,
             {{- end }}
             {{- if .connector_volvo_key_primary}}
