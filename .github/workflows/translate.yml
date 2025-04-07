@@ -55,20 +55,21 @@ jobs:
 
       - name: Commit and push translation to branch
         run: |
-          if [ "${{ matrix.lang }}" == "English" ]; then
-            echo "🔁 English detected — copying to carconnectivity-addon/.../DOCS.md"
-            mkdir -p carconnectivity-addon/carconnectivity-addon
-            cp README.en.md carconnectivity-addon/carconnectivity-addon/DOCS.md
-          fi
+          # if [ "${{ matrix.lang }}" == "English" ]; then
+          #   echo "🔁 English detected — copying to carconnectivity-addon/.../DOCS.md"
+          #   mkdir -p carconnectivity-addon/carconnectivity-addon
+          #   cp README.en.md carconnectivity-addon/carconnectivity-addon/DOCS.md
+          # fi
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b $BRANCH
           git add README.${{ matrix.lang }}.md
 
-          if [ "${{ matrix.lang }}" == "English" ]; then
-            git add carconnectivity-addon/carconnectivity-addon/DOCS.md
-          fi
+          # if [ "${{ matrix.lang }}" == "English" ]; then
+          # if [ "$lang" = "English" ]; then
+          #   git add carconnectivity-addon/carconnectivity-addon/DOCS.md
+          # fi
 
           git commit -m "Translate README to ${{ matrix.lang }}" || echo "No changes"
           git push -u origin $BRANCH
