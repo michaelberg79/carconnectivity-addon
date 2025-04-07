@@ -2,6 +2,7 @@
     "carConnectivity": {
         "log_level": "{{ .log_level }}",
         "connectors": [
+            {{- if .connector_username_brand1 }}
             {
                 {{- if or (eq .connector_type_brand1 "seat") (eq .connector_type_brand1 "cupra") }}
                     "type": "seatcupra",
@@ -19,8 +20,11 @@
                     "api_log_level": "{{ .api_log_level }}"
                 }
             }
-            {{- if .connector_username_brand2 }}
+            {{- end }}
+            {{ if and (or .connector_type_brand1 .connector_type_brand2) .connector_volvo_key_primary }}
             ,
+            {{- end }}
+            {{- if .connector_username_brand2 }}
             {
                 {{- if or (eq .connector_type_brand2 "seat") (eq .connector_type_brand2 "cupra") }}
                     "type": "seatcupra",
@@ -40,8 +44,10 @@
                 }
             }
             {{- end }}
-            {{- if and .connector_volvo_key_primary .connector_type_brand1 }}
+            {{- if or .connector_type_brand1 .connector_type_brand2 }}
             ,
+            {{- end }}
+            {{- if .connector_volvo_key_primary}}
             {
                 "type": "volvo",
                 "config": {
