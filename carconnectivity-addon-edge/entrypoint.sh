@@ -1,6 +1,19 @@
 #!/bin/sh
 set -euo pipefail
 
+#Variables
+TOKEN_FILE="/config/carconnectivity.token"
+CACHE_FILE="/config/carconnectivity.cache"
+HEALTHY_FILE="/tmp/carconnectivity_healthy"
+OPTIONS_JSON="/data/options.json"
+EXPERT_MODE=$(jq -r '.expert' ${OPTIONS_JSON} 2>/dev/null || echo "false")
+EXPERT_NAME="carconnectivity.expert.json"
+UI_NAME="carconnectivity.UI.json"
+EXPERT_FILE="/config/${EXPERT_NAME}"
+UI_FILE="/config/${UI_NAME}"
+EXPERT_EXISTS="false"
+EXPERT_SYNTAX="false"
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -8,14 +21,6 @@ YELLOW='\033[1;33m'
 BLUE='\033[1;34m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
-
-# Check required commands
-for cmd in jq tempio cat; do
-    if ! command -v "$cmd" >/dev/null 2>&1; then
-        echo -e "${RED}❌ Command '$cmd' not found. Aborting.${NC}"
-        exit 1
-    fi
-done
 
 # Function to handle signals
 term_handler() {
@@ -39,6 +44,19 @@ print_file() {
     fi
 }
 
+# JSON Verifier
+validate_json() {
+    local file="$1"
+    local label="$2"
+    if jq empty "$file" 2>/dev/null; then
+        echo -e "${GREEN}✅ File ${label} is syntactically correct.${NC}"
+        return 0
+    else
+        echo -e "${RED}❌ File ${label} is invalid.${NC}"
+        return 1
+    fi
+}
+
 # trap SIGTERM - sent when 'docker stop'
 trap 'term_handler' TERM
 cd /tmp
@@ -56,46 +74,54 @@ ${CYAN}:/_/   \_\__,_|\__,_|\___/|_| |_|                                        
 ${CYAN}·············································································\n
 \n${CYAN}⏳ STARTING ⏳ ($(date))${NC}"
 
-EXPERT_MODE=$(jq -r '.expert' /data/options.json 2>/dev/null || echo "false")
-EXPERT_FILE="false"
-EXPERT_SYNTAX="false"
 if [ "$EXPERT_MODE" = "true" ]; then
     echo -e "${YELLOW}⚠️ Expert mode is enabled. ⚠️${NC}"
 
-    if [ -f /config/carconnectivity.expert.json ]; then
-        EXPERT_FILE="true"
-        echo -e "${GREEN}✅ File carconnectivity.expert.json exists.${NC}"
+    if [ -f "${EXPERT_FILE}" ]; then
+        EXPERT_EXISTS="true"
+        echo -e "${GREEN}✅ File ${EXPERT_NAME} exists.${NC}"
     else
-        echo -e "${RED}❌ File carconnectivity.expert.json not found.${NC}"
+        echo -e "${RED}❌ File ${EXPERT_NAME} not found.${NC}"
     fi
 
-    if jq empty /config/carconnectivity.expert.json 2>/dev/null; then
+    if validate_json "$EXPERT_FILE" "$EXPERT_NAME"; then
         EXPERT_SYNTAX="true"
-        echo -e "${GREEN}✅ JSON is syntactically correct.${NC}"
-    else
-        echo -e "${RED}❌ JSON invalid.${NC}"
     fi
 fi
 
-if [ "$EXPERT_MODE" = "true" ] && [ "$EXPERT_FILE" = "true" ] && [ "$EXPERT_SYNTAX" = "true" ]; then
-    ln -nfs /config/carconnectivity.expert.json /tmp/carconnectivity.json
+CONFIG_FILE=${UI_FILE}
+if [ "$EXPERT_MODE" = "true" ] && [ "$EXPERT_EXISTS" = "true" ] && [ "$EXPERT_SYNTAX" = "true" ]; then
+    CONFIG_FILE=${EXPERT_FILE}
     echo -e "${GREEN}🔠 Expert configuration applied.${NC}"
 else
+    if [ "$EXPERT_MODE" = "true" ]; then
+        if [ "$EXPERT_EXISTS" != "true" ]; then
+            echo -e "${YELLOW}⚠️ Using ${UI_NAME} because ${EXPERT_NAME} is missing.${NC}"
+        elif [ "$EXPERT_SYNTAX" != "true" ]; then
+            echo -e "${YELLOW}⚠️ Using ${UI_NAME} because ${EXPERT_NAME} is invalid.${NC}"
+        fi
+    fi
+
     echo -e "${BLUE}🛠️ Generating configuration...${NC}"
-    tempio -conf /data/options.json -template carconnectivity.json.gtpl -out /tmp/carconnectivity.UI.json
-    jq . /tmp/carconnectivity.UI.json > /config/carconnectivity.UI.json
-    ln -nfs /config/carconnectivity.UI.json /tmp/carconnectivity.json
+    tempio -conf  ${OPTIONS_JSON} -template carconnectivity.json.gtpl -out  ${UI_NAME}
+
+    if validate_json "$UI_FILE" "$UI_NAME"; then
+        jq . "$UI_FILE" > "$CONFIG_FILE"
+    else
+        exit 1
+    fi
 fi
 
-DEBUG_LEVEL=$(jq -r '.log_level' /data/options.json 2>/dev/null || echo "info")
+DEBUG_LEVEL=$(jq -r '.log_level'  ${OPTIONS_JSON} 2>/dev/null || echo "info")
 echo -e "TYPE=$(hostname)"
 print_file versions.txt
 
 if [ "$DEBUG_LEVEL" = "debug" ] || [ "$EXPERT_MODE" = "true" ]; then
-    print_file carconnectivity.json
+    print_file ${CONFIG_FILE}
 fi
 
-/opt/venv/bin/carconnectivity carconnectivity.json &
+/opt/venv/bin/carconnectivity ${CONFIG_FILE} --tokenfile ${TOKEN_FILE} --cache ${CACHE_FILE} --healthcheckfile ${HEALTHY_FILE} &
+
 child_pid=$!
 echo -e "👏 ${GREEN}STARTED${NC} (PID: $child_pid)"
 wait "$child_pid"
