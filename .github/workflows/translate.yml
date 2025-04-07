@@ -10,41 +10,67 @@ on:
   workflow_dispatch: # Allows manually triggering the action if needed
 
 jobs:
-    translate:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                fetch-depth: 3
+  translate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lang: [French, Italian, German, Spanish, Polish, Portuguese]
 
-            - name: Auto Translate
-              uses: Lin-jun-xiang/action-translate-readme@v2 # Based on the tag
-              with:
-                token: ${{ secrets.ACTION_BOT }} # Based on step2 name
-                #openai: ${{ secrets.OPENAI_API_KEY }}  # Optional: Based on step3
-                langs: "French,Italian,German,Spanish,Polish,Portuguese" # You can define any langs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Copy README to README.md
-              run: cp README README.md
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
 
-            - name: Prepend README.header to translated files
-              run: |
-                cat README.header > temp
-                echo -e "\n\n" >> temp
-                cat README >> temp  && mv temp "README.md"
+      - name: Translate README to ${{ matrix.lang }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          LANG_NAME="${{ matrix.lang }}"
+          LANG_CODE=$(echo "$LANG_NAME" | tr '[:upper:]' '[:lower:]' | cut -c1-2)
 
-                for file in README.*.md; do
-                  [ -e "$file" ] || continue
-                  cat README.header > temp
-                  echo -e "\n\n" >> temp
-                  cat "$file" >> temp  && mv temp "$file"
-                done
-            
-            - name: Commit and push changes
-              run: |
-                git config --global user.name "github-actions[bot]"
-                git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                git add README.*md
-                git commit -m "Automated translation" || echo "No changes to commit"
-                git push
+          content=$(cat README)
+
+          echo "Translating to $LANG_NAME..."
+
+          response=$(curl -s https://api.openai.com/v1/chat/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d '{
+              "model": "gpt-4",
+              "messages": [
+                {"role": "system", "content": "You are a professional technical translator."},
+                {"role": "user", "content": "Translate the following README into '"$LANG_NAME"' while keeping the markdown format:\n\n'"$(echo "$content" | sed 's/"/\\"/g')"'"}],
+              "temperature": 0.2
+            }')
+
+          echo "$response" | jq -r '.choices[0].message.content' > "README.${LANG_NAME}"
+          cat README.header > README.${LANG_NAME}.md
+          echo -e "\n\n" >> README.${LANG_NAME}.md
+          cat README.${LANG_NAME} >> README.${LANG_NAME}.md
+          rm README.${LANG_NAME}.md
+
+          echo "✅ Generated README.${LANG_NAME}.md"
+
+      - name: Commit and push translation to branch
+        run: |
+          # Si la langue est English, gérer DOCS.md
+          if [ "${{ matrix.lang }}" == "English" ]; then
+            echo "🔁 English detected — copying to carconnectivity-addon/.../DOCS.md"
+            mkdir -p carconnectivity-addon/carconnectivity-addon
+            cp README.en.md carconnectivity-addon/carconnectivity-addon/DOCS.md
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b $BRANCH
+          git add README.${{ matrix.lang }}.md
+
+          # Ajouter DOCS.md si langue = English
+          if [ "${{ matrix.lang }}" == "English" ]; then
+            git add carconnectivity-addon/carconnectivity-addon/DOCS.md
+          fi
+
+          git commit -m "Translate README to ${{ matrix.lang }}" || echo "No changes"
+          git push -u origin $BRANCH
