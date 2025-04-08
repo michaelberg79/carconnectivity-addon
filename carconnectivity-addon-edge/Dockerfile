@@ -61,7 +61,7 @@ LABEL \
 
 ENTRYPOINT ["/bin/sh", "-c", "/tmp/entrypoint.sh"]
 
-HEALTHCHECK --interval=1m CMD \
-    [ -f "/tmp/carconnectivity_healthy" ] && \
-    grep -q "^healthy$" "/tmp/carconnectivity_healthy" && \
-    find "/tmp/carconnectivity_healthy" -mmin -2 | grep -q .
+# HEALTHCHECK --interval=1m CMD \
+#     [ -f "/tmp/carconnectivity_healthy" ] && \
+#     grep -q "^healthy$" "/tmp/carconnectivity_healthy" && \
+#     find "/tmp/carconnectivity_healthy" -mmin -2 | grep -q .
