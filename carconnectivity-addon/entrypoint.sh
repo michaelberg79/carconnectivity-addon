@@ -22,6 +22,16 @@ BLUE='\033[1;34m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+BANNER="${CYAN}·············································································································
+${CYAN}:  ____            ____                            _   _       _ _              _       _     _             :
+${CYAN}: / ___|__ _ _ __ / ___|___  _ __  _ __   ___  ___| |_(_)_   _(_) |_ _   _     / \\   __| | __| | ___  _ __  :
+${CYAN}:| |   / _\` | '__| |   / _ \\| '_ \\| '_ \\ / _ \\/ __| __| \\ \\ / / | __| | | |   / _ \\ / _\` |/ _\` |/ _ \\| '_ \\ :
+${CYAN}:| |__| (_| | |  | |__| (_) | | | | | | |  __/ (__| |_| |\\ V /| | |_| |_| |  / ___ \\ (_| | (_| | (_) | | | |:
+${CYAN}: \\____\\__,_|_|   \\____\\___/|_| |_|_| |_|\\___|\\___|\\__|_| \\_/ |_|\\__|\\__, | /_/   \\_\\__,_|\\__,_|\\___/|_| |_|:
+${CYAN}:                                                                    |___/                                  :
+${CYAN}·············································································································
+\n${CYAN}⏳ STARTING ⏳ ($(date))${NC}"
+
 # Function to handle signals
 term_handler() {
     echo -e "${YELLOW}SIGTERM signal received, shutting down...${NC}"
@@ -58,22 +68,11 @@ validate_json() {
     fi
 }
 
+echo -e "${BANNER}"
+
 # trap SIGTERM - sent when 'docker stop'
 trap 'term_handler' TERM
 cd /tmp
-
-echo -e "${CYAN}·············································································\n
-${CYAN}:  ____                                             _   _       _ _         :\n
-${CYAN}: / ___|__ _ _ __    ___ ___  _ __  _ __   ___  ___| |_(_)_   _(_) |_ _   _ :\n
-${CYAN}:| |   / _  | '__|  / _// _ \| '  \| '_ \ / _ \/ __| __| \ \ / / | __| | | |:\n
-${CYAN}:| |__| (_| | |    | (_ |(_) | | | | | | |  __/ (__| |_| |\ V /| | |_| |_| |:\n
-${CYAN}: \____\__,_|_|    _\___/\___/|_| |_|_| |_|\___|\___|\__|_| \_/ |_|\__|\__, |:\n
-${CYAN}:   / \   __| | __| | ___  _ __                                       |___/ :\n
-${CYAN}:  / _ \ / _  |/ _  |/ _ \| '_ \                                            :\n
-${CYAN}: / ___ \ (_| | (_| | (_) | | | |                                           :\n
-${CYAN}:/_/   \_\__,_|\__,_|\___/|_| |_|                                           :\n
-${CYAN}·············································································\n
-\n${CYAN}⏳ STARTING ⏳ ($(date))${NC}"
 
 if [ "${EXPERT_MODE}" = "true" ]; then
     echo -e "${YELLOW}⚠️ Expert mode is enabled. ⚠️${NC}"
@@ -97,9 +96,10 @@ if [ "${EXPERT_MODE}" = "true" ] && [ "${EXPERT_EXISTS}" = "true" ] && [ "${EXPE
 else
     if [ "${EXPERT_MODE}" = "true" ]; then
         if [ "${EXPERT_EXISTS}" != "true" ]; then
-            echo -e "${YELLOW}⚠️ Using ${UI_NAME} because ${EXPERT_NAME} is missing.${NC}"
+            echo -e "${YELLOW}⛔ Using ${UI_NAME} because ${EXPERT_NAME} is missing.${NC}"
         elif [ "${EXPERT_SYNTAX}" != "true" ]; then
-            echo -e "${YELLOW}⚠️ Using ${UI_NAME} because ${EXPERT_NAME} is invalid.${NC}"
+            echo -e "${YELLOW}⛔ Using ${UI_NAME} because ${EXPERT_NAME} is invalid.${NC}"
+            print_file ${EXPERT_FILE}
         fi
     fi
 
@@ -117,7 +117,7 @@ DEBUG_LEVEL=$(jq -r '.log_level'  ${OPTIONS_JSON} 2>/dev/null || echo "info")
 echo -e "TYPE=$(hostname)"
 print_file versions.txt
 
-if [ "${DEBUG_LEVEL}" = "debug" ] || [ "${EXPERT_MODE}" = "true" ]; then
+if [ "${DEBUG_LEVEL}" = "debug" ]; then
     print_file ${CONFIG_FILE}
 fi
 
