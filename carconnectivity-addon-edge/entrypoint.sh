@@ -35,8 +35,9 @@ term_handler() {
 # Function to print file with header and footer
 print_file() {
     local file="$1"
+    local name="$(basename ${file})"
     if [ -f "$file" ]; then
-        echo -e "${BLUE}📃 ($file) 📃${NC}"
+        echo -e "${BLUE}📃 ($name) 📃${NC}"
         cat "$file"
         echo -e "${BLUE}-----------${NC}"
     else
@@ -47,12 +48,12 @@ print_file() {
 # JSON Verifier
 validate_json() {
     local file="$1"
-    local label="$2"
+    local name="$(basename ${file})"
     if jq empty "$file" 2>/dev/null; then
-        echo -e "${GREEN}✅ File ${label} is syntactically correct.${NC}"
+        echo -e "${GREEN}✅ File ${name} is syntactically correct.${NC}"
         return 0
     else
-        echo -e "${RED}❌ File ${label} is invalid.${NC}"
+        echo -e "${RED}❌ File ${name} is invalid.${NC}"
         return 1
     fi
 }
@@ -74,7 +75,7 @@ ${CYAN}:/_/   \_\__,_|\__,_|\___/|_| |_|                                        
 ${CYAN}·············································································\n
 \n${CYAN}⏳ STARTING ⏳ ($(date))${NC}"
 
-if [ "$EXPERT_MODE" = "true" ]; then
+if [ "${EXPERT_MODE}" = "true" ]; then
     echo -e "${YELLOW}⚠️ Expert mode is enabled. ⚠️${NC}"
 
     if [ -f "${EXPERT_FILE}" ]; then
@@ -84,20 +85,20 @@ if [ "$EXPERT_MODE" = "true" ]; then
         echo -e "${RED}❌ File ${EXPERT_NAME} not found.${NC}"
     fi
 
-    if validate_json "$EXPERT_FILE" "$EXPERT_NAME"; then
+    if validate_json "${EXPERT_FILE}"; then
         EXPERT_SYNTAX="true"
     fi
 fi
 
 CONFIG_FILE=${UI_FILE}
-if [ "$EXPERT_MODE" = "true" ] && [ "$EXPERT_EXISTS" = "true" ] && [ "$EXPERT_SYNTAX" = "true" ]; then
+if [ "${EXPERT_MODE}" = "true" ] && [ "${EXPERT_EXISTS}" = "true" ] && [ "${EXPERT_SYNTAX}" = "true" ]; then
     CONFIG_FILE=${EXPERT_FILE}
     echo -e "${GREEN}🔠 Expert configuration applied.${NC}"
 else
-    if [ "$EXPERT_MODE" = "true" ]; then
-        if [ "$EXPERT_EXISTS" != "true" ]; then
+    if [ "${EXPERT_MODE}" = "true" ]; then
+        if [ "${EXPERT_EXISTS}" != "true" ]; then
             echo -e "${YELLOW}⚠️ Using ${UI_NAME} because ${EXPERT_NAME} is missing.${NC}"
-        elif [ "$EXPERT_SYNTAX" != "true" ]; then
+        elif [ "${EXPERT_SYNTAX}" != "true" ]; then
             echo -e "${YELLOW}⚠️ Using ${UI_NAME} because ${EXPERT_NAME} is invalid.${NC}"
         fi
     fi
@@ -105,8 +106,8 @@ else
     echo -e "${BLUE}🛠️ Generating configuration...${NC}"
     tempio -conf  ${OPTIONS_JSON} -template carconnectivity.json.gtpl -out  ${UI_NAME}
 
-    if validate_json "$UI_FILE" "$UI_NAME"; then
-        jq . "$UI_FILE" > "$CONFIG_FILE"
+    if validate_json "${UI_FILE}"; then
+        jq . "${UI_FILE}" > "${CONFIG_FILE}"
     else
         exit 1
     fi
@@ -116,7 +117,7 @@ DEBUG_LEVEL=$(jq -r '.log_level'  ${OPTIONS_JSON} 2>/dev/null || echo "info")
 echo -e "TYPE=$(hostname)"
 print_file versions.txt
 
-if [ "$DEBUG_LEVEL" = "debug" ] || [ "$EXPERT_MODE" = "true" ]; then
+if [ "${DEBUG_LEVEL}" = "debug" ] || [ "${EXPERT_MODE}" = "true" ]; then
     print_file ${CONFIG_FILE}
 fi
 
