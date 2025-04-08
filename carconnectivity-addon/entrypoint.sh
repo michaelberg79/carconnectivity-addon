@@ -67,7 +67,7 @@ ${CYAN}:  ____                                             _   _       _ _      
 ${CYAN}: / ___|__ _ _ __    ___ ___  _ __  _ __   ___  ___| |_(_)_   _(_) |_ _   _ :\n
 ${CYAN}:| |   / _  | '__|  / _// _ \| '  \| '_ \ / _ \/ __| __| \ \ / / | __| | | |:\n
 ${CYAN}:| |__| (_| | |    | (_ |(_) | | | | | | |  __/ (__| |_| |\ V /| | |_| |_| |:\n
-${CYAN}: \____\__,_|_|    _\__\\___/|_| |_|_| |_|\___|\___|\__|_| \_/ |_|\__|\__, |:\n
+${CYAN}: \____\__,_|_|    _\___/\___/|_| |_|_| |_|\___|\___|\__|_| \_/ |_|\__|\__, |:\n
 ${CYAN}:   / \   __| | __| | ___  _ __                                       |___/ :\n
 ${CYAN}:  / _ \ / _  |/ _  |/ _ \| '_ \                                            :\n
 ${CYAN}: / ___ \ (_| | (_| | (_) | | | |                                           :\n
@@ -104,10 +104,10 @@ else
     fi
 
     echo -e "${BLUE}🛠️ Generating configuration...${NC}"
-    tempio -conf  ${OPTIONS_JSON} -template carconnectivity.json.gtpl -out  ${UI_NAME}
+    tempio -conf "${OPTIONS_JSON}" -template carconnectivity.json.gtpl -out "${UI_NAME}"
 
-    if validate_json "${UI_FILE}"; then
-        jq . "${UI_FILE}" > "${CONFIG_FILE}"
+    if validate_json "${UI_NAME}"; then
+        jq . "${UI_NAME}" > "${CONFIG_FILE}"
     else
         exit 1
     fi
@@ -124,7 +124,7 @@ fi
 /opt/venv/bin/carconnectivity ${CONFIG_FILE} --tokenfile ${TOKEN_FILE} --cache ${CACHE_FILE} --healthcheckfile ${HEALTHY_FILE} &
 
 child_pid=$!
-echo -e "👏 ${GREEN}STARTED${NC} (PID: $child_pid)"
+echo -e "👏 ${GREEN}STARTED (PID: $child_pid)${NC}"
 wait "$child_pid"
 exit_code=$?
 echo -e "${BLUE}ℹ️ Process exited with code $exit_code${NC}"
