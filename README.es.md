@@ -25,11 +25,11 @@
 ## Introducción
 
 El`CarConnectivity-Addon`El módulo le permite conectar y recuperar información sobre su vehículo de los servicios en línea de los fabricantes compatibles. Esta guía explica cómo configurar correctamente el módulo.
-Simplemente estoy empaquetando el[Excelente trabajo realizado por Till.](https://github.com/tillsteinbach/CarConnectivity)
+Simplemente estoy empaquetando[El trabajo (excelente) realizado por Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Su trabajo también está disponible como imágenes de Docker. Entonces, si está utilizando el Asistente de inicio como un Docker independiente, también puede usarlo directamente.
+Su trabajo también está disponible como imágenes de Docker. Entonces, si estás usando el asistente de casa como independiente`docker`, también puedes usarlo directamente.
 
-**⚠️ El proyecto aún está en desarrollo, con la ingeniería inversa de la API para completarse y la comunicación con MQTT/Asistente de inicio para ser adaptado.**
+**⚠️ El proyecto todavía está en desarrollo,`reverse engineering`de la API que se completará y la comunicación con MQTT/Asistente de inicio para ser adaptado.**
 
 ## Agregar repositorio
 
@@ -133,7 +133,7 @@ Consulte la documentación oficial de la carconectividad para obtener la lista d
 ## Mejores prácticas
 
 -   **Solo complete la configuración de las marcas de vehículos que posee.**
--   **\`**No comparta sus credenciales de inicio de sesión.**\`**
+-   \***\*No comparta sus credenciales de inicio de sesión. \*\***
 -   **Ajuste el intervalo de actualización para evitar exceder los límites de solicitud de API. Recuerde que el límite parece ser de aproximadamente 1000 req/día.**
 -   **Use el nivel de registro de "depuración" solo cuando resuelva problemas.**\`\*\*
 
