@@ -25,11 +25,11 @@
 ## Introduzione
 
 IL`CarConnectivity-Addon`Il modulo consente di connettere e recuperare informazioni sul veicolo dai servizi online dei produttori compatibili. Questa guida spiega come configurare correttamente il modulo.
-Sto semplicemente imballando il[excellent work done by Till.](https://github.com/tillsteinbach/CarConnectivity)
+Sto semplicemente confezionando[Il lavoro (eccellente) svolto da Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Il suo lavoro è disponibile anche come Docker Images. Quindi, se stai usando Home Assistant come docker autonomo, puoi usarlo direttamente anche tu.
+Il suo lavoro è disponibile anche come Docker Images. Quindi, se stai usando Home Assistant come autonomo`docker`, puoi usarlo direttamente anche tu.
 
-**⚠️ Il progetto è ancora in fase di sviluppo, con il reverse ingegneria dell'API da completare e la comunicazione con MQTT/Assistente domestico da adattare.**
+**⚠️ Il progetto è ancora in fase di sviluppo,`reverse engineering`dell'API da completare e comunicare con MQTT/Assistente di casa da adattare.**
 
 ## Aggiungi repository
 
@@ -58,7 +58,7 @@ Ogni produttore di automobili fornisce un servizio online che consente di accede
 
 #### Informazioni richieste:
 
-Per`seat`,`Cupra`, Skoda, Volkswagen e Tronity:
+Per`seat`,`Cupra`, Skoda, Volkswagen and Tronity:
 
 -   `Brand`: Il marchio del produttore.
 -   `Username`: L'indirizzo e -mail utilizzato per accedere al servizio del produttore.
@@ -67,7 +67,7 @@ Per`seat`,`Cupra`, Skoda, Volkswagen e Tronity:
 -   `Refresh Interval`: Definisce la frequenza con cui (in secondi) i dati del veicolo vengono aggiornati.
 -   `Warning:`L'impostazione di una frequenza di aggiornamento troppo frequentemente può superare i limiti di richiesta API imposti dal produttore, con conseguenti restrizioni di accesso temporanee.
 
-⚠️ You can use 2 accounts for 2 different brands or 2 cars of a same brand that are not linked to the same account.
+⚠️ Puoi utilizzare 2 account per 2 marchi diversi o 2 auto di uno stesso marchio che non sono collegati allo stesso account.
 
 Per Volvo:
 
@@ -86,7 +86,7 @@ Devi usare`MQTT`Per inviare i dati del veicolo ad Assistant Home, configurare qu
 -   `Password`: Password del broker MQTT
 -   `Broker Address`: IP o nome di dominio del server MQTT
 
-⚠️ Se non stai già usando MQTT su Home Assistant, puoi aggiungere, ad esempio,[Mosquito addon AND MQTT integration](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Se non stai già usando MQTT su Home Assistant, puoi aggiungere, ad esempio,[Mosquito Addon e MQTT Integrazione](https://www.home-assistant.io/integrations/mqtt)
 
 ### 4. WebUII
 
@@ -133,7 +133,7 @@ Fare riferimento alla documentazione ufficiale di Carconnettività per l'elenco 
 ## Best practice
 
 -   **Compila solo le impostazioni per i marchi del veicolo che possiedi.**
--   **\`**Non condividere le credenziali di accesso.**\`**
+-   \***\*Non condividere le credenziali di accesso. \*\***
 -   **Regolare l'intervallo di aggiornamento per evitare il superamento dei limiti di richiesta API. Ricorda il limite sembra essere circa 1000 req/giorno.**
 -   **Utilizzare il livello di registrazione "debug" solo durante la risoluzione dei problemi.**\`\*\*
 
