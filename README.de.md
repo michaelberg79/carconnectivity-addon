@@ -22,16 +22,16 @@
 
 ## Einführung
 
-Der`CarConnectivity-Addon`Mit dem Modul können Sie Informationen über Ihr Fahrzeug aus den Online -Diensten der kompatiblen Hersteller anschließen und abrufen. In diesem Handbuch wird erläutert, wie das Modul ordnungsgemäß konfiguriert wird.
+`CarConnectivity-Addon`Ermöglicht die Verbindung und Abruf von Informationen über Ihr Fahrzeug von den Online -Diensten der kompatiblen Hersteller. In diesem Handbuch wird erläutert, wie das Modul ordnungsgemäß konfiguriert wird.
 Ich verpackt einfach[Die Arbeit (ausgezeichnet) von Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Seine Arbeiten sind auch als Docker -Bilder verfügbar. Wenn Sie also den Home-Assistenten als eigenständige Verwendung verwenden`docker`Sie können es auch direkt verwenden.
+Seine Arbeiten sind auch als Docker -Bilder verfügbar. Also, wenn Sie verwenden`Home Assistant`als eigenständiger`docker`Sie können es auch direkt verwenden.
 
 **⚠️Das Projekt befindet sich noch in der Entwicklung,`reverse engineering`der API, die fertiggestellt werden soll und die Kommunikation mit MQTT/Home Assistant angepasst wird.**
 
 ## Repository hinzufügen
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## Allgemeine Konfiguration
 
@@ -78,17 +78,17 @@ Für Volvo:
 
 ### 3.. MQTT -Konfiguration (obligatorisch)
 
-Sie müssen verwenden`MQTT`Um Fahrzeugdaten an Home Assistant zu senden, konfigurieren Sie diese Einstellungen:
+Sie müssen verwenden`MQTT`Fahrzeugdaten an senden an`Home Assistant`Konfigurieren Sie diese Einstellungen:
 
 -   `Username`: MQTT Broker Login
 -   `Password`: MQTT Broker Passwort
 -   `Broker Address`: IP- oder Domänenname des MQTT -Servers
 
-⚠️ Wenn Sie MQTT noch nicht bei Home Assistant verwenden, können Sie zum Beispiel hinzufügen,[Mücken -Addon- und MQTT -Integration](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Wenn Sie MQTT noch nicht verwenden`Home Assistant`Sie können zum Beispiel hinzufügen,[`Mosquito Addon`Und`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
-### 4. Webuii
+### 4.`WEBUI`
 
-Sie können http // x.x.x.x: 4000 The Webui von Carconnektivität besuchen:
+Sie können http // x.x.x.x: 4000 die besuchen`WEBUI`aus`Carconnectivity`:
 
 -   `Username`: Login
 -   `Password`: Passwort
@@ -124,7 +124,7 @@ Um es sicher zu verwenden, müssen Sie:
 
 Seien Sie mit der JSON -Syntax und der Struktur vertraut.
 
-Der Expertenmodus ermöglicht die Verwendung einer benutzerdefinierten Konfigurationsdatei. Wenn dieser Modus aktiviert ist, kann der Benutzer eine mit dem Namen namens Datei bereitstellen`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`enthält die gewünschten Einstellungen. Dies ersetzt die Konfiguration vollständig aus der grafischen Schnittstelle, die in verfügbar ist`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Das Verzeichnis`/addon_configs/1b1291d4_carconnectivity-addon/`wird möglicherweise nicht im Home -Assistant -Dateisystem angezeigt. Wenn dies der Fall ist, sollte der Vorgesetzte neu gestartet werden.
+Der Expertenmodus ermöglicht die Verwendung einer benutzerdefinierten Konfigurationsdatei. Wenn dieser Modus aktiviert ist, kann der Benutzer eine mit dem Namen namens Datei bereitstellen`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`enthält die gewünschten Einstellungen. Dies ersetzt die Konfiguration vollständig aus der grafischen Schnittstelle, die in verfügbar ist`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Das Verzeichnis`/addon_configs/1b1291d4_carconnectivity-addon/`kann nicht in der erscheinen`Home Assistant`Dateisystem. Wenn dies der Fall ist, sollte der Vorgesetzte neu gestartet werden.
 
 In der offiziellen Dokumentation von Carconnectivity finden Sie die Liste der unterstützten Funktionen und erwarteten Parameter.
 
