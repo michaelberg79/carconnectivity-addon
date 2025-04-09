@@ -22,16 +22,16 @@
 
 ## Introduction
 
-Le`CarConnectivity-Addon`Le module vous permet de connecter et de récupérer des informations sur votre véhicule à partir des services en ligne des fabricants compatibles. Ce guide explique comment configurer correctement le module.
+`CarConnectivity-Addon`Vous permet de connecter et de récupérer des informations sur votre véhicule à partir des services en ligne des fabricants compatibles. Ce guide explique comment configurer correctement le module.
 Je suis simplement emballé[Le travail (excellent) fait par Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Son travail est également disponible sous forme d'images Docker. Donc, si vous utilisez l'assistant à domicile comme autonome`docker`, vous pouvez également l'utiliser directement.
+Son travail est également disponible sous forme d'images Docker. Donc si vous utilisez`Home Assistant`En tant que autonome`docker`, you can directly use it too.
 
 **⚠️ Le projet est toujours en cours de développement,`reverse engineering`de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.**
 
 ## Ajouter le référentiel
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## Configuration générale
 
@@ -70,7 +70,7 @@ Pour`seat`,`Cupra`, Skoda, Volkswagen et Tronity:
 Pour Volvo:
 
 -   `API Key primary`: Clé primaire de l'API Volvo.
--   `API Key secondary`: Volvo API secondary key.
+-   `API Key secondary`: Clé secondaire de l'API Volvo.
 -   `Vehicule Token`: Jeton d'accès pour le véhicule.
 -   `Vehicule Location Token`: Jeton d'accès pour le point de terminaison de l'emplacement.
 -   `Refresh Interval`: Définit la fréquence à la mise à jour des données du véhicule.
@@ -78,17 +78,17 @@ Pour Volvo:
 
 ### 3. Configuration MQTT (obligatoire)
 
-Vous devez utiliser`MQTT`Pour envoyer des données de véhicule à l'assistant à domicile, configurez ces paramètres:
+Vous devez utiliser`MQTT`pour envoyer des données de véhicule à`Home Assistant`, Configurez ces paramètres:
 
 -   `Username`: Connexion du courtier MQTT
 -   `Password`: Mot de passe du courtier MQTT
 -   `Broker Address`: IP ou nom de domaine du serveur MQTT
 
-⚠️ Si vous n'utilisez pas déjà MQTT sur Assistant à domicile, vous pouvez ajouter, par exemple,[Addon moustique et intégration MQTT](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Si vous n'utilisez pas déjà MQTT`Home Assistant`, vous pouvez ajouter, par exemple,[`Mosquito Addon`et`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
-### 4. Webuii
+### 4.`WEBUI`
 
-Vous pouvez visiter http // x.x.x.x: 4000 le webui de la carconnectivité:
+Vous pouvez visiter http // x.x.x.x: 4000 le`WEBUI`depuis`Carconnectivity`:
 
 -   `Username`: se connecter
 -   `Password`: mot de passe
@@ -122,9 +122,9 @@ Ce mode désactive toutes les vérifications de la validation et de la sécurit�
 Le mode expert est uniquement destiné aux utilisateurs avancés.
 Pour l'utiliser en toute sécurité, vous devez:
 
-Be familiar with JSON syntax and structure.
+Familiarisez-vous avec la syntaxe et la structure JSON.
 
-Le mode expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenant les paramètres souhaités. Cela remplace complètement la configuration à partir de l'interface graphique, qui sera disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Le répertoire`/addon_configs/1b1291d4_carconnectivity-addon/`ne peut pas apparaître dans le système de fichiers d'assistant à domicile. Si tel est le cas, le superviseur doit être redémarré.
+Le mode expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenant les paramètres souhaités. Cela remplace complètement la configuration à partir de l'interface graphique, qui sera disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Le répertoire`/addon_configs/1b1291d4_carconnectivity-addon/`peut ne pas apparaître dans le`Home Assistant` file system. If this is the case, the supervisor should be restarted.
 
 Reportez-vous à la documentation officielle de carconnectivité pour la liste des fonctions prises en charge et des paramètres attendus.
 
