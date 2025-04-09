@@ -22,16 +22,16 @@
 
 ## Introducción
 
-El`CarConnectivity-Addon`El módulo le permite conectar y recuperar información sobre su vehículo de los servicios en línea de los fabricantes compatibles. Esta guía explica cómo configurar correctamente el módulo.
+`CarConnectivity-Addon`Le permite conectarse y recuperar información sobre su vehículo de los servicios en línea de los fabricantes compatibles. Esta guía explica cómo configurar correctamente el módulo.
 Simplemente estoy empaquetando[El trabajo (excelente) realizado por Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Su trabajo también está disponible como imágenes de Docker. Entonces, si estás usando el asistente de casa como independiente`docker`, también puedes usarlo directamente.
+Su trabajo también está disponible como imágenes de Docker. Entonces, si estás usando`Home Assistant` as a stand-alone `docker`, también puedes usarlo directamente.
 
 **⚠️ El proyecto todavía está en desarrollo,`reverse engineering`de la API que se completará y la comunicación con MQTT/Asistente de inicio para ser adaptado.**
 
 ## Agregar repositorio
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## Configuración general
 
@@ -78,19 +78,19 @@ Para Volvo:
 
 ### 3. Configuración MQTT (obligatoria)
 
-Necesitas usar`MQTT`Para enviar datos del vehículo al asistente de inicio, configure estos ajustes:
+You need to use `MQTT`para enviar datos del vehículo a`Home Assistant`, Configure estos ajustes:
 
 -   `Username`: MQTT Broker Iniciar sesión
 -   `Password`: Contraseña de mqtt corredor
 -   `Broker Address`: IP o nombre de dominio del servidor MQTT
 
-⚠️ Si aún no está usando MQTT en Home Assistant, puede agregar, por ejemplo,[Mosquito complemento e integración MQTT](https://www.home-assistant.io/integrations/mqtt)
+⚠️ si aún no estás usando mqtt en`Home Assistant`, puede agregar, por ejemplo,[`Mosquito Addon`Y`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
-### 4. Webuii
+### 4.`WEBUI`
 
-Puede visitar http // x.x.x.x: 4000 la webui de la carconnectividad:
+Puede visitar http // x.x.x.x: 4000 el`WEBUI`de`Carconnectivity`:
 
--   `Username`: acceso
+-   `Username`: login
 -   `Password`: contraseña
 -   `WEBUI Port`: 4000
 
@@ -124,7 +124,7 @@ Para usarlo de manera segura, debe:
 
 Estar familiarizado con la sintaxis y la estructura JSON.
 
-El modo experto permite el uso de un archivo de configuración personalizado. Cuando este modo está habilitado, el usuario puede proporcionar un archivo llamado`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`que contiene la configuración deseada. Esto reemplaza completamente la configuración de la interfaz gráfica, que estará disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. El directorio`/addon_configs/1b1291d4_carconnectivity-addon/`puede no aparecer en el sistema de archivos del asistente de inicio. Si este es el caso, el supervisor debe reiniciarse.
+El modo experto permite el uso de un archivo de configuración personalizado. Cuando este modo está habilitado, el usuario puede proporcionar un archivo llamado`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`que contiene la configuración deseada. Esto reemplaza completamente la configuración de la interfaz gráfica, que estará disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. El directorio`/addon_configs/1b1291d4_carconnectivity-addon/`puede no aparecer en el`Home Assistant`sistema de archivos. Si este es el caso, el supervisor debe reiniciarse.
 
 Consulte la documentación oficial de la carconectividad para obtener la lista de funciones compatibles y parámetros esperados.
 
