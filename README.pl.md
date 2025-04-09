@@ -1,0 +1,143 @@
+![Supports aarch64 Architecture][aarch64-shield]![Supports amd64 Architecture][amd64-shield]![Supports armhf Architecture][armhf-shield]![Supports armv7 Architecture][armv7-shield]![Supports i386 Architecture][i386-shield][![GitHub sourcecode](https://img.shields.io/badge/Source-GitHub-green)](https://github.com/Pulpyyyy/carconnectivity-addon/)[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/releases/latest)[![GitHub issues](https://img.shields.io/github/issues/Pulpyyyy/carconnectivity-addon)](https://github.com/Pulpyyyy/carconnectivity-addon/issues)
+
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
+
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
+
+[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
+
+[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
+
+[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+
+# Strona główna asystent dodatku: carconnectivity
+
+|        | Stabilny                                                                                                                                                                                                     | Krawędź                                                                                                                                                                                                                                                         |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Wersja | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
+
+# Przetłumaczone przewodniki
+
+[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
+
+# Strona główna asystent dodatku: carconnectivity
+
+## Wstęp
+
+.`CarConnectivity-Addon`Moduł umożliwia podłączenie i pobieranie informacji o pojazdu z usług online kompatybilnych producentów. Ten przewodnik wyjaśnia, jak prawidłowo skonfigurować moduł.
+Po prostu pakuję[Doskonała praca wykonana przez Till.](https://github.com/tillsteinbach/CarConnectivity)
+
+Jego praca jest również dostępna jako obrazy Docker. Więc jeśli używasz Asystenta Home jako samodzielnego dokera, możesz go również bezpośrednio użyć.
+
+**⚠️ Projekt jest nadal opracowywany, z odwrotną inżynierią interfejsu API i komunikacja z MQTT/Asystentem Home, który ma zostać dostosowany.**
+
+## Dodaj repozytorium
+
+[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+
+## Ogólna konfiguracja
+
+Wypełnij tylko ustawienia dla marek pojazdów, które posiadasz.**Pozostaw wszystkie inne pola puste.**
+
+### 1. Wybór marki pojazdu
+
+Wybierz producenta odpowiadającego Twojemu pojazdowi od obsługiwanych marek:
+
+-   `Seat`
+-   `Cupra`
+-   `Skoda`
+-   `Volkswagen`
+-   `Tronity`
+-   `Volvo`
+
+Jeśli posiadasz wiele pojazdów od różnych marek, możesz skonfigurować wiele sekcji.
+
+### 2. Łączenie się z usługami online producenta
+
+Każdy producent samochodów zapewnia usługę online, która umożliwia zdalne dostęp do danych pojazdu. Aby się połączyć, musisz podać poświadczenia logowania.
+
+#### Wymagane informacje:
+
+Dla`seat`,`Cupra`, Skoda, Volkswagen and Tronity:
+
+-   `Brand`: Marka producenta.
+-   `Username`: Adres e -mail używany do zalogowania się do usługi producenta.
+-   `Password`: Hasło do konta producenta.
+-   `PIN Code`: 4-cyfrowy kod wymagany do zdalnego dostępu do niektórych funkcji pojazdu.
+-   `Refresh Interval`: Określa, jak często (w sekundach) dane pojazdu są aktualizowane.
+-   `Warning:`Zbyt często ustawienie prędkości odświeżania może przekraczać limity żądania API nałożone przez producenta, co powoduje tymczasowe ograniczenia dostępu.
+
+⚠️ Możesz użyć 2 kont dla 2 różnych marek lub 2 samochodów tej samej marki, które nie są powiązane z tym samym kontem.
+
+Dla Volvo:
+
+-   `API Key primary`: Klucz podstawowy Volvo API.
+-   `API Key secondary`: Klucz wtórny Volvo API.
+-   `Vehicule Token`: Token dostępu do pojazdu.
+-   `Vehicule Location Token`: Token dostępu do punktu końcowego lokalizacji.
+-   `Refresh Interval`: Określa, jak często (w sekundach) dane pojazdu są aktualizowane.
+-   `Warning:`Zbyt często ustawienie prędkości odświeżania może przekraczać limity żądania API nałożone przez producenta, co powoduje tymczasowe ograniczenia dostępu.
+
+### 3. Konfiguracja MQTT (obowiązkowa)
+
+Musisz użyć`MQTT`Aby wysłać dane pojazdu do Asystenta Home, skonfiguruj te ustawienia:
+
+-   `Username`: Login Broker MQTT
+-   `Password`: Hasło brokera MQTT
+-   `Broker Address`: Nazwa IP lub domeny serwera MQTT
+
+⚠️ Jeśli jeszcze nie używasz MQTT na asystenta domowym, możesz dodać na przykład[Addon komarów i integracja MQTT](https://www.home-assistant.io/integrations/mqtt)
+
+### 4. Webuii
+
+Możesz odwiedzić http // x.x.x.x: 4000 WebUi z carconnectivity:
+
+-   `Username`: Zaloguj się
+-   `Password`: hasło
+-   `WEBUI Port`: 4000
+
+### 5. Poziom rejestrowania
+
+Zdefiniuj ilość informacji zarejestrowanych w dziennikach:
+
+-   `Info`: Wyświetla ogólne informacje operacyjne.
+-   `Warning`: Wyświetla tylko ostrzeżenia.
+-   `Error`: Wyświetla tylko komunikaty o błędach.
+-   `Debug`: Wyświetla dodatkowe szczegóły przydatne do rozwiązywania problemów.
+
+### 6. Poziom rejestrowania API
+
+Zdefiniuj ilość informacji zarejestrowanych w dziennikach:
+
+-   `Info`: Wyświetla ogólne informacje operacyjne.
+-   `Warning`: Wyświetla tylko ostrzeżenia.
+-   `Error`: Wyświetla tylko komunikaty o błędach.
+-   `Debug`: Wyświetla dodatkowe szczegóły przydatne do rozwiązywania problemów.
+
+### 7. Tryb ekspertów
+
+Tryb ekspertów umożliwia użycie wszystkich natywnych funkcji Carconnectivity, w tym tych, które nie są dostępne za pośrednictwem interfejsu graficznego-o ile odpowiednie funkcje są obsługiwane przez dodatkowe binarie.
+
+⚠️ Ostrzeżenie:
+Ten tryb wyłącza wszystkie kontrole walidacji treści i bezpieczeństwo. W rezultacie nawet niewielki błąd (taki jak nieprawidłowa składnia JSON) może uniemożliwić prawidłowe uruchomienie dodatku.
+
+Tryb ekspertów jest przeznaczony tylko dla zaawansowanych użytkowników.
+Aby korzystać z niego bezpiecznie, musisz:
+
+Zapoznaj się z składnią i strukturą JSON.
+
+Tryb ekspertów umożliwia użycie niestandardowego pliku konfiguracyjnego. Po włączeniu tego trybu użytkownik może podać plik o nazwie`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`zawierające pożądane ustawienia. To całkowicie zastępuje konfigurację z interfejsu graficznego, który będzie dostępny w`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Katalog`/addon_configs/1b1291d4_carconnectivity-addon/`może nie pojawić się w systemie plików Assistant Home. W takim przypadku przełożony powinien zostać ponownie uruchomiony.
+
+Lista funkcji obsługiwanych i oczekiwanych parametrów zapoznaj się z oficjalną dokumentacją CarConnectivity.
+
+## Najlepsze praktyki
+
+-   **Wypełnij tylko ustawienia posiadanych marek pojazdów.**
+-   **\`**Nie udostępniaj swoich poświadczeń logowania.**\`**
+-   **Dostosuj interwał odświeżania, aby uniknąć przekroczenia limitów żądania API. Pamiętaj, że limit wydaje się być około 1000 wymagań/dzień.**
+-   **Użyj poziomu rejestrowania „debugowania” tylko podczas problemów z rozwiązywaniem problemów.**\`\*\*
+
+* * *
+
+Jeśli masz jakieś pytania lub problemy podczas konfiguracji, patrz dokumentacja modułu.
+Jeśli znajdziesz błąd, otwórz problem.
