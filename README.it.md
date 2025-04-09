@@ -10,17 +10,15 @@
 
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 
-# Assistente di casa Assistente componente aggiuntivo: Carconnettività
+# `Home Assistant Add-on: CarConnectivity`
 
-|          | Stabile                                                                                                                                                                                                      | Bordo                                                                                                                                                                                                                                                           |
+|          | `Stable`                                                                                                                                                                                                     | `Edge`                                                                                                                                                                                                                                                          |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Versione | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
 
 # Guide tradotte
 
 [![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
-
-# Assistente di casa Assistente componente aggiuntivo: Carconnettività
 
 ## Introduzione
 
@@ -58,7 +56,7 @@ Ogni produttore di automobili fornisce un servizio online che consente di accede
 
 #### Informazioni richieste:
 
-Per`seat`,`Cupra`, Skoda, Volkswagen and Tronity:
+Per`seat`,`Cupra`, Skoda, Volkswagen e Tronity:
 
 -   `Brand`: Il marchio del produttore.
 -   `Username`: L'indirizzo e -mail utilizzato per accedere al servizio del produttore.
@@ -126,7 +124,7 @@ Per usarlo in modo sicuro, devi:
 
 Conoscere la sintassi e la struttura JSON.
 
-La modalità Expert consente l'uso di un file di configurazione personalizzato. Quando questa modalità è abilitata, l'utente può fornire un file denominato`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenente le impostazioni desiderate. Ciò sostituisce completamente la configurazione dall'interfaccia grafica, che sarà disponibile in`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. La directory`/addon_configs/1b1291d4_carconnectivity-addon/`potrebbe non apparire nel file system Assistant Home. In tal caso, il supervisore dovrebbe essere riavviato.
+La modalità Expert consente l'uso di un file di configurazione personalizzato. Quando questa modalità è abilitata, l'utente può fornire un file denominato`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenente le impostazioni desiderate. Ciò sostituisce completamente la configurazione dall'interfaccia grafica, che sarà disponibile in`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. The directory `/addon_configs/1b1291d4_carconnectivity-addon/`potrebbe non apparire nel file system Assistant Home. In tal caso, il supervisore dovrebbe essere riavviato.
 
 Fare riferimento alla documentazione ufficiale di Carconnettività per l'elenco delle funzioni supportate e dei parametri previsti.
 
