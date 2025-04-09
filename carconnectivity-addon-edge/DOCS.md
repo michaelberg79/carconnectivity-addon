@@ -32,16 +32,16 @@
 
 ## Introduction
 
-The `CarConnectivity-Addon` module allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services. This guide explains how to properly configure the module.
+`CarConnectivity-Addon` allows you to connect and retrieve information about your vehicle from compatible manufacturers' online services. This guide explains how to properly configure the module.
 I am simply packaging [the work (excellent) done by Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-His work is also available as docker images. So if you're using Home Assistant as a stand-alone `docker`, you can directly use it too.
+His work is also available as docker images. So if you're using `Home Assistant` as a stand-alone `docker`, you can directly use it too.
 
 **⚠️The project is still under development, `reverse engineering` of the api to be completed and communication with MQTT/Home assistant to be adapted.⚠️**
 
 ## Add repository
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![`Addon Home Assistant`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## General Configuration
 
@@ -81,15 +81,15 @@ For volvo:
 - `Warning:` Setting a refresh rate too frequently may exceed the API request limits imposed by the manufacturer, resulting in temporary access restrictions.
   
 ### 3. MQTT Configuration (Mandatory)
-You need to use `MQTT` to send vehicle data to home assistant, configure these settings:
+You need to use `MQTT` to send vehicle data to `Home Assistant`, configure these settings:
 - `Username`: MQTT broker login
 - `Password`: MQTT broker password
 - `Broker Address`: IP or domain name of the MQTT server
 
-⚠️ If you're not already using MQTT on Home assistant, you can add, for example, [Mosquito addon AND MQTT integration](https://www.home-assistant.io/integrations/mqtt) 
+⚠️ If you're not already using MQTT on `Home Assistant`, you can add, for example, [`Mosquito Addon`et `MQTT integration`](https://www.home-assistant.io/integrations/mqtt) 
 
-### 4. WEBUI
-You can visit http//x.x.x.x:4000 The WEBUI from Carconnectivity:
+### 4. `WEBUI`
+You can visit http//x.x.x.x:4000 The `WEBUI` from `Carconnectivity`:
 - `Username`: login
 - `Password`: password
 - `WEBUI Port`: 4000
@@ -119,7 +119,7 @@ To use it safely, you must:
 
 Be familiar with JSON syntax and structure.
 
-The Expert Mode allows the use of a custom configuration file. When this mode is enabled, the user can provide a file named `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json` containing the desired settings. This completely replaces the configuration from the graphical interface, which will be available in `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. The directory `/addon_configs/1b1291d4_carconnectivity-addon/` may not appear in the Home Assistant file system. If this is the case, the supervisor should be restarted.
+The Expert Mode allows the use of a custom configuration file. When this mode is enabled, the user can provide a file named `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json` containing the desired settings. This completely replaces the configuration from the graphical interface, which will be available in `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. The directory `/addon_configs/1b1291d4_carconnectivity-addon/` may not appear in the `Home Assistant` file system. If this is the case, the supervisor should be restarted.
 
 Refer to the official Carconnectivity documentation for the list of supported functions and expected parameters.
 
