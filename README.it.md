@@ -22,16 +22,16 @@
 
 ## Introduzione
 
-IL`CarConnectivity-Addon`Il modulo consente di connettere e recuperare informazioni sul veicolo dai servizi online dei produttori compatibili. Questa guida spiega come configurare correttamente il modulo.
+`CarConnectivity-Addon`Ti consente di connettere e recuperare informazioni sul veicolo dai servizi online dei produttori compatibili. Questa guida spiega come configurare correttamente il modulo.
 Sto semplicemente confezionando[Il lavoro (eccellente) svolto da Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Il suo lavoro è disponibile anche come Docker Images. Quindi, se stai usando Home Assistant come autonomo`docker`, puoi usarlo direttamente anche tu.
+Il suo lavoro è disponibile anche come Docker Images. Quindi se stai usando`Home Assistant`come autonomo`docker`, puoi usarlo direttamente anche tu.
 
 **⚠️ Il progetto è ancora in fase di sviluppo,`reverse engineering`dell'API da completare e comunicare con MQTT/Assistente di casa da adattare.**
 
 ## Aggiungi repository
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## Configurazione generale
 
@@ -78,17 +78,17 @@ Per Volvo:
 
 ### 3. Configurazione MQTT (obbligatoria)
 
-Devi usare`MQTT`Per inviare i dati del veicolo ad Assistant Home, configurare queste impostazioni:
+Devi usare`MQTT`Per inviare i dati del veicolo a`Home Assistant`, Configura queste impostazioni:
 
 -   `Username`: Accesso al broker MQTT
 -   `Password`: Password del broker MQTT
 -   `Broker Address`: IP o nome di dominio del server MQTT
 
-⚠️ Se non stai già usando MQTT su Home Assistant, puoi aggiungere, ad esempio,[Mosquito Addon e MQTT Integrazione](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Se non stai già usando MQTT`Home Assistant`, puoi aggiungere, ad esempio,[`Mosquito Addon`E`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
-### 4. WebUII
+### 4.`WEBUI`
 
-È possibile visitare http // x.x.x.x: 4000 il WebUI da CarConnettività:
+È possibile visitare http // x.x.x.x: 4000 il`WEBUI`da`Carconnectivity`:
 
 -   `Username`: login
 -   `Password`: password
@@ -124,7 +124,7 @@ Per usarlo in modo sicuro, devi:
 
 Conoscere la sintassi e la struttura JSON.
 
-La modalità Expert consente l'uso di un file di configurazione personalizzato. Quando questa modalità è abilitata, l'utente può fornire un file denominato`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenente le impostazioni desiderate. Ciò sostituisce completamente la configurazione dall'interfaccia grafica, che sarà disponibile in`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. The directory `/addon_configs/1b1291d4_carconnectivity-addon/`potrebbe non apparire nel file system Assistant Home. In tal caso, il supervisore dovrebbe essere riavviato.
+La modalità Expert consente l'uso di un file di configurazione personalizzato. Quando questa modalità è abilitata, l'utente può fornire un file denominato`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenente le impostazioni desiderate. Ciò sostituisce completamente la configurazione dall'interfaccia grafica, che sarà disponibile in`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. La directory`/addon_configs/1b1291d4_carconnectivity-addon/`potrebbe non apparire in`Home Assistant`file system. In tal caso, il supervisore dovrebbe essere riavviato.
 
 Fare riferimento alla documentazione ufficiale di Carconnettività per l'elenco delle funzioni supportate e dei parametri previsti.
 
