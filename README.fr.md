@@ -25,11 +25,11 @@
 ## Introduction
 
 Le`CarConnectivity-Addon`Le module vous permet de connecter et de récupérer des informations sur votre véhicule à partir des services en ligne des fabricants compatibles. Ce guide explique comment configurer correctement le module.
-J'emballe simplement le[Excellent travail effectué par Till.](https://github.com/tillsteinbach/CarConnectivity)
+Je suis simplement emballé[Le travail (excellent) fait par Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Son travail est également disponible sous forme d'images Docker. Donc, si vous utilisez l'assistant à domicile comme docker autonome, vous pouvez également l'utiliser directement.
+Son travail est également disponible sous forme d'images Docker. Donc, si vous utilisez l'assistant à domicile comme autonome`docker`, vous pouvez également l'utiliser directement.
 
-**⚠️ Le projet est toujours en cours de développement, avec l'ingénierie inverse de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.⚠️**
+**⚠️ Le projet est toujours en cours de développement,`reverse engineering`de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.**
 
 ## Ajouter le référentiel
 
@@ -133,7 +133,7 @@ Reportez-vous à la documentation officielle de carconnectivité pour la liste d
 ## Meilleures pratiques
 
 -   **Remplissez uniquement les paramètres des marques de véhicules que vous possédez.**
--   **\`**Ne partagez pas vos informations d'identification de connexion.**\`**
+-   \***\* Ne partagez pas vos informations d'identification de connexion. \*\***
 -   **Ajustez l'intervalle de rafraîchissement pour éviter de dépasser les limites de demande d'API. N'oubliez pas que la limite semble être d'environ 1000 req / jour.**
 -   **Utilisez le niveau de journalisation "de débogage" uniquement lors du dépannage des problèmes.**\`\*\*
 
