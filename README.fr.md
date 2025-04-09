@@ -10,17 +10,15 @@
 
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 
-# Assistant domestique complémentaire: carconnectivité
+# `Home Assistant Add-on: CarConnectivity`
 
-|         | Écurie                                                                                                                                                                                                       | Bord                                                                                                                                                                                                                                                            |
+|         | `Stable`                                                                                                                                                                                                     | `Edge`                                                                                                                                                                                                                                                          |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
 
 # Guides traduits
 
 [![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
-
-# Assistant domestique complémentaire: carconnectivité
 
 ## Introduction
 
@@ -72,7 +70,7 @@ Pour`seat`,`Cupra`, Skoda, Volkswagen et Tronity:
 Pour Volvo:
 
 -   `API Key primary`: Clé primaire de l'API Volvo.
--   `API Key secondary`: Clé secondaire de l'API Volvo.
+-   `API Key secondary`: Volvo API secondary key.
 -   `Vehicule Token`: Jeton d'accès pour le véhicule.
 -   `Vehicule Location Token`: Jeton d'accès pour le point de terminaison de l'emplacement.
 -   `Refresh Interval`: Définit la fréquence à la mise à jour des données du véhicule.
@@ -124,7 +122,7 @@ Ce mode désactive toutes les vérifications de la validation et de la sécurit�
 Le mode expert est uniquement destiné aux utilisateurs avancés.
 Pour l'utiliser en toute sécurité, vous devez:
 
-Familiarisez-vous avec la syntaxe et la structure JSON.
+Be familiar with JSON syntax and structure.
 
 Le mode expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenant les paramètres souhaités. Cela remplace complètement la configuration à partir de l'interface graphique, qui sera disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Le répertoire`/addon_configs/1b1291d4_carconnectivity-addon/`ne peut pas apparaître dans le système de fichiers d'assistant à domicile. Si tel est le cas, le superviseur doit être redémarré.
 
