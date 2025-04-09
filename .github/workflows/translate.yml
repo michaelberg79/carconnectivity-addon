@@ -11,89 +11,36 @@ on:
   workflow_dispatch:
 
 jobs:
-  translate:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        lang: [French, Italian, German, Spanish, Polish, Portuguese]
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install jq
-        run: sudo apt-get update
-
-      - name: Translate README to ${{ matrix.lang }}
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          LANG_NAME="${{ matrix.lang }}"
-          LANG_CODE=$(echo "$LANG_NAME" | tr '[:upper:]' '[:lower:]' | cut -c1-2)
-          BRANCH="translate-readme-${LANG_CODE}"
-      
-          content=$(cat README)
-          readme_text=$(jq -Rs . <<< "$content") # Encodage JSON sûr
-      
-          echo "Translating to $LANG_NAME..."
-      
-          payload=$(jq -n \
-            --arg model "gpt-3.5-turbo" \
-            --arg system "You are a professional technical translator." \
-            --arg user "Translate the following README into $LANG_NAME while keeping the markdown format:\n\n$content" \
-            --argjson temp 0.2 \
-            '{
-              model: $model,
-              temperature: $temp,
-              messages: [
-                { role: "system", content: $system },
-                { role: "user", content: $user }
-              ]
-            }')
-
-          response=$(curl --fail --show-error --silent --max-time 60 https://api.openai.com/v1/chat/completions \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $OPENAI_API_KEY" \
-            -d "$payload")
-      
-          echo "$response" | jq -r '.choices[0].message.content' > "README.${LANG_NAME}"
-          
-          if [ -f README.header ]; then
-            cat README.header > README.${LANG_NAME}.md
-            echo -e "\n\n" >> README.${LANG_NAME}.md
-            cat README.${LANG_NAME} >> README.${LANG_NAME}.md
-            rm README.${LANG_NAME}
-          else
-            mv README.${LANG_NAME} README.${LANG_NAME}.md
-          fi
-      
-          echo "✅ Generated README.${LANG_NAME}.md"
-
-      - name: Commit and push translation to branch
-        run: |
-          LANG_NAME="${{ matrix.lang }}"
-          LANG_CODE=$(echo "$LANG_NAME" | tr '[:upper:]' '[:lower:]' | cut -c1-2)
-          BRANCH="translate-readme-${LANG_CODE}"
-
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
-
-          if [ "${{ matrix.lang }}" == "English" ]; then
-            echo "🔁 English detected — copying to carconnectivity-addon/.../DOCS.md"
-            cp README.en.md carconnectivity-addon/carconnectivity-addon/DOCS.md
-            git add carconnectivity-addon/carconnectivity-addon/DOCS.md
-          fi
-
-          git add "README.${LANG_NAME}.md"
-          git commit -m "Translate README to ${LANG_NAME}" || echo "No changes to commit"
-          git push -u origin "$BRANCH"
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: translate-readme-${{ matrix.lang }}
-          title: "Translate README to ${{ matrix.lang }}"
-          body: "This PR adds the translated README in ${{ matrix.lang }}.\n\nGenerated automatically by GitHub Actions."
+          node-version: 12.x
+      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
+      - name: German
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: de
+      - name: Spanish
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: es
+      - name: Polsky
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: pl
+      - name: Italian
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: it
+      - name: French
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: fr
+      - name: Portugese
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: pt
