@@ -22,4 +22,4 @@ args:
   MQTT_VERSION: "v0.6"
   MQTTHA_VERSION: "v0.3"
   WEBUI_VERSION: "v0.4"
-  CC_VERSION: "v0.6"
+  CC_VERSION: "v0.6.1a2"

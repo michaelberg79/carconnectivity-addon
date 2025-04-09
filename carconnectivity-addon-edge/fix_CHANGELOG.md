@@ -1,2 +1,0 @@
-- Improve logs visibility
-- Fix for cache and token storage
