@@ -22,16 +22,16 @@
 
 ## Introdução
 
-O`CarConnectivity-Addon`O módulo permite que você conecte e recupere informações sobre o seu veículo dos serviços on -line dos fabricantes compatíveis. Este guia explica como configurar corretamente o módulo.
+`CarConnectivity-Addon`Permite conectar e recuperar informações sobre o seu veículo a partir de serviços on -line dos fabricantes compatíveis. Este guia explica como configurar corretamente o módulo.
 Estou simplesmente embalando[O trabalho (excelente) feito por Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Seu trabalho também está disponível como imagens do Docker. Então, se você está usando o assistente doméstico como um independente`docker`, você também pode usá -lo diretamente.
+Seu trabalho também está disponível como imagens do Docker. Então, se você está usando`Home Assistant`como um independente`docker`, você também pode usá -lo diretamente.
 
 **⚠️ O projeto ainda está em desenvolvimento,`reverse engineering`da API a ser concluída e comunicação com o MQTT/Home Assistant a ser adaptado.**
 
 ## Adicionar repositório
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## Configuração geral
 
@@ -78,17 +78,17 @@ Para Volvo:
 
 ### 3. Configuração MQTT (obrigatória)
 
-Você precisa usar`MQTT`Para enviar dados de veículos para o Assistente Home, definir estas configurações:
+Você precisa usar`MQTT`Para enviar dados do veículo para`Home Assistant`, definir estas configurações:
 
 -   `Username`: MQTT Broker Login
 -   `Password`: Senha do corretor MQTT
 -   `Broker Address`: IP ou nome de domínio do servidor MQTT
 
-⚠️ Se você ainda não está usando o MQTT no assistente doméstico, você pode adicionar, por exemplo,[Mosquito Addon e Integração MQTT](https://www.home-assistant.io/integrations/mqtt)
+⚠️ If you're not already using MQTT on `Home Assistant`, você pode acrescentar, por exemplo,[`Mosquito Addon`E`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
-### 4. Webuii
+### 4.`WEBUI`
 
-Você pode visitar http // x.x.x.x: 4000 o webui da carconnectividade:
+Você pode visitar http // x.x.x.x: 4000 o`WEBUI` from `Carconnectivity`:
 
 -   `Username`: Conecte-se
 -   `Password`: senha
@@ -124,7 +124,7 @@ Para usá -lo com segurança, você deve:
 
 Familiarize -se com a sintaxe e estrutura JSON.
 
-O modo especialista permite o uso de um arquivo de configuração personalizado. Quando este modo está ativado, o usuário pode fornecer um arquivo nomeado`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contendo as configurações desejadas. Isso substitui completamente a configuração da interface gráfica, que estará disponível em`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. O diretório`/addon_configs/1b1291d4_carconnectivity-addon/`pode não aparecer no sistema de arquivos do Assistant Home. Se for esse o caso, o supervisor deve ser reiniciado.
+O modo especialista permite o uso de um arquivo de configuração personalizado. Quando este modo está ativado, o usuário pode fornecer um arquivo nomeado`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contendo as configurações desejadas. Isso substitui completamente a configuração da interface gráfica, que estará disponível em`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. O diretório`/addon_configs/1b1291d4_carconnectivity-addon/`pode não aparecer no`Home Assistant`sistema de arquivos. Se for esse o caso, o supervisor deve ser reiniciado.
 
 Consulte a documentação oficial da carconnectividade para obter a lista de funções suportadas e parâmetros esperados.
 
