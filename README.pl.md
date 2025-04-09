@@ -22,16 +22,16 @@
 
 ## Wstęp
 
-.`CarConnectivity-Addon`Moduł umożliwia podłączenie i pobieranie informacji o pojazdu z usług online kompatybilnych producentów. Ten przewodnik wyjaśnia, jak prawidłowo skonfigurować moduł.
+`CarConnectivity-Addon`Umożliwia połączenie i pobieranie informacji o pojazdu z usług online kompatybilnych producentów. Ten przewodnik wyjaśnia, jak prawidłowo skonfigurować moduł.
 Po prostu pakuję[Praca (doskonała) wykonana przez Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Jego praca jest również dostępna jako obrazy Docker. Więc jeśli używasz Asystenta Home jako samodzielnego`docker`, możesz go również bezpośrednio użyć.
+Jego praca jest również dostępna jako obrazy Docker. Więc jeśli używasz`Home Assistant`jako samodzielny`docker`, możesz go również bezpośrednio użyć.
 
 **⚠️ Projekt jest nadal w trakcie opracowywania,`reverse engineering`interfejsu API, który ma zostać ukończony i komunikacja z MQTT/Asystentem Home, który ma zostać dostosowany**
 
 ## Dodaj repozytorium
 
-[![Addon Home Assistant](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+[![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
 ## Ogólna konfiguracja
 
@@ -78,17 +78,17 @@ Dla Volvo:
 
 ### 3. Konfiguracja MQTT (obowiązkowa)
 
-Musisz użyć`MQTT`Aby wysłać dane pojazdu do Asystenta Home, skonfiguruj te ustawienia:
+Musisz użyć`MQTT`Aby wysłać dane pojazdu do`Home Assistant`, Skonfiguruj te ustawienia:
 
 -   `Username`: Login Broker MQTT
 -   `Password`: Hasło brokera MQTT
 -   `Broker Address`: Nazwa IP lub domeny serwera MQTT
 
-⚠️ Jeśli jeszcze nie używasz MQTT na asystenta domowym, możesz dodać na przykład[Addon komarów i integracja MQTT](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Jeśli jeszcze nie używasz MQTT`Home Assistant`, możesz na przykład dodać, na przykład[`Mosquito Addon`I`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
-### 4. Webuii
+### 4.`WEBUI`
 
-Możesz odwiedzić http // x.x.x.x: 4000 WebUi z carconnectivity:
+Możesz odwiedzić http // x.x.x.x: 4000`WEBUI` from `Carconnectivity`:
 
 -   `Username`: Zaloguj się
 -   `Password`: hasło
@@ -124,7 +124,7 @@ Aby korzystać z niego bezpiecznie, musisz:
 
 Zapoznaj się z składnią i strukturą JSON.
 
-Tryb ekspertów umożliwia użycie niestandardowego pliku konfiguracyjnego. Po włączeniu tego trybu użytkownik może podać plik o nazwie`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`zawierające pożądane ustawienia. To całkowicie zastępuje konfigurację z interfejsu graficznego, który będzie dostępny w`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Katalog`/addon_configs/1b1291d4_carconnectivity-addon/`może nie pojawić się w systemie plików Assistant Home. W takim przypadku przełożony powinien zostać ponownie uruchomiony.
+Tryb ekspertów umożliwia użycie niestandardowego pliku konfiguracyjnego. Po włączeniu tego trybu użytkownik może podać plik o nazwie`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`zawierające pożądane ustawienia. To całkowicie zastępuje konfigurację z interfejsu graficznego, który będzie dostępny w`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Katalog`/addon_configs/1b1291d4_carconnectivity-addon/`może nie pojawić się w`Home Assistant`system plików. W takim przypadku przełożony powinien zostać ponownie uruchomiony.
 
 Lista funkcji obsługiwanych i oczekiwanych parametrów zapoznaj się z oficjalną dokumentacją CarConnectivity.
 
