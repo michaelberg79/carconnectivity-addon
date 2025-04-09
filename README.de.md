@@ -25,11 +25,11 @@
 ## Einführung
 
 Der`CarConnectivity-Addon`Mit dem Modul können Sie Informationen über Ihr Fahrzeug aus den Online -Diensten der kompatiblen Hersteller anschließen und abrufen. In diesem Handbuch wird erläutert, wie das Modul ordnungsgemäß konfiguriert wird.
-Ich verpackt einfach die[Hervorragende Arbeit von Till.](https://github.com/tillsteinbach/CarConnectivity)
+Ich verpackt einfach[Die Arbeit (ausgezeichnet) von Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Seine Arbeiten sind auch als Docker -Bilder verfügbar. Wenn Sie also Home Assistant als eigenständiger Docker verwenden, können Sie ihn auch direkt verwenden.
+Seine Arbeiten sind auch als Docker -Bilder verfügbar. Wenn Sie also den Home-Assistenten als eigenständige Verwendung verwenden`docker`Sie können es auch direkt verwenden.
 
-**⚠️The project is still under development, with reverse engineering of the api to be completed and communication with MQTT/Home assistant to be adapted.⚠️**
+**⚠️Das Projekt befindet sich noch in der Entwicklung,`reverse engineering`der API, die fertiggestellt werden soll und die Kommunikation mit MQTT/Home Assistant angepasst wird.**
 
 ## Repository hinzufügen
 
@@ -133,7 +133,7 @@ In der offiziellen Dokumentation von Carconnectivity finden Sie die Liste der un
 ## Best Practices
 
 -   **Füllen Sie nur die Einstellungen für die Fahrzeugmarken aus, die Sie besitzen.**
--   **\`**Teilen Sie Ihre Login -Anmeldeinformationen nicht.**\`**
+-   \***\*Teilen Sie Ihre Login -Anmeldeinformationen nicht. \*\***
 -   **Passen Sie das Aktualisierungsintervall an, um die Überschreitung von API -Anforderungsgrenzen zu vermeiden. Denken Sie daran, die Grenze scheint ungefähr 1000 REQ/Day zu sein.**
 -   **Verwenden Sie das "Debug" -Protokollierungsebene nur bei Problembehebungsproblemen.**\`\*\*
 
