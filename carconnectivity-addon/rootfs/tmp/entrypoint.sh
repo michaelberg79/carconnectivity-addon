@@ -1,10 +1,11 @@
 #!/bin/sh
 set -euo pipefail
 
-#Variables
+# Variables
 TOKEN_FILE="/config/carconnectivity.token"
 CACHE_FILE="/config/carconnectivity.cache"
 HEALTHY_FILE="/tmp/carconnectivity_healthy"
+NGINX_FILE="/etc/nginx/nginx.conf"
 OPTIONS_JSON="/data/options.json"
 EXPERT_MODE=$(jq -r '.expert' ${OPTIONS_JSON} 2>/dev/null || echo "false")
 EXPERT_NAME="carconnectivity.expert.json"
@@ -22,6 +23,12 @@ BLUE='\033[1;34m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+color_echo() {
+    local color="$1"
+    shift
+    echo -e "${color}$@${NC}"
+}
+
 BANNER="${CYAN}·············································································································
 ${CYAN}:  ____            ____                            _   _       _ _              _       _     _             :
 ${CYAN}: / ___|__ _ _ __ / ___|___  _ __  _ __   ___  ___| |_(_)_   _(_) |_ _   _     / \\   __| | __| | ___  _ __  :
@@ -34,10 +41,14 @@ ${CYAN}····································�
 
 # Function to handle signals
 term_handler() {
-    echo -e "${YELLOW}SIGTERM signal received, shutting down...${NC}"
-    if [ -n "${child_pid:-}" ] && kill -0 "$child_pid" 2>/dev/null; then
-        kill -TERM "$child_pid"
-        wait "$child_pid"
+    color_echo "${YELLOW}" "SIGTERM signal received, shutting down..."
+    if [ -n "${nginx_pid:-}" ] && kill -0 "$nginx_pid" 2>/dev/null; then
+        kill -TERM "$nginx_pid"
+        wait "$nginx_pid"
+    fi
+    if [ -n "${cc_pid:-}" ] && kill -0 "${cc_pid}" 2>/dev/null; then
+        kill -TERM "${cc_pid}"
+        wait "${cc_pid}"
     fi
     exit 143 # 128 + 15 -- SIGTERM
 }
@@ -47,11 +58,11 @@ print_file() {
     local file="$1"
     local name="$(basename ${file})"
     if [ -f "$file" ]; then
-        echo -e "${BLUE}📃 ($name) 📃${NC}"
+        color_echo "${BLUE}" "📃 ($name) 📃"
         cat "$file"
-        echo -e "${BLUE}-----------${NC}"
+        color_echo "${BLUE}" "-----------"
     else
-        echo -e "${RED}❌ File not found: $file${NC}"
+        color_echo "${RED}" "❌ File not found: $file"
     fi
 }
 
@@ -60,28 +71,28 @@ validate_json() {
     local file="$1"
     local name="$(basename ${file})"
     if jq empty "$file" 2>/dev/null; then
-        echo -e "${GREEN}✅ File ${name} is syntactically correct.${NC}"
+        color_echo "${GREEN}" "✅ File ${name} is syntactically correct."
         return 0
     else
-        echo -e "${RED}❌ File ${name} is invalid.${NC}"
+        color_echo "${RED}" "❌ File ${name} is invalid."
         return 1
     fi
 }
 
-echo -e "${BANNER}"
+color_echo "${CYAN}" "${BANNER}"
 
 # trap SIGTERM - sent when 'docker stop'
-trap 'term_handler' TERM
+trap 'term_handler' TERM INT
 cd /tmp
 
 if [ "${EXPERT_MODE}" = "true" ]; then
-    echo -e "${YELLOW}⚠️ Expert mode is enabled. ⚠️${NC}"
+    color_echo "${YELLOW}" "⚠️ Expert mode is enabled. ⚠️"
 
     if [ -f "${EXPERT_FILE}" ]; then
         EXPERT_EXISTS="true"
-        echo -e "${GREEN}✅ File ${EXPERT_NAME} exists.${NC}"
+        color_echo "${GREEN}" "✅ File ${EXPERT_NAME} exists."
     else
-        echo -e "${RED}❌ File ${EXPERT_NAME} not found.${NC}"
+        color_echo "${RED}" "❌ File ${EXPERT_NAME} not found."
     fi
 
     if validate_json "${EXPERT_FILE}"; then
@@ -92,18 +103,18 @@ fi
 CONFIG_FILE=${UI_FILE}
 if [ "${EXPERT_MODE}" = "true" ] && [ "${EXPERT_EXISTS}" = "true" ] && [ "${EXPERT_SYNTAX}" = "true" ]; then
     CONFIG_FILE=${EXPERT_FILE}
-    echo -e "${GREEN}🔠 Expert configuration applied.${NC}"
+    color_echo "${GREEN}" "🔠 Expert configuration applied."
 else
     if [ "${EXPERT_MODE}" = "true" ]; then
         if [ "${EXPERT_EXISTS}" != "true" ]; then
-            echo -e "${YELLOW}⛔ Using ${UI_NAME} because ${EXPERT_NAME} is missing.${NC}"
+            color_echo "${YELLOW}" "⛔ Using ${UI_NAME} because ${EXPERT_NAME} is missing."
         elif [ "${EXPERT_SYNTAX}" != "true" ]; then
-            echo -e "${YELLOW}⛔ Using ${UI_NAME} because ${EXPERT_NAME} is invalid.${NC}"
+            color_echo "${YELLOW}" "⛔ Using ${UI_NAME} because ${EXPERT_NAME} is invalid."
             print_file ${EXPERT_FILE}
         fi
     fi
 
-    echo -e "${BLUE}🛠️ Generating configuration...${NC}"
+    color_echo "${BLUE}" "🛠️ Generating configuration..."
     tempio -conf "${OPTIONS_JSON}" -template carconnectivity.json.gtpl -out "${UI_NAME}"
 
     if validate_json "${UI_NAME}"; then
@@ -121,11 +132,13 @@ if [ "${DEBUG_LEVEL}" = "debug" ]; then
     print_file ${CONFIG_FILE}
 fi
 
+exec nginx -c ${NGINX_FILE} &
+nginx_pid=$!
 /opt/venv/bin/carconnectivity ${CONFIG_FILE} --tokenfile ${TOKEN_FILE} --cache ${CACHE_FILE} --healthcheckfile ${HEALTHY_FILE} &
+cc_pid=$!
 
-child_pid=$!
-echo -e "👏 ${GREEN}STARTED (PID: $child_pid)${NC}"
-wait "$child_pid"
+color_echo "${GREEN}" "👏 STARTED (PIDs: ${nginx_pid} and ${cc_pid})"
+wait "${cc_pid}"
 exit_code=$?
-echo -e "${BLUE}ℹ️ Process exited with code $exit_code${NC}"
+color_echo "${BLUE}" "ℹ️ Process exited with code $exit_code"
 exit "$exit_code"

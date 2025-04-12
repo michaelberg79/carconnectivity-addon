@@ -15,13 +15,11 @@ ARG MQTTHA_VERSION
 ARG WEBUI_VERSION
 ARG CC_VERSION
 
+COPY rootfs /
 WORKDIR /tmp/
 
-COPY carconnectivity.json.gtpl .
-COPY entrypoint.sh .
-
 RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
-    apk add --no-cache python3 py3-pip build-base libffi-dev && \
+    apk add --no-cache nginx py3-pip build-base libffi-dev && \
     python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --upgrade pip && \
     /opt/venv/bin/pip install --no-cache \
@@ -43,6 +41,7 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
     echo "MQTT_VERSION=${MQTT_VERSION}" >> versions.txt && \
     echo "MQTTHA_VERSION=${MQTTHA_VERSION}" >> versions.txt && \
     chmod -R a+rw /tmp && \
+    mkdir -p /run/nginx && \
     chmod +x /tmp/entrypoint.sh && \
     apk del build-base libffi-dev && \
     rm -rf /var/cache/apk/*
