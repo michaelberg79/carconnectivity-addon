@@ -33,6 +33,8 @@ Seine Arbeiten sind auch als Docker -Bilder verfügbar. Also, wenn Sie verwenden
 
 [![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/mqtt_device.png)
+
 ## Allgemeine Konfiguration
 
 Füllen Sie nur die Einstellungen für die Marken von Fahrzeugen aus, die Sie besitzen.**Lassen Sie alle anderen Felder leer.**
@@ -88,11 +90,13 @@ Sie müssen verwenden`MQTT`Fahrzeugdaten an senden an`Home Assistant`Konfigurier
 
 ### 4.`WEBUI`
 
-Sie können http // x.x.x.x: 4000 die besuchen`WEBUI`aus`Carconnectivity`:
+Sie können auf das Original zugreifen`WEBUI`Aus "Carconnektivität mit Eindringen von Home Assistant.
+Sie können Ihre eigenen Zugriffsanmeldeinformationen definieren:
 
 -   `Username`: Login
 -   `Password`: Passwort
--   `WEBUI Port`: 4000
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/webui.png)
 
 ### 5. Protokollierungsstufe
 
