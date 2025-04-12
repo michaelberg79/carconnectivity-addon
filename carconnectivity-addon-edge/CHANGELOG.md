@@ -1,3 +1,11 @@
+## 0.2.3
+
+### 🚀 New Features
+- Use ingress to access WEBU
+  ⚠️ Broken: pin location is always 404
+
+ --- 
+
 ## 0.2.2
 
 ### 🛠️ Fixes & Updates
