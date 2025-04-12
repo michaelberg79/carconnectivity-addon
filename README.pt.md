@@ -33,6 +33,8 @@ Seu trabalho também está disponível como imagens do Docker. Então, se você 
 
 [![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/mqtt_device.png)
+
 ## Configuração geral
 
 Preencha apenas as configurações para as marcas de veículos que você possui.**Deixe todos os outros campos vazios.**
@@ -48,7 +50,7 @@ Escolha o fabricante correspondente ao seu veículo das marcas suportadas:
 -   `Tronity`
 -   `Volvo`
 
-Se você possui vários veículos de diferentes marcas, poderá configurar várias seções.
+If you own multiple vehicles from different brands, you can configure multiple sections.
 
 ### 2. Conectando -se aos serviços on -line do fabricante
 
@@ -84,15 +86,17 @@ Você precisa usar`MQTT`Para enviar dados do veículo para`Home Assistant`, defi
 -   `Password`: Senha do corretor MQTT
 -   `Broker Address`: IP ou nome de domínio do servidor MQTT
 
-⚠️ If you're not already using MQTT on `Home Assistant`, você pode acrescentar, por exemplo,[`Mosquito Addon`E`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Se você ainda não está usando o MQTT em`Home Assistant`, você pode acrescentar, por exemplo,[`Mosquito Addon`E`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
 ### 4.`WEBUI`
 
-Você pode visitar http // x.x.x.x: 4000 o`WEBUI` from `Carconnectivity`:
+Você pode acessar o original`WEBUI`Da carconnectividade usando a Ingress do Home Assistant.
+Você pode definir suas próprias credenciais de acesso:
 
 -   `Username`: Conecte-se
 -   `Password`: senha
--   `WEBUI Port`: 4000
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/webui.png)
 
 ### 5. Nível de registro
 

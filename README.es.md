@@ -25,13 +25,15 @@
 `CarConnectivity-Addon`Le permite conectarse y recuperar información sobre su vehículo de los servicios en línea de los fabricantes compatibles. Esta guía explica cómo configurar correctamente el módulo.
 Simplemente estoy empaquetando[El trabajo (excelente) realizado por Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Su trabajo también está disponible como imágenes de Docker. Entonces, si estás usando`Home Assistant` as a stand-alone `docker`, también puedes usarlo directamente.
+Su trabajo también está disponible como imágenes de Docker. Entonces, si estás usando`Home Assistant`como independiente`docker`, también puedes usarlo directamente.
 
 **⚠️ El proyecto todavía está en desarrollo,`reverse engineering`de la API que se completará y la comunicación con MQTT/Asistente de inicio para ser adaptado.**
 
 ## Agregar repositorio
 
 [![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/mqtt_device.png)
 
 ## Configuración general
 
@@ -78,7 +80,7 @@ Para Volvo:
 
 ### 3. Configuración MQTT (obligatoria)
 
-You need to use `MQTT`para enviar datos del vehículo a`Home Assistant`, Configure estos ajustes:
+Necesitas usar`MQTT`para enviar datos del vehículo a`Home Assistant`, Configure estos ajustes:
 
 -   `Username`: MQTT Broker Iniciar sesión
 -   `Password`: Contraseña de mqtt corredor
@@ -88,11 +90,13 @@ You need to use `MQTT`para enviar datos del vehículo a`Home Assistant`, Configu
 
 ### 4.`WEBUI`
 
-Puede visitar http // x.x.x.x: 4000 el`WEBUI`de`Carconnectivity`:
+Puedes acceder al original`WEBUI`de \`Carconnectivity usando Ingress de Home Assistant.
+Puede definir sus propias credenciales de acceso:
 
--   `Username`: login
+-   `Username`: acceso
 -   `Password`: contraseña
--   `WEBUI Port`: 4000
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/webui.png)
 
 ### 5. Nivel de registro
 
