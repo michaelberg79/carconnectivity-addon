@@ -92,7 +92,7 @@ You need to use `MQTT` to send vehicle data to `Home Assistant`, configure these
 ⚠️ If you're not already using MQTT on `Home Assistant`, you can add, for example, [`Mosquito Addon`et `MQTT integration`](https://www.home-assistant.io/integrations/mqtt) 
 
 ### 4. `WEBUI`
-You can access the original `WEBUI` from `Carconnectivity using ingress from Home Assistant.
+You can access the `Carconnectivity`'s original interface from  using directly from `Home Assistant`.
 You can define your own access credentials:
 - `Username`: login
 - `Password`: password
