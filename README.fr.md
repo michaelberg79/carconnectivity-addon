@@ -25,13 +25,15 @@
 `CarConnectivity-Addon`Vous permet de connecter et de récupérer des informations sur votre véhicule à partir des services en ligne des fabricants compatibles. Ce guide explique comment configurer correctement le module.
 Je suis simplement emballé[Le travail (excellent) fait par Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Son travail est également disponible sous forme d'images Docker. Donc si vous utilisez`Home Assistant`En tant que autonome`docker`, you can directly use it too.
+Son travail est également disponible sous forme d'images Docker. Donc si vous utilisez`Home Assistant`En tant que autonome`docker`, vous pouvez également l'utiliser directement.
 
 **⚠️ Le projet est toujours en cours de développement,`reverse engineering`de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.**
 
 ## Ajouter le référentiel
 
 [![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/mqtt_device.png)
 
 ## Configuration générale
 
@@ -88,11 +90,13 @@ Vous devez utiliser`MQTT`pour envoyer des données de véhicule à`Home Assistan
 
 ### 4.`WEBUI`
 
-Vous pouvez visiter http // x.x.x.x: 4000 le`WEBUI`depuis`Carconnectivity`:
+Vous pouvez accéder à l'original`WEBUI`De \`cadavre en utilisant la pénétration de l'assistant à domicile.
+Vous pouvez définir vos propres informations d'accès:
 
 -   `Username`: se connecter
 -   `Password`: mot de passe
--   `WEBUI Port`: 4000
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/webui.png)
 
 ### 5. Niveau de journalisation
 
@@ -124,7 +128,7 @@ Pour l'utiliser en toute sécurité, vous devez:
 
 Familiarisez-vous avec la syntaxe et la structure JSON.
 
-Le mode expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenant les paramètres souhaités. Cela remplace complètement la configuration à partir de l'interface graphique, qui sera disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Le répertoire`/addon_configs/1b1291d4_carconnectivity-addon/`peut ne pas apparaître dans le`Home Assistant` file system. If this is the case, the supervisor should be restarted.
+Le mode expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenant les paramètres souhaités. Cela remplace complètement la configuration à partir de l'interface graphique, qui sera disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Le répertoire`/addon_configs/1b1291d4_carconnectivity-addon/`peut ne pas apparaître dans le`Home Assistant`Système de fichiers. Si tel est le cas, le superviseur doit être redémarré.
 
 Reportez-vous à la documentation officielle de carconnectivité pour la liste des fonctions prises en charge et des paramètres attendus.
 
