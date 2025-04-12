@@ -1,10 +1,9 @@
 name: "CarConnectivity Addon edge"
-version: 0.2.2
+version: 0.2.4
 slug: "carconnectivity-addon-edge"
 description: "⚠️EDGE VERSION⚠️ Addon version of Carconnectivity made by Till (see https://github.com/tillsteinbach/CarConnectivity) throught MQTT. ⚠️MAY BE INSTABLE⚠️ "
 image: "docker.io/pulpyyyy/carconnectivity-addon-edge-{arch}"
 panel_icon: "mdi:car-wireless"
-webui: "[PROTO:ssl]://[HOST]:[PORT:4000]"
 map:
   - addon_config:rw
 arch:
@@ -13,12 +12,8 @@ arch:
   - armhf
   - armv7
   - i386
-ingress: false
+ingress: true
 init: false
-ports:
-  4000/tcp: 4000
-ports_description:
-  4000/tcp: Carconnectivity web interface
 options:
   connector_type_brand1: "seat"
   connector_username_brand1: ""
