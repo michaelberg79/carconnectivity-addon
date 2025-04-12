@@ -43,6 +43,9 @@ His work is also available as docker images. So if you're using `Home Assistant`
 
 [![`Addon Home Assistant`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/mqtt_device.png)
+
 ## General Configuration
 
 Only fill in the settings for the brands of vehicles you own. **Leave all other fields empty.**
@@ -89,10 +92,12 @@ You need to use `MQTT` to send vehicle data to `Home Assistant`, configure these
 ⚠️ If you're not already using MQTT on `Home Assistant`, you can add, for example, [`Mosquito Addon`et `MQTT integration`](https://www.home-assistant.io/integrations/mqtt) 
 
 ### 4. `WEBUI`
-You can visit http//x.x.x.x:4000 The `WEBUI` from `Carconnectivity`:
+You can access the original `WEBUI` from `Carconnectivity using ingress from Home Assistant.
+You can define your own access credentials:
 - `Username`: login
 - `Password`: password
-- `WEBUI Port`: 4000
+
+![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/webui.png)
 
 ### 5. Logging Level
 Define the amount of information recorded in logs:
