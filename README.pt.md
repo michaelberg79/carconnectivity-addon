@@ -50,7 +50,7 @@ Escolha o fabricante correspondente ao seu veículo das marcas suportadas:
 -   `Tronity`
 -   `Volvo`
 
-If you own multiple vehicles from different brands, you can configure multiple sections.
+Se você possui vários veículos de diferentes marcas, poderá configurar várias seções.
 
 ### 2. Conectando -se aos serviços on -line do fabricante
 
@@ -90,7 +90,7 @@ Você precisa usar`MQTT`Para enviar dados do veículo para`Home Assistant`, defi
 
 ### 4.`WEBUI`
 
-Você pode acessar o original`WEBUI`Da carconnectividade usando a Ingress do Home Assistant.
+Você pode acessar o`Carconnectivity`a interface original de usar diretamente de`Home Assistant`.
 Você pode definir suas próprias credenciais de acesso:
 
 -   `Username`: Conecte-se
