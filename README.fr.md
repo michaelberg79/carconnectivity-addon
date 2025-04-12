@@ -29,7 +29,7 @@ Son travail est également disponible sous forme d'images Docker. Donc si vous u
 
 **⚠️ Le projet est toujours en cours de développement,`reverse engineering`de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.**
 
-## Ajouter le référentiel
+## Add repository
 
 [![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
@@ -84,13 +84,13 @@ Vous devez utiliser`MQTT`pour envoyer des données de véhicule à`Home Assistan
 
 -   `Username`: Connexion du courtier MQTT
 -   `Password`: Mot de passe du courtier MQTT
--   `Broker Address`: IP ou nom de domaine du serveur MQTT
+-   `Broker Address`: IP or domain name of the MQTT server
 
 ⚠️ Si vous n'utilisez pas déjà MQTT`Home Assistant`, vous pouvez ajouter, par exemple,[`Mosquito Addon`et`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
 ### 4.`WEBUI`
 
-Vous pouvez accéder à l'original`WEBUI`De \`cadavre en utilisant la pénétration de l'assistant à domicile.
+Vous pouvez accéder au`Carconnectivity`interface d'origine de l'utilisation directement de`Home Assistant`.
 Vous pouvez définir vos propres informations d'accès:
 
 -   `Username`: se connecter
