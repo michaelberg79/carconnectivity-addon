@@ -90,7 +90,7 @@ Musisz użyć`MQTT`Aby wysłać dane pojazdu do`Home Assistant`, Skonfiguruj te 
 
 ### 4.`WEBUI`
 
-Możesz uzyskać dostęp do oryginału`WEBUI`Od \`\` Cannectivity za pomocą wnikania z Asystenta domowego.
+You can access the `Carconnectivity`oryginalny interfejs z używania bezpośrednio z`Home Assistant`.
 Możesz zdefiniować własne poświadczenia dostępu:
 
 -   `Username`: Zaloguj się
