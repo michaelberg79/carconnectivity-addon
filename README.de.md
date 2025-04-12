@@ -90,7 +90,7 @@ Sie müssen verwenden`MQTT`Fahrzeugdaten an senden an`Home Assistant`Konfigurier
 
 ### 4.`WEBUI`
 
-Sie können auf das Original zugreifen`WEBUI`Aus "Carconnektivität mit Eindringen von Home Assistant.
+You can access the `Carconnectivity`Die ursprüngliche Schnittstelle von direkter Verwendung von`Home Assistant`.
 Sie können Ihre eigenen Zugriffsanmeldeinformationen definieren:
 
 -   `Username`: Login
