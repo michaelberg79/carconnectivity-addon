@@ -39,9 +39,9 @@ Su trabajo también está disponible como imágenes de Docker. Entonces, si est�
 
 Solo complete la configuración de las marcas de vehículos que posee.**Deje todos los demás campos vacíos.**
 
-### 1. Seleccionar la marca de su vehículo
+### 1. Selecting Your Vehicle Brand
 
-Elija el fabricante correspondiente a su vehículo de las marcas compatibles:
+Choose the manufacturer corresponding to your vehicle from the supported brands:
 
 -   `Seat`
 -   `Cupra`
@@ -60,7 +60,7 @@ Cada fabricante de automóviles proporciona un servicio en línea que le permite
 
 Para`seat`,`Cupra`, Skoda, Volkswagen y Tronity:
 
--   `Brand`: La marca del fabricante.
+-   `Brand`: The manufacturer’s brand.
 -   `Username`: La dirección de correo electrónico utilizada para iniciar sesión en el servicio del fabricante.
 -   `Password`: La contraseña para su cuenta de fabricante.
 -   `PIN Code`: Un código de 4 dígitos requerido para el acceso remoto a ciertas características del vehículo.
@@ -90,7 +90,7 @@ Necesitas usar`MQTT`para enviar datos del vehículo a`Home Assistant`, Configure
 
 ### 4.`WEBUI`
 
-Puedes acceder al original`WEBUI`de \`Carconnectivity usando Ingress de Home Assistant.
+Puedes acceder al`Carconnectivity`La interfaz original del uso directamente desde`Home Assistant`.
 Puede definir sus propias credenciales de acceso:
 
 -   `Username`: acceso
@@ -136,7 +136,7 @@ Consulte la documentación oficial de la carconectividad para obtener la lista d
 
 -   **Solo complete la configuración de las marcas de vehículos que posee.**
 -   \***\*No comparta sus credenciales de inicio de sesión. \*\***
--   **Ajuste el intervalo de actualización para evitar exceder los límites de solicitud de API. Recuerde que el límite parece ser de aproximadamente 1000 req/día.**
+-   **Adjust the refresh interval to avoid exceeding API request limits. Remember limit seems to be about 1000 req/day.**
 -   **Use el nivel de registro de "depuración" solo cuando resuelva problemas.**\`\*\*
 
 * * *
