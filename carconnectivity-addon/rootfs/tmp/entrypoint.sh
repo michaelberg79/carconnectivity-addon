@@ -149,7 +149,7 @@ fi
 /opt/venv/bin/carconnectivity ${CONFIG_FILE} --tokenfile ${TOKEN_FILE} --cache ${CACHE_FILE} --healthcheckfile ${HEALTHY_FILE} &
 CC_PID=$!
 
-color_echo "${GREEN}" "👏 CARCONECTIVITY STstarted (PID: ${CC_PID})"
+color_echo "${GREEN}" "👏 CARCONECTIVITY started (PID: ${CC_PID})"
 wait "${CC_PID}"
 exit_code=$?
 color_echo "${BLUE}" "ℹ️ Process exited with code $exit_code"
