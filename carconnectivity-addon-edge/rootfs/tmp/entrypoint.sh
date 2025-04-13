@@ -14,6 +14,8 @@ EXPERT_FILE="/config/${EXPERT_NAME}"
 UI_FILE="/config/${UI_NAME}"
 EXPERT_EXISTS="false"
 EXPERT_SYNTAX="false"
+CC_PID=""
+NGINX_PID=""
 
 # Colors
 RED='\033[0;31m'
@@ -42,14 +44,17 @@ ${CYAN}····································�
 # Function to handle signals
 term_handler() {
     color_echo "${YELLOW}" "SIGTERM signal received, shutting down..."
-    if [ -n "${nginx_pid:-}" ] && kill -0 "$nginx_pid" 2>/dev/null; then
-        kill -TERM "$nginx_pid"
-        wait "$nginx_pid"
-    fi
-    if [ -n "${cc_pid:-}" ] && kill -0 "${cc_pid}" 2>/dev/null; then
-        kill -TERM "${cc_pid}"
-        wait "${cc_pid}"
-    fi
+
+    terminate_process() {
+        local pid="$1"
+        if [ -n "${pid}" ] && kill -0 "${pid}" 2>/dev/null; then
+            kill -TERM "${pid}"
+            wait "${pid}"
+        fi
+    }
+
+    terminate_process "${NGINX_PID}"
+    terminate_process "${CC_PID}"
     exit 143 # 128 + 15 -- SIGTERM
 }
 
@@ -124,21 +129,28 @@ else
     fi
 fi
 
-DEBUG_LEVEL=$(jq -r '.log_level'  ${OPTIONS_JSON} 2>/dev/null || echo "info")
+DEBUG_LEVEL=$(jq -r '.carConnectivity.log_level'  ${CONFIG_FILE} 2>/dev/null || echo "")
+ADMINUI=$(jq -r '.carConnectivity.plugins[] | select(.type == "webui") | .config.username' ${CONFIG_FILE} 2>/dev/null || echo "")
+
 echo -e "TYPE=$(hostname)"
 print_file versions.txt
 
 if [ "${DEBUG_LEVEL}" = "debug" ]; then
     print_file ${CONFIG_FILE}
 fi
+if [ -n "${ADMINUI:-}" ]; then
+    exec nginx -c ${NGINX_FILE} &
+    NGINX_PID=$!
+    color_echo "${GREEN}" "👏 NGNIX server started (PID: ${NGINX_PID})"
+else
+    color_echo "${YELLOW}" "NGINX server is disabled (empty admin account)"
+fi
 
-exec nginx -c ${NGINX_FILE} &
-nginx_pid=$!
 /opt/venv/bin/carconnectivity ${CONFIG_FILE} --tokenfile ${TOKEN_FILE} --cache ${CACHE_FILE} --healthcheckfile ${HEALTHY_FILE} &
-cc_pid=$!
+CC_PID=$!
 
-color_echo "${GREEN}" "👏 STARTED (PIDs: ${nginx_pid} and ${cc_pid})"
-wait "${cc_pid}"
+color_echo "${GREEN}" "👏 CARCONECTIVITY STstarted (PID: ${CC_PID})"
+wait "${CC_PID}"
 exit_code=$?
 color_echo "${BLUE}" "ℹ️ Process exited with code $exit_code"
 exit "$exit_code"
