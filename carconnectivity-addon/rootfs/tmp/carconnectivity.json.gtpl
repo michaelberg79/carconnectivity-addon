@@ -64,6 +64,7 @@
                     "log_level": "{{ .log_level }}"
                 }
             },
+            {{- if .connector_username_webui }}
             {
                 "type": "webui",
                 "config": {
@@ -72,6 +73,7 @@
                     "log_level": "{{ .log_level }}"
                 }
             },
+             {{- end }}
             {
                 "type": "mqtt_homeassistant",
                 "config": {
