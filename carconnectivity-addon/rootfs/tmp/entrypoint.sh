@@ -143,13 +143,13 @@ if [ -n "${ADMINUI:-}" ]; then
     NGINX_PID=$!
     color_echo "${GREEN}" "👏 NGNIX server started (PID: ${NGINX_PID})"
 else
-    color_echo "${YELLOW}" "NGINX server is disabled (empty admin account)"
+    color_echo "${YELLOW}" "⚠️ NGINX server is disabled (empty admin account) ⚠️"
 fi
 
 /opt/venv/bin/carconnectivity ${CONFIG_FILE} --tokenfile ${TOKEN_FILE} --cache ${CACHE_FILE} --healthcheckfile ${HEALTHY_FILE} &
 CC_PID=$!
 
-color_echo "${GREEN}" "👏 CARCONECTIVITY started (PID: ${CC_PID})"
+color_echo "${GREEN}" "👏 CARCONECTIVITY STstarted (PID: ${CC_PID})"
 wait "${CC_PID}"
 exit_code=$?
 color_echo "${BLUE}" "ℹ️ Process exited with code $exit_code"
