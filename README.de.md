@@ -18,7 +18,7 @@
 
 # Übersetzte Führer
 
-[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
+[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![Norwegian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/NO.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.no.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
 
 ## Einführung
 
@@ -58,7 +58,7 @@ Jeder Autohersteller bietet einen Online -Service an, mit dem Sie die Daten Ihre
 
 #### Erforderliche Informationen:
 
-Für`seat`,`Cupra`, Skoda, Volkswagen and Tronity:
+Für`seat`,`Cupra`,`Skoda`,`Volkswagen`Und`Tronity`:
 
 -   `Brand`: Die Marke des Herstellers.
 -   `Username`: Die E -Mail -Adresse, mit der sich der Herstellerdienst angemeldet hat.
@@ -69,11 +69,11 @@ Für`seat`,`Cupra`, Skoda, Volkswagen and Tronity:
 
 ⚠️ Sie können 2 Konten für 2 verschiedene Marken oder 2 Autos derselben Marke verwenden, die nicht mit demselben Konto verbunden sind.
 
-Für Volvo:
+Für`Volvo`:
 
--   `API Key primary`: Volvo API Primärschlüssel.
+-   `API Key primary`: Volvo API primary key.
 -   `API Key secondary`: Volvo API Sekundärschlüssel.
--   `Vehicule Token`: Zugang zu Token für das Fahrzeug.
+-   `Vehicule Token`: Access token for the vehicule.
 -   `Vehicule Location Token`: Zugang zu Token für den Standortendpunkt.
 -   `Refresh Interval`: Definiert, wie oft (in Sekunden) die Daten des Fahrzeugs aktualisiert werden.
 -   `Warning:`Das zu häufiges Einstellen einer Aktualisierungsrate kann die vom Hersteller auferlegten API -Anforderungsgrenzen überschreiten, was zu temporären Zugriffsbeschränkungen führt.
@@ -90,7 +90,7 @@ Sie müssen verwenden`MQTT`Fahrzeugdaten an senden an`Home Assistant`Konfigurier
 
 ### 4.`WEBUI`
 
-You can access the `Carconnectivity`Die ursprüngliche Schnittstelle von direkter Verwendung von`Home Assistant`.
+Sie können auf die zugreifen`Carconnectivity`Die ursprüngliche Schnittstelle von direkter Verwendung von`Home Assistant`.
 Sie können Ihre eigenen Zugriffsanmeldeinformationen definieren:
 
 -   `Username`: Login

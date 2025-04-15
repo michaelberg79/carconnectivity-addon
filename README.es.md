@@ -18,7 +18,7 @@
 
 # Guías traducidas
 
-[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
+[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![Norwegian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/NO.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.no.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
 
 ## Introducción
 
@@ -39,9 +39,9 @@ Su trabajo también está disponible como imágenes de Docker. Entonces, si est�
 
 Solo complete la configuración de las marcas de vehículos que posee.**Deje todos los demás campos vacíos.**
 
-### 1. Selecting Your Vehicle Brand
+### 1. Seleccionar la marca de su vehículo
 
-Choose the manufacturer corresponding to your vehicle from the supported brands:
+Elija el fabricante correspondiente a su vehículo de las marcas compatibles:
 
 -   `Seat`
 -   `Cupra`
@@ -58,9 +58,9 @@ Cada fabricante de automóviles proporciona un servicio en línea que le permite
 
 #### Información requerida:
 
-Para`seat`,`Cupra`, Skoda, Volkswagen y Tronity:
+Para`seat`,`Cupra`,`Skoda`,`Volkswagen`y`Tronity`:
 
--   `Brand`: The manufacturer’s brand.
+-   `Brand`: La marca del fabricante.
 -   `Username`: La dirección de correo electrónico utilizada para iniciar sesión en el servicio del fabricante.
 -   `Password`: La contraseña para su cuenta de fabricante.
 -   `PIN Code`: Un código de 4 dígitos requerido para el acceso remoto a ciertas características del vehículo.
@@ -69,7 +69,7 @@ Para`seat`,`Cupra`, Skoda, Volkswagen y Tronity:
 
 ⚠️ Puede usar 2 cuentas para 2 marcas diferentes o 2 autos de una misma marca que no están vinculadas a la misma cuenta.
 
-Para Volvo:
+Para`Volvo`:
 
 -   `API Key primary`: Volvo API primary key.
 -   `API Key secondary`: Clave secundaria Volvo API.
@@ -80,7 +80,7 @@ Para Volvo:
 
 ### 3. Configuración MQTT (obligatoria)
 
-Necesitas usar`MQTT`para enviar datos del vehículo a`Home Assistant`, Configure estos ajustes:
+Necesitas usar`MQTT`para enviar datos del vehículo a`Home Assistant`, configure these settings:
 
 -   `Username`: MQTT Broker Iniciar sesión
 -   `Password`: Contraseña de mqtt corredor
@@ -136,7 +136,7 @@ Consulte la documentación oficial de la carconectividad para obtener la lista d
 
 -   **Solo complete la configuración de las marcas de vehículos que posee.**
 -   \***\*No comparta sus credenciales de inicio de sesión. \*\***
--   **Adjust the refresh interval to avoid exceeding API request limits. Remember limit seems to be about 1000 req/day.**
+-   **Ajuste el intervalo de actualización para evitar exceder los límites de solicitud de API. Recuerde que el límite parece ser de aproximadamente 1000 req/día.**
 -   **Use el nivel de registro de "depuración" solo cuando resuelva problemas.**\`\*\*
 
 * * *
