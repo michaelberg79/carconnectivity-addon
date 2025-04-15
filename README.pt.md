@@ -18,7 +18,7 @@
 
 # Guias traduzidos
 
-[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
+[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![Norwegian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/NO.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.no.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
 
 ## Introdução
 
@@ -35,7 +35,7 @@ Seu trabalho também está disponível como imagens do Docker. Então, se você 
 
 ![image](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/img/mqtt_device.png)
 
-## Configuração geral
+## General Configuration
 
 Preencha apenas as configurações para as marcas de veículos que você possui.**Deixe todos os outros campos vazios.**
 
@@ -58,7 +58,7 @@ Cada fabricante de automóveis fornece um serviço on -line que permite acessar 
 
 #### Informações necessárias:
 
-Para`seat`,`Cupra`, Skoda, Volkswagen e Tronity:
+Para`seat`,`Cupra`,`Skoda`,`Volkswagen`e`Tronity`:
 
 -   `Brand`: A marca do fabricante.
 -   `Username`: O endereço de e -mail usado para fazer login no serviço do fabricante.
@@ -69,7 +69,7 @@ Para`seat`,`Cupra`, Skoda, Volkswagen e Tronity:
 
 ⚠️ Você pode usar 2 contas para 2 marcas diferentes ou 2 carros da mesma marca que não estão vinculados à mesma conta.
 
-Para Volvo:
+Para`Volvo`:
 
 -   `API Key primary`: Chave primária da API Volvo.
 -   `API Key secondary`: Chave secundária da API Volvo.
@@ -126,7 +126,7 @@ Este modo desativa todas as verificações de validação e segurança de conte�
 Modo de especialista destina -se apenas a usuários avançados.
 Para usá -lo com segurança, você deve:
 
-Familiarize -se com a sintaxe e estrutura JSON.
+Be familiar with JSON syntax and structure.
 
 O modo especialista permite o uso de um arquivo de configuração personalizado. Quando este modo está ativado, o usuário pode fornecer um arquivo nomeado`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contendo as configurações desejadas. Isso substitui completamente a configuração da interface gráfica, que estará disponível em`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. O diretório`/addon_configs/1b1291d4_carconnectivity-addon/`pode não aparecer no`Home Assistant`sistema de arquivos. Se for esse o caso, o supervisor deve ser reiniciado.
 
