@@ -18,18 +18,18 @@
 
 # Guides traduits
 
-[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
+[![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![Norwegian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/NO.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.no.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
 
 ## Introduction
 
 `CarConnectivity-Addon`Vous permet de connecter et de récupérer des informations sur votre véhicule à partir des services en ligne des fabricants compatibles. Ce guide explique comment configurer correctement le module.
-Je suis simplement emballé[Le travail (excellent) fait par Till.](https://github.com/tillsteinbach/CarConnectivity)
+Je suis simplement emballé[the work (excellent) done by Till.](https://github.com/tillsteinbach/CarConnectivity)
 
 Son travail est également disponible sous forme d'images Docker. Donc si vous utilisez`Home Assistant`En tant que autonome`docker`, vous pouvez également l'utiliser directement.
 
 **⚠️ Le projet est toujours en cours de développement,`reverse engineering`de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.**
 
-## Add repository
+## Ajouter le référentiel
 
 [![\`Addon Home Assistant\`](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/addon-ha.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FPulpyyyy%2Fcarconnectivity-addon)
 
@@ -58,7 +58,7 @@ Chaque constructeur automobile fournit un service en ligne qui vous permet d'acc
 
 #### Informations requises:
 
-Pour`seat`,`Cupra`, Skoda, Volkswagen et Tronity:
+Pour`seat`,`Cupra`,`Skoda`,`Volkswagen`et`Tronity`:
 
 -   `Brand`: La marque du fabricant.
 -   `Username`: L'adresse e-mail utilisée pour se connecter au service du fabricant.
@@ -69,12 +69,12 @@ Pour`seat`,`Cupra`, Skoda, Volkswagen et Tronity:
 
 ⚠️ Vous pouvez utiliser 2 comptes pour 2 marques différentes ou 2 voitures d'une même marque qui ne sont pas liées au même compte.
 
-Pour Volvo:
+Pour`Volvo`:
 
 -   `API Key primary`: Clé primaire de l'API Volvo.
 -   `API Key secondary`: Clé secondaire de l'API Volvo.
 -   `Vehicule Token`: Jeton d'accès pour le véhicule.
--   `Vehicule Location Token`: Jeton d'accès pour le point de terminaison de l'emplacement.
+-   `Vehicule Location Token`: Access token for the location endpoint.
 -   `Refresh Interval`: Définit la fréquence à la mise à jour des données du véhicule.
 -   `Warning:`La définition d'un taux de rafraîchissement trop fréquemment peut dépasser les limites de demande de l'API imposées par le fabricant, ce qui entraîne des restrictions d'accès temporaires.
 
@@ -84,7 +84,7 @@ Vous devez utiliser`MQTT`pour envoyer des données de véhicule à`Home Assistan
 
 -   `Username`: Connexion du courtier MQTT
 -   `Password`: Mot de passe du courtier MQTT
--   `Broker Address`: IP or domain name of the MQTT server
+-   `Broker Address`: IP ou nom de domaine du serveur MQTT
 
 ⚠️ Si vous n'utilisez pas déjà MQTT`Home Assistant`, vous pouvez ajouter, par exemple,[`Mosquito Addon`et`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
