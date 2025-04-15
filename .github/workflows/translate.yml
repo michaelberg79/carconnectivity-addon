@@ -19,7 +19,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 12.x
-      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
+      # ISO Language Codes: https://cloud.google.com/translate/docs/languages  
+      # Flags https://github.com/buenodeandrade/lang-badges
       - name: German
         uses: dephraiim/translate-readme@main
         with:
@@ -44,3 +45,7 @@ jobs:
         uses: dephraiim/translate-readme@main
         with:
           LANG: pt
+      - name: Norwegian
+        uses: dephraiim/translate-readme@main
+        with:
+          LANG: no
