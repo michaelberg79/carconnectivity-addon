@@ -1,22 +1,19 @@
 name: "CarConnectivity Add-on"
-version: 0.1.14
+version: 0.2.5
 slug: "carconnectivity-addon"
 description: "CarConnectivity Add-on based on Till's project (https://github.com/tillsteinbach/CarConnectivity). May be unstable. MQTT required."
 image: "docker.io/pulpyyyy/carconnectivity-addon-{arch}"
 panel_icon: "mdi:car-wireless"
-webui: "[PROTO:ssl]://[HOST]:[PORT:4000]"
+map:
+  - addon_config:rw
 arch:
   - aarch64
   - amd64
   - armhf
   - armv7
   - i386
-ingress: false
+ingress: true
 init: false
-ports:
-  4000/tcp: 4000
-ports_description:
-  4000/tcp: Carconnectivity web interface
 options:
   connector_type_brand1: "seat"
   connector_username_brand1: ""
@@ -28,6 +25,11 @@ options:
   connector_password_brand2: "password"
   connector_spin_brand2: "1234"
   connector_interval_brand2: 600
+  connector_volvo_key_primary: ""
+  connector_volvo_key_secondary: ""
+  connected_volvo_vehicle_token: ""
+  connector_volvo_location_token: ""
+  connector_volvo_interval: 600
   mqtt_username: ""
   mqtt_password: ""
   mqtt_broker: "core-mosquitto.local.hass.io"
@@ -36,6 +38,7 @@ options:
   connector_username_webui: "admin"
   connector_password_webui: "secret"
   api_log_level: "info"
+  expert: false
 schema:
   connector_type_brand1: list(seat|cupra|skoda|volkswagen|trionity)
   connector_username_brand1: match(^$|^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$)
@@ -47,6 +50,11 @@ schema:
   connector_password_brand2: password?
   connector_interval_brand2: int(60,3600)?
   connector_spin_brand2: match(^\d{4}$)?
+  connector_volvo_key_primary: str?
+  connector_volvo_key_secondary: str?
+  connected_volvo_vehicle_token: str?
+  connector_volvo_location_token: str?
+  connector_volvo_interval: int(60,3600)?
   mqtt_username: str?
   mqtt_password: password?
   mqtt_broker: str
@@ -55,3 +63,4 @@ schema:
   connector_username_webui: str
   connector_password_webui: password?
   api_log_level: list(info|warning|error|debug)
+  expert: bool
