@@ -23,11 +23,11 @@
 ## Introduction
 
 `CarConnectivity-Addon`Vous permet de connecter et de récupérer des informations sur votre véhicule à partir des services en ligne des fabricants compatibles. Ce guide explique comment configurer correctement le module.
-Je suis simplement emballé[the work (excellent) done by Till.](https://github.com/tillsteinbach/CarConnectivity)
+Je ne fais simplement qu'integrer [Le travail (excellent) fait par Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Son travail est également disponible sous forme d'images Docker. Donc si vous utilisez`Home Assistant`En tant que autonome`docker`, vous pouvez également l'utiliser directement.
+Son travail est également disponible sous forme d'images Docker. Donc si vous utilisez `Home Assistant` en tant que autonome`docker`, vous pouvez également l'utiliser directement.
 
-**⚠️ Le projet est toujours en cours de développement,`reverse engineering`de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.**
+**⚠️ Le projet est toujours en cours de développement, le `reverse engineering` de l'API à terminer et la communication avec MQTT / Assistant à domicile à adapter.**
 
 ## Ajouter le référentiel
 
@@ -37,7 +37,7 @@ Son travail est également disponible sous forme d'images Docker. Donc si vous u
 
 ## Configuration générale
 
-Remplissez uniquement les paramètres des marques de véhicules que vous possédez.**Laissez tous les autres champs vides.**
+Remplissez uniquement les champs relatifs aux marques de véhicules que vous possédez.**Laissez tous les autres champs vides.**
 
 ### 1. Sélection de votre marque de véhicule
 
@@ -80,17 +80,17 @@ Pour`Volvo`:
 
 ### 3. Configuration MQTT (obligatoire)
 
-Vous devez utiliser`MQTT`pour envoyer des données de véhicule à`Home Assistant`, Configurez ces paramètres:
+Vous devez utiliser `MQTT` pour envoyer des données de véhicule à `Home Assistant`, Configurez ces paramètres:
 
 -   `Username`: Connexion du courtier MQTT
 -   `Password`: Mot de passe du courtier MQTT
 -   `Broker Address`: IP ou nom de domaine du serveur MQTT
 
-⚠️ Si vous n'utilisez pas déjà MQTT`Home Assistant`, vous pouvez ajouter, par exemple,[`Mosquito Addon`et`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Si vous n'utilisez pas déjà MQTT dans `Home Assistant`, vous pouvez ajouter, par exemple,[`Mosquito Addon` et `MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
 ### 4.`WEBUI`
 
-Vous pouvez accéder au`Carconnectivity`interface d'origine de l'utilisation directement de`Home Assistant`.
+Vous pouvez accéder au`Carconnectivity`, l'interface d'origine de l'utilisation directement depuis `Home Assistant`.
 Vous pouvez définir vos propres informations d'accès:
 
 -   `Username`: se connecter
@@ -118,7 +118,7 @@ Définissez la quantité d'informations enregistrées dans les journaux:
 
 ### 7. Mode expert
 
-Le mode expert permet d'utiliser toutes les fonctions de carconnectivité native, y compris celles non disponibles via l'interface graphique, tant que les fonctions correspondantes sont prises en charge par les binaires complémentaires.
+Le mode expert permet d'utiliser toutes les fonctions natives de `CarConnectivity`, y compris celles non disponibles via l'interface de configuration graphique, tant que les fonctions correspondantes sont prises en charge par les binaires contenus dans le module complémentaire.
 
 ⚠️ AVERTISSEMENT:
 Ce mode désactive toutes les vérifications de la validation et de la sécurité du contenu. En conséquence, même une petite erreur (comme une syntaxe JSON non valide) peut empêcher le module complémentaire de se lancer correctement.
@@ -126,13 +126,13 @@ Ce mode désactive toutes les vérifications de la validation et de la sécurit�
 Le mode expert est uniquement destiné aux utilisateurs avancés.
 Pour l'utiliser en toute sécurité, vous devez:
 
-Familiarisez-vous avec la syntaxe et la structure JSON.
+Être familier avec la syntaxe et la structure JSON.
 
-Le mode expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`contenant les paramètres souhaités. Cela remplace complètement la configuration à partir de l'interface graphique, qui sera disponible en`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Le répertoire`/addon_configs/1b1291d4_carconnectivity-addon/`peut ne pas apparaître dans le`Home Assistant`Système de fichiers. Si tel est le cas, le superviseur doit être redémarré.
+Le mode expert permet d'utiliser un fichier de configuration personnalisé. Lorsque ce mode est activé, l'utilisateur peut fournir un fichier nommé et placé dans `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json` contenant les paramètres souhaités. Cela remplace complètement la configuration à partir de l'interface graphique, qui sera générée dans `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Le répertoire `/addon_configs/1b1291d4_carconnectivity-addon/` peut ne pas apparaître tout de suite dans le système de fichiers `Home Assistant`. Si tel est le cas, le superviseur doit être redémarré.
 
-Reportez-vous à la documentation officielle de carconnectivité pour la liste des fonctions prises en charge et des paramètres attendus.
+Reportez-vous à la documentation officielle de `CarConnectivity` pour la liste des fonctions prises en charge et les paramètres attendus.
 
-## Meilleures pratiques
+## Bonnes pratiques
 
 -   **Remplissez uniquement les paramètres des marques de véhicules que vous possédez.**
 -   \***\* Ne partagez pas vos informations d'identification de connexion. \*\***
@@ -141,5 +141,5 @@ Reportez-vous à la documentation officielle de carconnectivité pour la liste d
 
 * * *
 
-Si vous avez des questions ou des problèmes de rencontre pendant la configuration, reportez-vous à la documentation du module.
+Si vous avez des questions ou rencontrez des problèmes pendant la configuration, reportez-vous à la documentation du module.
 Si vous trouvez un bogue, veuillez ouvrir un problème.
