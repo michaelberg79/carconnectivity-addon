@@ -37,10 +37,10 @@ jobs:
         uses: dephraiim/translate-readme@main
         with:
           LANG: it
-      - name: French
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: fr
+      # - name: French
+      #   uses: dephraiim/translate-readme@main
+      #   with:
+      #     LANG: fr
       - name: Portugese
         uses: dephraiim/translate-readme@main
         with:
