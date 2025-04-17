@@ -21,10 +21,10 @@ jobs:
           node-version: 12.x
       # ISO Language Codes: https://cloud.google.com/translate/docs/languages  
       # Flags https://github.com/buenodeandrade/lang-badges
-      - name: German
-        uses: dephraiim/translate-readme@main
-        with:
-          LANG: de
+      # - name: German
+      #   uses: dephraiim/translate-readme@main
+      #   with:
+      #     LANG: de
       - name: Spanish
         uses: dephraiim/translate-readme@main
         with:
