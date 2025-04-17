@@ -2,10 +2,11 @@
 set -euo pipefail
 
 # Variables
-TOKEN_FILE="/config/carconnectivity.token"
-CACHE_FILE="/config/carconnectivity.cache"
+TOKEN_FILE="/config/.cache/carconnectivity.token"
+CACHE_FILE="/config/.cache/carconnectivity.cache"
 HEALTHY_FILE="/tmp/carconnectivity_healthy"
 NGINX_FILE="/etc/nginx/nginx.conf"
+NGINX_CACHE="/config/.cache/nginx"
 OPTIONS_JSON="/data/options.json"
 EXPERT_MODE=$(jq -r '.expert' ${OPTIONS_JSON} 2>/dev/null || echo "false")
 EXPERT_NAME="carconnectivity.expert.json"
@@ -88,7 +89,8 @@ color_echo "${CYAN}" "${BANNER}"
 
 # trap SIGTERM - sent when 'docker stop'
 trap 'term_handler' TERM INT
-cd /tmp
+
+mkdir -p ${NGINX_CACHE} && chown -R nginx:nginx ${NGINX_CACHE}
 
 if [ "${EXPERT_MODE}" = "true" ]; then
     color_echo "${YELLOW}" "⚠️ Expert mode is enabled. ⚠️"
