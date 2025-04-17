@@ -16,18 +16,18 @@
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version | [![GitHub release (latest by date)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/pulpyyyy/carconnectivity-addon/releases) | [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pulpyyyy/carconnectivity-addon-edge-amd64?&sort=date&label=&style=for-the-badge)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/carconnectivity-addon-edge/CHANGELOG.md) |
 
-# Übersetzte Führer
+# Übersetzte Anleitung
 
 [![French](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/FR.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.fr.md)[![Italian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/IT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.it.md)[![German](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/DE.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.de.md)[![Spanish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/ES.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.es.md)[![Polish](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PL.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pl.md)[![Portuguese](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/PT.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.pt.md)[![Norwegian](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/NO.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.no.md)[![English](https://raw.githubusercontent.com/Pulpyyyy/carconnectivity-addon/refs/heads/main/.github/img/US.svg)](https://github.com/Pulpyyyy/carconnectivity-addon/blob/main/README.md)
 
 ## Einführung
 
 `CarConnectivity-Addon`Ermöglicht die Verbindung und Abruf von Informationen über Ihr Fahrzeug von den Online -Diensten der kompatiblen Hersteller. In diesem Handbuch wird erläutert, wie das Modul ordnungsgemäß konfiguriert wird.
-Ich verpackt einfach[Die Arbeit (ausgezeichnet) von Till.](https://github.com/tillsteinbach/CarConnectivity)
+Ich nutze einfach [Das ausgezeichnete Repository von Till.](https://github.com/tillsteinbach/CarConnectivity)
 
-Seine Arbeiten sind auch als Docker -Bilder verfügbar. Also, wenn Sie verwenden`Home Assistant`als eigenständiger`docker`Sie können es auch direkt verwenden.
+Sein Repository ist auch als Docker -Bild verfügbar. Also, wenn Sie `Home Assistant`als eigenständiges`docker` verwenden, können Sie es auch direkt verwenden.
 
-**⚠️Das Projekt befindet sich noch in der Entwicklung,`reverse engineering`der API, die fertiggestellt werden soll und die Kommunikation mit MQTT/Home Assistant angepasst wird.**
+**⚠️Das Projekt befindet sich noch in der Entwicklung,`reverse engineering`der API**
 
 ## Repository hinzufügen
 
@@ -37,7 +37,7 @@ Seine Arbeiten sind auch als Docker -Bilder verfügbar. Also, wenn Sie verwenden
 
 ## Allgemeine Konfiguration
 
-Füllen Sie nur die Einstellungen für die Marken von Fahrzeugen aus, die Sie besitzen.**Lassen Sie alle anderen Felder leer.**
+Füllen Sie nur die Einstellungen für die Marken von Fahrzeugen aus, die Sie besitzen. **Lassen Sie alle anderen Felder leer.**
 
 ### 1. Wählen Sie Ihre Fahrzeugmarke aus
 
@@ -54,16 +54,16 @@ Wenn Sie mehrere Fahrzeuge aus verschiedenen Marken besitzen, können Sie mehrer
 
 ### 2.. Verbinden Sie sich mit den Online -Diensten des Herstellers
 
-Jeder Autohersteller bietet einen Online -Service an, mit dem Sie die Daten Ihres Fahrzeugs remote zugreifen können. Um eine Verbindung herzustellen, müssen Sie Ihre Anmeldeinformationen angeben.
+Jeder Autohersteller bietet einen Online -Service an, mit dem Sie auf die Daten Ihres Fahrzeugs remote zugreifen können. Um eine Verbindung herzustellen, müssen Sie Ihre Anmeldeinformationen angeben.
 
 #### Erforderliche Informationen:
 
 Für`seat`,`Cupra`,`Skoda`,`Volkswagen`Und`Tronity`:
 
 -   `Brand`: Die Marke des Herstellers.
--   `Username`: Die E -Mail -Adresse, mit der sich der Herstellerdienst angemeldet hat.
+-   `Username`: Die E -Mail -Adresse, mit der sich bei der Hersteller App angemeldet haben.
 -   `Password`: Das Passwort für Ihr Herstellerkonto.
--   `PIN Code`: Ein 4-stelliger Code, der für den Fernzugriff auf bestimmte Fahrzeugmerkmale erforderlich ist.
+-   `PIN Code`: Ein 4-stelliger Code, der für den Fernzugriff auf bestimmte Fahrzeugfunktionen erforderlich ist.
 -   `Refresh Interval`: Definiert, wie oft (in Sekunden) die Daten des Fahrzeugs aktualisiert werden.
 -   `Warning:`Das zu häufiges Einstellen einer Aktualisierungsrate kann die vom Hersteller auferlegten API -Anforderungsgrenzen überschreiten, was zu temporären Zugriffsbeschränkungen führt.
 
@@ -80,17 +80,17 @@ Für`Volvo`:
 
 ### 3.. MQTT -Konfiguration (obligatorisch)
 
-Sie müssen verwenden`MQTT`Fahrzeugdaten an senden an`Home Assistant`Konfigurieren Sie diese Einstellungen:
+Sie müssen `MQTT` verwenden um Fahrzeugdaten an `Home Assistant` zu senden. Konfigurieren Sie diese Einstellungen:
 
 -   `Username`: MQTT Broker Login
 -   `Password`: MQTT Broker Passwort
 -   `Broker Address`: IP- oder Domänenname des MQTT -Servers
 
-⚠️ Wenn Sie MQTT noch nicht verwenden`Home Assistant`Sie können zum Beispiel hinzufügen,[`Mosquito Addon`Und`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
+⚠️ Wenn Sie MQTT noch nicht verwenden können Sie zum Beispiel hinzufügen,[`Mosquito Addon`Und`MQTT integration`](https://www.home-assistant.io/integrations/mqtt)
 
 ### 4.`WEBUI`
 
-Sie können auf die zugreifen`Carconnectivity`Die ursprüngliche Schnittstelle von direkter Verwendung von`Home Assistant`.
+Sie können auf die oberfläche con `Carconnectivity` zugreifen. Die ursprüngliche Schnittstelle.
 Sie können Ihre eigenen Zugriffsanmeldeinformationen definieren:
 
 -   `Username`: Login
@@ -118,17 +118,16 @@ Definieren Sie die Menge an Informationen, die in Protokollen aufgezeichnet wurd
 
 ### 7. Expertenmodus
 
-Der Expertenmodus ermöglicht die Verwendung aller nativen Carconnektivitätsfunktionen, einschließlich derer, die nicht über die grafische Schnittstelle verfügbar sind-solange die entsprechenden Funktionen durch die Add-On-Binärdateien unterstützt werden.
+Der Expertenmodus ermöglicht die Verwendung aller nativen Carconnektivitätsfunktionen, einschließlich derer, die nicht über die grafische Schnittstelle verfügbar sind. Solange die entsprechenden Funktionen durch die Add-On-Binärdateien unterstützt werden.
 
 ⚠️ Warnung:
 Dieser Modus deaktiviert alle Inhaltsvalidierung und Sicherheitskontrollen. Infolgedessen kann selbst ein kleiner Fehler (z. B. eine ungültige JSON-Syntax) verhindern, dass das Add-On korrekt startet.
 
 Der Expertenmodus ist nur für fortgeschrittene Benutzer gedacht.
-Um es sicher zu verwenden, müssen Sie:
+Um es sicher zu verwenden, müssen Sie sich mit der JSON -Syntax und der Struktur auskennen.
 
-Seien Sie mit der JSON -Syntax und der Struktur vertraut.
-
-Der Expertenmodus ermöglicht die Verwendung einer benutzerdefinierten Konfigurationsdatei. Wenn dieser Modus aktiviert ist, kann der Benutzer eine mit dem Namen namens Datei bereitstellen`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json`enthält die gewünschten Einstellungen. Dies ersetzt die Konfiguration vollständig aus der grafischen Schnittstelle, die in verfügbar ist`/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json`. Das Verzeichnis`/addon_configs/1b1291d4_carconnectivity-addon/`kann nicht in der erscheinen`Home Assistant`Dateisystem. Wenn dies der Fall ist, sollte der Vorgesetzte neu gestartet werden.
+Der Expertenmodus ermöglicht die Verwendung einer benutzerdefinierten Konfigurationsdatei. Wenn dieser Modus aktiviert ist, kann der Benutzer eine Datei mit dem Namen  `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.expert.json` anlegen. Sie enthält die gewünschten Einstellungen. Dies ersetzt die Konfiguration vollständig aus der grafischen Schnittstelle, die in der Datei `/addon_configs/1b1291d4_carconnectivity-addon/carconnectivity.UI.json` verfügbar ist. 
+Wenn das Verzeichnis `/addon_configs/1b1291d4_carconnectivity-addon/`nicht im`Home Assistant`Dateisystem erscheinen machen sie einen neustart vom Supervisor.
 
 In der offiziellen Dokumentation von Carconnectivity finden Sie die Liste der unterstützten Funktionen und erwarteten Parameter.
 
