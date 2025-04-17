@@ -96,10 +96,12 @@
 
 - Fix connector for volkswagen
 
- --- 
- 
+---
+
 ## 0.1.11
 
+### 🚀 New Features
+- The 1st car/account is required to get started
 
 ### 🛠️ Fixes & Updates
 

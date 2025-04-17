@@ -1,7 +1,68 @@
+## 0.2.5
+
+
+### 🛠️ Fixes & Updates
+
+- Fix for car pin with error 404
+
+ --- 
+ 
+ ## 0.2.4
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.4a1](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+
+ --- 
+
+## 0.2.3
+
+### 🚀 New Features
+- Use ingress to access WEBUI
+  ⚠️ Broken: pin location is always 404
+
+ --- 
+
+## 0.2.2
+
+### 🛠️ Fixes & Updates
+
+- Fix for cache and token storage
+ --- 
+
+## 0.2.1
+
+### 🚀 New Features
+- **Add Volvo cars support(experimental)🚗🚙.**
+⚠️ You may need to reconfigure the addon
+
+ --- 
+
+## 0.2.0
+
+### 🚀 New Features
+- Add Expert Mode
+
+  Expert Mode enables the use of all native Carconnectivity functions, including those not available through the graphical interface—as long as the corresponding functions are supported by the add-on binaries.
+
+  ⚠️ Warning:
+  This mode disables all content validation and safety checks. As a result, even a small mistake (such as an invalid JSON syntax) can prevent the add-on from launching correctly.
+
+  Expert Mode is intended for advanced users only.
+  To use it safely, you must:
+
+  Be familiar with JSON syntax and structure.
+
+  Refer to the official Carconnectivity documentation for the list of supported functions and expected parameters.
+
+ --- 
+
 ## 0.1.14
 
 ### 🚀 New Features
 - Add translations for Polish, Spanish and Portuguese
+
 ### 🛠️ Fixes & Updates
 
 - **CarConnectivity-connector-seatcupra** → [v0.3](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
@@ -13,6 +74,19 @@
 - **CarConnectivity** → [v0.6](https://github.com/tillsteinbach/CarConnectivity.git)
 - **CarConnectivity-plugin-webui** → [v0.4](https://github.com/tillsteinbach/CarConnectivity-plugin-webui.git)
 - Fix for empty user/password for MQTT
+
+ --- 
+
+## 0.1.13
+
+### 🚀 New Features
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.3a1](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+- **CarConnectivity** → [v0.6a1](https://github.com/tillsteinbach/CarConnectivity.git)
+
  --- 
 
 ## 0.1.12
@@ -28,6 +102,7 @@
 
 ### 🚀 New Features
 - The 1st car/account is required to get started
+
 ### 🛠️ Fixes & Updates
 
 - **CarConnectivity-connector-seatcupra** → [v0.2](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
@@ -38,7 +113,38 @@
 - **CarConnectivity-plugin-mqtt_homeassistant** → [v0.2](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
 - **CarConnectivity** → [v0.5](https://github.com/tillsteinbach/CarConnectivity.git)
 - **CarConnectivity-plugin-webui** → [v0.3.1](https://github.com/tillsteinbach/CarConnectivity-plugin-webui.git)
+
+ --- 
+
+## 0.1.10
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-connector-seatcupra** → [v0.2a5](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.2a8](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+
+ --- 
+
+## 0.1.9
+
+### 🚀 New Features
+- The 1st car/account is required to get started
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.2a7](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
 - Update/fix translations,documentation and readme according to latest version
+ --- 
+
+## 0.1.8
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-connector-seatcupra** → [v0.2a4](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
+- **CarConnectivity-connector-skoda** → [v0.5a2](https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git)
+- **CarConnectivity-connector-volkswagen** → [v0.5a3](https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git)
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.2a6](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+
  --- 
 
 ## 0.1.7
@@ -51,9 +157,16 @@
 - **MQTT port available in config**
 
 ### 🛠️ Fixes & Updates
+- **CarConnectivity-connector-seatcupra** → [v0.2a3](https://github.com/tillsteinbach/CarConnectivity-connector-seatcupra.git)
+- **CarConnectivity-connector-skoda** → [v0.5a1](https://github.com/tillsteinbach/CarConnectivity-connector-skoda.git)
+- **CarConnectivity-connector-volkswagen** → [v0.5a2](https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen.git)
 - **CarConnectivity-connector-tronity** → [v0.3a2](https://github.com/tillsteinbach/CarConnectivity-connector-tronity.git)
+- **CarConnectivity-plugin-mqtt** → [v0.4.2](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt.git)
+- **CarConnectivity-plugin-mqtt_homeassistant** → [v0.2a5](https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant.git)
+- **CarConnectivity** → [v0.5a4](https://github.com/tillsteinbach/CarConnectivity.git)
+- **CarConnectivity-plugin-webui** → [v0.3a1](https://github.com/tillsteinbach/CarConnectivity-plugin-webui.git)
 
- ---
+ --- 
 
 ## 0.1.6
 
@@ -61,7 +174,6 @@
   - `CarConnectivity-connector-volkswagen` → [v0.4.2](https://github.com/tillsteinbach/CarConnectivity-connector-volkswagen/releases)
 
 ---
-
 ## 0.1.5
 
 ### 🛠️ Fixes & Updates
@@ -75,7 +187,7 @@
 - Updated MQTT HA to Version 0.1.1
 
 ---
-
+ 
 ## 0.1.3
 
 ### 🚀 New Features
