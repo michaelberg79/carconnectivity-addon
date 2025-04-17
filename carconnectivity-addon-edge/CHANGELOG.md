@@ -1,4 +1,13 @@
-## 0.2.4
+## 0.2.5
+
+
+### 🛠️ Fixes & Updates
+
+- Fix for car pin with error 404
+
+ --- 
+ 
+ ## 0.2.4
 
 
 ### 🛠️ Fixes & Updates
