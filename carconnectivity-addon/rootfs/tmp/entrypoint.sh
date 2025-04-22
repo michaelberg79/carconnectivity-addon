@@ -108,17 +108,29 @@ get_ha_locale() {
     local country
     country=$(echo "$response" | jq -r '.country')
 
-    # If either 'language' or 'country' is missing or invalid, print an error
-    if [ "$language" == "null" ] || [ -z "$language" ] || [ "$country" == "null" ] || [ -z "$country" ]; then
-        color_echo "${RED}" "❌ Language or country not found in API response."
+    # If 'language' is missing or invalid, print an error
+    if [ "$language" == "null" ] || [ -z "$language" ]; then
+        color_echo "${RED}" "❌ Language not found in API response."
         return 3
-    else
-        # Combine 'language' and 'country' into a locale format (e.g., fr_FR, en_US)
+    fi
+
+    # Normalize language code:
+    # If it contains a dash (fr-FR), replace it with an underscore (fr_FR)
+    if [[ "$language" == *"-"* ]]; then
+        echo "${language//-/_}"
+        return 0
+    fi
+
+    # If no dash and country is available, combine language and country
+    if [ "$country" != "null" ] && [ -n "$country" ]; then
         echo "${language}_${country}"
         return 0
     fi
-}
 
+    # If only language without country
+    echo "${language}"
+    return 0
+}
 
 color_echo "${CYAN}" "${BANNER}"
 
