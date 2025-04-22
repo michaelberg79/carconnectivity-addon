@@ -19,7 +19,7 @@ COPY rootfs /
 WORKDIR /tmp/
 
 RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
-    apk add --no-cache curl nginx py3-pip build-base libffi-dev python3-dev py3-setuptools zlib-dev jpeg-dev openjpeg-dev tiff-dev libwebp-dev freetype-dev lcms2-dev
+    apk add --no-cache curl nginx py3-pip build-base libffi-dev && \
     python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --upgrade pip && \
     /opt/venv/bin/pip install --no-cache \
@@ -43,7 +43,7 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
     chmod -R a+rw /tmp && \
     mkdir -p /run/nginx && \
     chmod +x /tmp/entrypoint.sh && \
-    apk del build-base libffi-dev zlib-dev jpeg-dev openjpeg-dev tiff-dev libwebp-dev freetype-dev lcms2-dev && \
+    apk del build-base libffi-dev && \
     rm -rf /var/cache/apk/*
 
 LABEL \
