@@ -19,9 +19,9 @@ COPY rootfs /
 WORKDIR /tmp/
 
 RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
-    apk add --no-cache curl nginx py3-pip build-base libffi-dev && \
+    apk add --no-cache nginx py3-pip build-base libffi-dev zlib1g-dev zlib-dev jpeg-dev openjpeg-dev tiff-dev libwebp-dev && \
     python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install --upgrade pip pillow && \
+    /opt/venv/bin/pip install --upgrade pip && \
     /opt/venv/bin/pip install --no-cache \
         carconnectivity==${CC_VERSION} \
         carconnectivity-connector-seatcupra==${SEAT_VERSION} \
@@ -43,7 +43,7 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
     chmod -R a+rw /tmp && \
     mkdir -p /run/nginx && \
     chmod +x /tmp/entrypoint.sh && \
-    apk del build-base libffi-dev && \
+    apk del build-base libffi-dev zlib1g-dev zlib-dev jpeg-dev openjpeg-dev tiff-dev libwebp-dev && \
     rm -rf /var/cache/apk/*
 
 LABEL \
