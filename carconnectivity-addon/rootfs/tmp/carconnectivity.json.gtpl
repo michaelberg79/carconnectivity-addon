@@ -17,9 +17,7 @@
                 }
             }
             {{- end }}
-            {{- if and .connector_username_brand1 .connector_username_brand2 }}
-            ,
-            {{- end }}
+            {{- if and .connector_username_brand1 .connector_username_brand2 }},{{- end }}
             {{- if .connector_username_brand2 }}
             {
                 "type": "{{ if or (eq .connector_type_brand2 "seat") (eq .connector_type_brand2 "cupra") }}seatcupra{{ else }}{{ .connector_type_brand2 }}{{ end }}",
@@ -36,9 +34,7 @@
                 }
             }
             {{- end }}
-            {{- if and (or .connector_username_brand1 .connector_username_brand2) .connector_volvo_key_primary }}
-            ,
-            {{- end }}
+            {{- if and (or .connector_username_brand1 .connector_username_brand2) .connector_volvo_key_primary }},{{- end }}
             {{- if .connector_volvo_key_primary }}
             {
                 "type": "volvo",
@@ -61,6 +57,7 @@
                     "password": "{{ .mqtt_password }}",
                     "broker": "{{ .mqtt_broker }}",
                     "port": {{ .mqtt_port }},
+                    "locale": "en_US",
                     "log_level": "{{ .log_level }}"
                 }
             },
@@ -70,10 +67,11 @@
                 "config": {
                     "username": "{{ .connector_username_webui }}",
                     "password": "{{ .connector_password_webui }}",
+                    "locale": "en_US",
                     "log_level": "{{ .log_level }}"
                 }
             },
-             {{- end }}
+            {{- end }}
             {
                 "type": "mqtt_homeassistant",
                 "config": {

@@ -85,12 +85,51 @@ validate_json() {
     fi
 }
 
+# GET HA LOCALE
+get_ha_locale() {
+    # Get the Supervisor token (used for authentication with Home Assistant API)
+    local token="${SUPERVISOR_TOKEN}"
+    local url="http://supervisor/core/api/config"
+
+    # Fetch the response from the API
+    local response
+    response=$(curl -s -H "Authorization: Bearer ${token}" -H "Content-Type: application/json" "${url}")
+
+    # Check if the response is empty
+    if [ -z "$response" ]; then
+        color_echo "${RED}" "❌ Unable to contact Home Assistant API or empty response."
+        return 2
+    fi
+
+    # Extract 'language' and 'country' from the response
+    local language
+    language=$(echo "$response" | jq -r '.language')
+
+    local country
+    country=$(echo "$response" | jq -r '.country')
+
+    # If either 'language' or 'country' is missing or invalid, print an error
+    if [ "$language" == "null" ] || [ -z "$language" ] || [ "$country" == "null" ] || [ -z "$country" ]; then
+        color_echo "${RED}" "❌ Language or country not found in API response."
+        return 3
+    else
+        # Combine 'language' and 'country' into a locale format (e.g., fr_FR, en_US)
+        echo "${language}_${country}"
+        return 0
+    fi
+}
+
+
 color_echo "${CYAN}" "${BANNER}"
 
 # trap SIGTERM - sent when 'docker stop'
 trap 'term_handler' TERM INT
 
 mkdir -p ${NGINX_CACHE} && chown -R nginx:nginx ${NGINX_CACHE}
+
+# Get the locale
+LOCALE=$(get_ha_locale) || LOCALE="en_US"
+color_echo "${CYAN}" "🌍 Detected locale: ${LOCALE}"
 
 if [ "${EXPERT_MODE}" = "true" ]; then
     color_echo "${YELLOW}" "⚠️ Expert mode is enabled. ⚠️"
@@ -123,7 +162,8 @@ else
 
     color_echo "${BLUE}" "🛠️ Generating configuration..."
     tempio -conf "${OPTIONS_JSON}" -template carconnectivity.json.gtpl -out "${UI_NAME}"
-
+    sed -i "s/\"locale\": \"en_US\"/\"locale\": \"$LOCALE\"/" "$UI_NAME"
+    
     if validate_json "${UI_NAME}"; then
         jq . "${UI_NAME}" > "${CONFIG_FILE}"
     else
