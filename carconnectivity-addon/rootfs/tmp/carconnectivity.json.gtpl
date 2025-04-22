@@ -75,6 +75,7 @@
             {
                 "type": "mqtt_homeassistant",
                 "config": {
+                    "locale": "en_US",
                     "log_level": "{{ .log_level }}"
                 }
             }
