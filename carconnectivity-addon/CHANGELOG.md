@@ -1,22 +1,4 @@
-## 0.2.9
-
-
-### 🛠️ Fixes & Updates
-
-- Fix for usecase en-GB_GB returned
-
- --- 
- 
- ## 0.2.8
-
-
-### 🚀 New Features
-
-- Get locale info from Home Assistant
-
- --- 
- 
- ## 0.2.7
+## 0.2.7
 
 
 ### 🛠️ Fixes & Updates
