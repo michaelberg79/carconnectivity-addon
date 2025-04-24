@@ -1,3 +1,12 @@
+## 0.2.10
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity** → [v0.7.1a2](https://github.com/tillsteinbach/CarConnectivity.git)
+
+ --- 
+
 ## 0.2.9
 
 
