@@ -1,3 +1,12 @@
+## 0.2.10
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity-connector-volvo** → [](https://github.com/tillsteinbach/CarConnectivity-connector-volvo.git)
+
+ --- 
+
 ## 0.2.7
 
 
