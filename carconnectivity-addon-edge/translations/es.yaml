@@ -37,7 +37,7 @@ configuration:
   connector_volvo_key_secondary:
     name: "Clave secundaria para las API de Volvo"
     description: "La clave se ve así: 'de0c63a885ffdac4ccc92d8744905611caf'"
- connected_volvo_vehicle_token:
+  connected_volvo_vehicle_token:
     name: "Token específico del vehículo Volvo"
     description: "El token se ve así: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InhqTzF5SDVmM29WendVeWRVNDJwSzZ0c2d4OF9SUzI1NiIsInBpLmF0bSI6Ijl0MWYifQ.eyJzY29wZSI6ImNvbnZlOmJyY........X4EgbMiw'"
   connector_volvo_location_token:
