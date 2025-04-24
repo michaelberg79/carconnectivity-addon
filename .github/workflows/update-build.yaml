@@ -41,19 +41,21 @@ jobs:
           export LC_ALL=C
 
           get_latest_version() {
-            repo_url=$1
-            temp_dir=$(mktemp -d)
+              repo_url=$1
+              temp_dir=$(mktemp -d)
           
-            git clone --bare --quiet "$repo_url" "$temp_dir" >/dev/null 2>&1
-            
-            if [ "${{ matrix.addon }}" == "carconnectivity-addon" ]; then
-              latest_version=$(git -C "$temp_dir" for-each-ref --sort=-creatordate --format '%(refname:short)' refs/tags | grep -E '^v?[0-9]+(\.[0-9]+)*$' | head -n 1)
-            else
-              latest_version=$(git -C "$temp_dir" for-each-ref --sort=-creatordate --format '%(refname:short)' refs/tags | head -n 1)
-            fi
+              git clone --bare --quiet "$repo_url" "$temp_dir" >/dev/null 2>&1
           
-            rm -rf "$temp_dir"
-            echo "$latest_version"
+              if [ "${{ matrix.addon }}" == "carconnectivity-addon" ]; then
+                  latest_version=$(git -C "$temp_dir" for-each-ref --sort=-creatordate --format '%(refname:short)' refs/tags | grep -E '^v?[0-9]+(\.[0-9]+)*$' | head -n 1)
+              fi
+          
+              if [ -z "$latest_version" ]; then
+                  latest_version=$(git -C "$temp_dir" for-each-ref --sort=-creatordate --format '%(refname:short)' refs/tags | head -n 1)
+              fi
+          
+              rm -rf "$temp_dir"
+              echo "$latest_version"
           }
 
           echo "Fetching latest versions for submodules"
