@@ -58,6 +58,7 @@
                     "broker": "{{ .mqtt_broker }}",
                     "port": {{ .mqtt_port }},
                     "locale": "en_US",
+                    "time_format": "%Y-%m-%dT%H:%M:%S%z",
                     "log_level": "{{ .log_level }}"
                 }
             },
@@ -76,6 +77,7 @@
                 "type": "mqtt_homeassistant",
                 "config": {
                     "locale": "en_US",
+                    "time_format": "%Y-%m-%dT%H:%M:%S%z",
                     "log_level": "{{ .log_level }}"
                 }
             }
