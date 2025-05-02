@@ -28,7 +28,6 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
         carconnectivity-connector-skoda==${SKODA_VERSION} \
         carconnectivity-connector-volkswagen==${VW_VERSION} \
         carconnectivity-connector-tronity==${TRONITY_VERSION} \
-        carconnectivity-connector-volvo==${VOLVO_VERSION} \
         carconnectivity-plugin-webui==${WEBUI_VERSION} \
         carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
     echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" >> versions.txt && \

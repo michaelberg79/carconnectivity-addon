@@ -1,3 +1,11 @@
+## 0.2.12
+
+
+### 🛠️ Fixes & Updates
+
+- **⚠️Temporary removal of the volvo plugin**
+
+
 ## 0.2.11
 
 
