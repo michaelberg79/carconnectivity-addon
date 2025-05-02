@@ -5,8 +5,9 @@
 
 - **⚠️Temporary removal of the volvo plugin**
 
+ --- 
 
-## 0.2.11
+## 0.2.11 (EDGE only)
 
 
 ### 🛠️ Fixes & Updates
@@ -15,7 +16,7 @@
 
  --- 
 
-## 0.2.10
+## 0.2.10 (EDGE only)
 
 
 ### 🛠️ Fixes & Updates
@@ -42,7 +43,7 @@
 
  --- 
  
-## 0.2.7
+ ## 0.2.7
 
 
 ### 🛠️ Fixes & Updates
