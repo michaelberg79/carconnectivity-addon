@@ -1,3 +1,47 @@
+## 0.2.12
+
+
+### 🛠️ Fixes & Updates
+
+- **⚠️Temporary removal of the volvo plugin**
+
+
+## 0.2.11
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity** → [v0.7.1a3](https://github.com/tillsteinbach/CarConnectivity.git)
+
+ --- 
+
+## 0.2.10
+
+
+### 🛠️ Fixes & Updates
+
+- **CarConnectivity** → [v0.7.1a2](https://github.com/tillsteinbach/CarConnectivity.git)
+
+ --- 
+
+## 0.2.9
+
+
+### 🛠️ Fixes & Updates
+
+- Fix for usecase en-GB_GB returned
+
+ --- 
+ 
+ ## 0.2.8
+
+
+### 🚀 New Features
+
+- Get locale info from Home Assistant
+
+ --- 
+ 
 ## 0.2.7
 
 
