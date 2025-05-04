@@ -1,9 +1,6 @@
 [submodule "CarConnectivity-plugin-mqtt"]
 	path = CarConnectivity-plugin-mqtt
 	url = https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt
-[submodule "CarConnectivity-plugin-mqtt_homeassistant"]
-	path = CarConnectivity-plugin-mqtt_homeassistant
-	url = https://github.com/tillsteinbach/CarConnectivity-plugin-mqtt_homeassistant
 [submodule "CarConnectivity-connector-tronity"]
 	path = CarConnectivity-connector-tronity
 	url = https://github.com/tillsteinbach/CarConnectivity-connector-tronity
@@ -25,3 +22,6 @@
 [submodule "CarConnectivity"]
 	path = CarConnectivity
 	url = https://github.com/tillsteinbach/CarConnectivity
+[submodule "CarConnectivity-plugin-mqtt_homeassistant"]
+	path = CarConnectivity-plugin-mqtt_homeassistant
+	url = https://github.com/michaelberg79/CarConnectivity-plugin-mqtt_homeassistant.git
