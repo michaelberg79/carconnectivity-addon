@@ -32,7 +32,7 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
         carconnectivity-connector-tronity==${TRONITY_VERSION} \
         carconnectivity-plugin-webui==${WEBUI_VERSION} && \
 #        carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
-    /opt/venv/bin/pip install --no-cache /tmp/carconnectivity_plugin_mqtt_homeassistant-0.5.dev3+g8ce4544.d20250512.tar && \
+    /opt/venv/bin/pip install --no-cache /tmp/carconnectivity_plugin_mqtt_homeassistant-0.5.dev3+g8ce4544.d20250512.tar.gz && \
     echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" >> versions.txt && \
     echo "SEAT_VERSION=${SEAT_VERSION}" >> versions.txt && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
