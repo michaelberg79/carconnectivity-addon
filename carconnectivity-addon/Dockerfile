@@ -22,14 +22,17 @@ RUN echo "ADDON_VERSION=v${BUILD_VERSION}" >> versions.txt && \
     apk add --no-cache curl nginx py3-pip build-base libffi-dev && \
     python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --upgrade pip && \
+    /opt/venv/bin/pip install --upgrade Pillow && \
+    /opt/venv/bin/pip install --upgrade wheel && \
     /opt/venv/bin/pip install --no-cache \
         carconnectivity==${CC_VERSION} \
         carconnectivity-connector-seatcupra==${SEAT_VERSION} \
         carconnectivity-connector-skoda==${SKODA_VERSION} \
         carconnectivity-connector-volkswagen==${VW_VERSION} \
         carconnectivity-connector-tronity==${TRONITY_VERSION} \
-        carconnectivity-plugin-webui==${WEBUI_VERSION} \
-        carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
+        carconnectivity-plugin-webui==${WEBUI_VERSION} && \
+#        carconnectivity-plugin-mqtt_homeassistant==${MQTTHA_VERSION} && \
+    /opt/venv/bin/pip install --no-cache /tmp/carconnectivity_plugin_mqtt_homeassistant-0.5.dev2+gae87bbc.tar.gz && \
     echo "CARCONNECTIVITY_VERSION=${CC_VERSION}" >> versions.txt && \
     echo "SEAT_VERSION=${SEAT_VERSION}" >> versions.txt && \
     echo "SKODA_VERSION=${SKODA_VERSION}" >> versions.txt && \
